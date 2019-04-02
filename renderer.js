@@ -5,21 +5,23 @@
 const {ipcRenderer} = require('electron');
 const jquery = require('jquery');
 const activeWin = require('active-win');
-
 const storage = require('electron-json-storage');
+const chart = require('electron-chartjs');
 
-const datahandler = require('./datahandler')
-const textformatter = require('./textformatter')
+const colorgenerator = require('./colorgenerator');
+const datahandler = require('./datahandler');
+const textformatter = require('./textformatter');
 
 const appname = document.querySelector('#appname');
 const table = document.querySelector('#infoTable').querySelector('tbody');
+const pieChart  = document.querySelector("#pieChart");
+
+var naStr = "N/A";
 
 var entries = [];
-var entryIDs = [];
-
-var naStr = "N/A"; 
-
+var entryIDs = []; 
 var hasLoaded = false;
+var pieChartAct;
 
 setInterval(function() {
   var objectInfo = activeWin.sync();
@@ -44,7 +46,7 @@ setInterval(function() {
   
   var testEntry = getNewEntry(objectInfo["id"], objectInfo["title"], objectInfo["owner"]["name"], 0);
   if (!entryIDs.includes(testEntry.appID)) {
-    addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, 0);
+    addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, 1);
   } else {
     var prevTime = entries[entryIDs.indexOf(testEntry.appID)].appTime;
     removeEntry(testEntry.appID);
@@ -74,7 +76,7 @@ setInterval(function() {
 		memoryUsage: 11015432
 	}
 	*/
-    
+
 }, 1000);
 
 function addEntry(id, title, owner, time) {
@@ -101,7 +103,7 @@ function isValidEntry(entry) {
 function updateTable() {
     table.innerHTML = "";
     entries.forEach(function(entry) {
-       if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr><td>' + (entry.appTitle === "" ? naStr : entry.appTitle) + '</td><td>' + (entry.appOwner === "" ? "N/A" : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');     
+       if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr><td>' + (entry.appTitle === "" ? naStr : entry.appTitle) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');     
     });
 }
 
@@ -119,6 +121,47 @@ function updateEntries() {
   datahandler.saveData(entries, entryIDs);
 }
 
+function renderPieChart() {
+  var ctx = pieChart.getContext('2d');
+
+  var data = [];
+  var labels = [];
+  var colors = [];
+
+  for (i = 0; i < entries.length; i++) {
+    var time = entries[i]["appTime"];
+    data.push(entries[i]["appTime"]);
+    labels.push(entries[i]["appTitle"].substring(0, 15) + " - " + textformatter.toHHMMSS(entries[i]["appTime"]));
+    colors.push(colorgenerator.getRandomColor());
+  }
+
+  if (pieChartAct != undefined) {
+    pieChartAct.destroy();
+  }
+
+  pieChartAct = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: "Time Spent",
+        backgroundColor: colors,
+        data: data
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      title: {
+        display: false,
+        text: 'Time Spent'
+      }
+    }
+  });
+
+}
+
 ipcRenderer.on('data', (event, arg) => {
   if (arg === "save") {
     updateEntries();
@@ -128,4 +171,8 @@ ipcRenderer.on('data', (event, arg) => {
   } else {
     console.log("MESSAGE: " + arg)
   }
+});
+
+document.querySelector("#refreshButton").addEventListener('click', (event) => {
+  renderPieChart();
 });

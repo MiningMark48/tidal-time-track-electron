@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain, Menu} = require('electron');
+const {app, dialog, BrowserWindow, ipcMain, Menu, remote} = require('electron');
 const windowStateKeeper = require('electron-window-state');
 const debug = require('electron-debug');
 
@@ -8,17 +8,19 @@ debug();
 
 let mainWindow;
 
+
 function doReady() {
   createWindow();
   createMenus();
 //  loadData();
+
 }
 
 function createWindow () {
     
   let mainWindowState = windowStateKeeper({
-      defaultWidth: 1000,
-      defaultHeight: 800
+      defaultWidth: 1200,
+      defaultHeight: 600,
   });
 
   mainWindow = new BrowserWindow({
@@ -26,6 +28,8 @@ function createWindow () {
       'y': mainWindowState.y,
       'width': mainWindowState.width,
       'height': mainWindowState.height,
+      'minWidth': 1200,
+      'minHeight': 600,
       webPreferences: {
         nodeIntegration: true
       }      
@@ -66,7 +70,10 @@ function createMenus() {
     {
       label: 'Help',
       submenu: [
-        { label: "TODO" }
+        { 
+          label: "About",
+          click: () => showAboutDialog()
+        }
       ]
     }
   ]
@@ -81,6 +88,10 @@ function saveData() {
 
 function loadData() {
   mainWindow.webContents.send('data', 'load');
+}
+
+function showAboutDialog() {
+  console.log("TODO");
 }
 
 app.on('ready', doReady)

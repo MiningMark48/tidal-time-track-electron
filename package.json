@@ -24,6 +24,7 @@
   "dependencies": {
     "active-win": "^5.0.0",
     "binding": "^3.0.3",
+    "electron-chartjs": "^1.0.0",
     "electron-debug": "^2.1.0",
     "electron-json-storage": "^4.1.6",
     "electron-window-state": "^5.0.3",

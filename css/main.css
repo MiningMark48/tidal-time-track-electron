@@ -3,7 +3,19 @@ body {
 	padding-right: 15px;
 }
 
-.heading {
+.chartHeading {
 	text-align: center;
+}
+
+.heading {
 	padding: 10px;
+	text-align: center;
+}
+
+.refreshButton {
+	width: 100%;
+}
+
+.refreshButtonContainer {
+	padding-bottom: 15px;
 }
