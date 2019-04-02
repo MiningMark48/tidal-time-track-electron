@@ -111,20 +111,6 @@ function updateEntries() {
   datahandler.saveData(entries, entryIDs);
 }
 
-function loadDataEntries() {
-  storage.get('entries', function(error, data) {
-    if (error) throw error;
-    return data;
-  });
-}
-
-function loadDataEntryIDs() {
-  storage.get('entryIDs', function(error, data) {
-    if (error) throw error;
-    return data;
-  });
-}
-
 ipcRenderer.on('data', (event, arg) => {
   if (arg === "save") {
     console.log("MESSAGE SAVE");
