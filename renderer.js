@@ -9,6 +9,7 @@ const activeWin = require('active-win');
 const storage = require('electron-json-storage');
 
 const datahandler = require('./datahandler')
+const textformatter = require('./textformatter')
 
 const appname = document.querySelector('#appname');
 const table = document.querySelector('#infoTable').querySelector('tbody');
@@ -93,7 +94,7 @@ function removeEntry(testEntryID) {
 function updateTable() {
     table.innerHTML = "";
     entries.forEach(function(entry) {
-       if (entry.appTitle != undefined) table.innerHTML = table.innerHTML.concat('<tr><td>' + (entry.appTitle === "" ? "N/A" : entry.appTitle) + '</td><td>' + (entry.appOwner === "" ? "N/A" : entry.appOwner) + '</td><td>' + entry.appTime.toString().toHHMMSS() + '</td></tr>');     
+       if (entry.appTitle != undefined) table.innerHTML = table.innerHTML.concat('<tr><td>' + (entry.appTitle === "" ? "N/A" : entry.appTitle) + '</td><td>' + (entry.appOwner === "" ? "N/A" : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');     
     });
 }
 
@@ -113,28 +114,11 @@ function updateEntries() {
 
 ipcRenderer.on('data', (event, arg) => {
   if (arg === "save") {
-    console.log("MESSAGE SAVE");
     updateEntries();
   } else if (arg === "load") {
-    console.log("MESSAGE LOAD");
     entries = datahandler.loadDataEntries();
     entryIDs = datahandler.loadDataEntryIDs();
   } else {
     console.log("MESSAGE: " + arg)
   }
 });
-
-String.prototype.toHHMMSS = function () {
-    var sec_num = parseInt(this, 10); // don't forget the second param
-    var hours   = Math.floor(sec_num / 3600);
-    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    var seconds = sec_num - (hours * 3600) - (minutes * 60);
-
-    if (hours   < 10) {hours   = "0"+hours;}
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-    
-//    console.log(this);
-    
-    return hours+':'+minutes+':'+seconds;
-}
