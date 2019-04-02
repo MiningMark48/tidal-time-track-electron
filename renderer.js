@@ -17,6 +17,8 @@ const table = document.querySelector('#infoTable').querySelector('tbody');
 var entries = [];
 var entryIDs = [];
 
+var naStr = "N/A"; 
+
 var hasLoaded = false;
 
 setInterval(function() {
@@ -91,10 +93,15 @@ function removeEntry(testEntryID) {
     }
 }
 
+function isValidEntry(entry) {
+  if (entry.appTitle === naStr && entry.appOwner === naStr && appTime === 0) return false;
+  return true;
+}
+
 function updateTable() {
     table.innerHTML = "";
     entries.forEach(function(entry) {
-       if (entry.appTitle != undefined) table.innerHTML = table.innerHTML.concat('<tr><td>' + (entry.appTitle === "" ? "N/A" : entry.appTitle) + '</td><td>' + (entry.appOwner === "" ? "N/A" : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');     
+       if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr><td>' + (entry.appTitle === "" ? naStr : entry.appTitle) + '</td><td>' + (entry.appOwner === "" ? "N/A" : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');     
     });
 }
 

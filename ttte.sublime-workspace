@@ -1,0 +1,665 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tra",
+				"transform"
+			],
+			[
+				"displa",
+				"display_case"
+			],
+			[
+				"comp",
+				"component_base"
+			],
+			[
+				"fon",
+				"font-style"
+			],
+			[
+				"align",
+				"text-align"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"text",
+				"text-center"
+			],
+			[
+				"h",
+				"https"
+			],
+			[
+				"stim",
+				"stimulator_charge"
+			],
+			[
+				"st",
+				"stimulus"
+			],
+			[
+				"house",
+				"house_one"
+			],
+			[
+				"col",
+				"col-md-4"
+			],
+			[
+				"mart",
+				"margin-right"
+			],
+			[
+				"c",
+				"cover"
+			],
+			[
+				"audi",
+				"audio_stfu"
+			],
+			[
+				"audio",
+				"audio_button"
+			],
+			[
+				"padd",
+				"padding-bottom"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"al",
+				"alt\tAttr"
+			],
+			[
+				"nav",
+				"navbar"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"color",
+				"color-primary-1"
+			],
+			[
+				"font-",
+				"font-style"
+			],
+			[
+				"alig",
+				"text-align"
+			],
+			[
+				"sty",
+				"font-style"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"bar",
+				"barn_one"
+			],
+			[
+				"border-",
+				"border-radius"
+			],
+			[
+				"btn",
+				"btn-primary"
+			],
+			[
+				"colla",
+				"collapse-epdm"
+			],
+			[
+				"pro",
+				"prop"
+			],
+			[
+				"emai",
+				"email_body"
+			],
+			[
+				"main",
+				"main-footer"
+			],
+			[
+				"siz",
+				"font-size"
+			],
+			[
+				"border",
+				"border-width"
+			],
+			[
+				"t",
+				"top"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"light",
+				"lightning-additions"
+			],
+			[
+				"dimensional",
+				"dimensional-ores"
+			],
+			[
+				"pearc",
+				"pearcel-mod"
+			],
+			[
+				"tex",
+				"text-left"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"paddin",
+				"padding-top"
+			],
+			[
+				"sr",
+				"sr-contact"
+			],
+			[
+				"padding",
+				"padding-bottom"
+			],
+			[
+				"fa-",
+				"fa-3x"
+			],
+			[
+				"misc",
+				"miscconfigs"
+			],
+			[
+				"proje",
+				"projects"
+			],
+			[
+				"Min",
+				"MiningMark48"
+			],
+			[
+				"do",
+				"documentElement"
+			],
+			[
+				"scr",
+				"scrollTop"
+			],
+			[
+				"sc",
+				"scrollPoint"
+			],
+			[
+				"scro",
+				"scrollFunction"
+			],
+			[
+				"scoll",
+				"scrollFunction"
+			],
+			[
+				"pad",
+				"padding-left"
+			],
+			[
+				"project",
+				"project-infobox"
+			],
+			[
+				"cre",
+				"credits"
+			],
+			[
+				"paddi",
+				"padding-top"
+			],
+			[
+				"link",
+				"link-dark"
+			],
+			[
+				"head",
+				"header"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"Re",
+				"Return"
+			],
+			[
+				"Back",
+				"BackSpace"
+			],
+			[
+				"Scroll",
+				"VScroll"
+			],
+			[
+				"IfWinA",
+				"IfWinNotActive\t#IfWinNotActive"
+			],
+			[
+				"Mouse",
+				"MouseClick"
+			],
+			[
+				"ifw",
+				"IfWinExist\t#IfWinExist"
+			],
+			[
+				"ah",
+				"ahk_class"
+			],
+			[
+				"deob",
+				"deobfCompile"
+			],
+			[
+				"pearcel",
+				"pearcel_charcoal"
+			],
+			[
+				"pearce",
+				"pearcel_glass"
+			],
+			[
+				"pear",
+				"pearcelmod"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/AutoHotkey/AutoHotkey.sublime-build",
+					""
+				],
+				[
+					"Packages/AutoHotkey/AutoHotkey.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/AutoHotkey/AutoHotkey.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 444.0
+	},
+	"console":
+	{
+		"height": 138.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/F/Programming/Electron/tidal-time-track-electron"
+	],
+	"file_history":
+	[
+		"/F/Programming/Github Pages/miningmark48.github.io/index.html",
+		"/C/Users/Mark/Desktop/testing/drag.js",
+		"/C/Users/Mark/AppData/Local/Temp/02d8665f-9834-4801-8529-16bd2a7b7516.tmp",
+		"/F/Programming/Electron/tidal-time-track-electron/start.bat",
+		"/F/Programming/Electron/tidal-time-track-electron/data/entries",
+		"/C/Users/Mark/AppData/Roaming/tidal-time-track/storage/entries.json",
+		"/C/Users/Mark/AppData/Roaming/tidal-time-track/storage/entryIDs.json",
+		"/C/Users/Mark/AppData/Local/Discord/app-0.0.305/resources/build_info.json",
+		"/F/Programming/Electron/tidal-time-track-electron/package.json",
+		"/F/Games/Jensen's Adventure Game/1.2/logs/log-20190312000442.txt",
+		"/F/Programming/Github Pages/miningmark48.github.io/tidalwave/projects/tidalbot/data/commands.json",
+		"/C/Users/Mark/Desktop/testing/test.csv",
+		"/C/Users/Mark/Desktop/testing/test2.csv",
+		"/C/Users/Mark/Desktop/testing/test3.csv",
+		"/C/Users/Mark/Desktop/testing/test.json",
+		"/C/Users/Mark/Downloads/test - test.csv",
+		"/C/Users/Mark/AppData/Local/Temp/scp22701/home/mark/tidal_bot/config.json",
+		"/F/Programming/Java/Tidal-Bot/build/libs/config.json",
+		"/C/Users/Mark/Desktop/testing/New folder/data_0.txt",
+		"/C/Users/Mark/AppData/Roaming/discord/Cache/index",
+		"/C/Users/Mark/AppData/Roaming/discord/Cache/data_0",
+		"/C/Users/Mark/AppData/Local/Temp/scp24207/home/mark/tidal_bot/commands.json",
+		"/C/Users/Mark/AppData/Local/Temp/scp20120/etc/hosts",
+		"/C/Users/Mark/AppData/Local/Temp/scp47646/home/mark/pearcel_bot/chatlog/server_blacklist.json",
+		"/C/Users/Mark/AppData/Local/Temp/scp47601/home/mark/pearcel_bot/chatlog/log.txt",
+		"/C/Users/Mark/AppData/Local/Temp/scp46756/home/mark/pearcel_bot/config.json",
+		"/C/Users/Mark/AppData/Local/Temp/scp46249/home/mark/pearcel_bot/nohup.out",
+		"/C/Users/Mark/AppData/Local/Temp/scp33095/etc/resolvconf/resolv.conf.d/head",
+		"/C/Users/Mark/AppData/Local/Temp/scp33841/etc/resolvconf/resolv.conf.d/base",
+		"/C/Users/Mark/AppData/Local/Temp/scp33581/etc/resolv.conf",
+		"/C/Users/Mark/AppData/Local/Temp/scp21014/etc/host.conf",
+		"/C/Users/Mark/AppData/Local/Temp/scp43600/home/mark/pearcel_bot/server_configs.json",
+		"/F/Programming/Java/Tidal-Bot/build/libs/server_configs.json",
+		"/F/Programming/Java/Tidal-Bot/build/libs/commands.json",
+		"/F/Programming/AutoHotkey Scripts/AutoCorrect.ahk",
+		"/F/Programming/Java/Tidal-Bot/server_configs.json",
+		"/C/Users/Mark/AppData/Local/Temp/scp46574/home/mark/pearcel_bot/custom_commands.json",
+		"/C/Users/Mark/AppData/Local/Temp/scp46799/home/mark/pearcel_bot/commands.json",
+		"/C/Users/Mark/AppData/Local/Temp/scp46524/home/mark/pearcel_bot/ar_blacklist.json",
+		"/F/Programming/AutoHotkey Scripts/TestGui.ahk",
+		"/F/Documents/Misc/SpaceXBoeingMarsBet.txt",
+		"/F/Programming/Java/tidal-time-track/out/artifacts/main_jar/data/pref.json",
+		"/C/Users/Mark/Downloads/changelog.txt",
+		"/F/Programming/Java/tidal-time-track/src/main/resources/fxml/main.fxml",
+		"/F/Programming/AutoHotkey Scripts/GDTBABK.ahk",
+		"/F/Programming/Java/tidal-time-track/out/artifacts/main_jar/data/tableEntries.ser",
+		"/F/Programming/Java/tidal-time-track/run/data/pref.json",
+		"/F/Programming/Java/tidal-time-track/.gitignore",
+		"/C/Users/Mark/Desktop/testing/test2.json",
+		"/F/Programming/Java/Tidal-Bot/commands.json",
+		"/F/Programming/Java/tidal-time-track/src/main/resources/bootstrap.css",
+		"/F/Programming/Java/Minecraft-JSON-Generator/src/main/resources/fxml/main.fxml",
+		"/C/Users/Mark/Desktop/testing/test.me",
+		"/F/Programming/Java/Minecraft-JSON-Generator/src/main/resources/fxml/blocks.fxml",
+		"/C/Users/Mark/Desktop/temp.json",
+		"/C/Users/Mark/Desktop/temp/test4.json",
+		"/F/Programming/Java/tidal-time-track/tableEntries.ser",
+		"/F/Programming/Java/tidal-time-track/.flooignore",
+		"/F/Blizzard.mp4",
+		"/F/Programming/Java/Minecraft-JSON-Generator/src/main/java/com/miningmark48/jsongen/versioninfo.json",
+		"/F/Programming/Java/Minecraft-JSON-Generator/src/main/java/com/miningmark48/jsongen/util/VersionCheck.java",
+		"/F/Programming/Java/tidal-time-track/README.md",
+		"/F/Programming/Java/tidal-time-track/.gitattributes",
+		"/F/Programming/Java/tidal-time-track/LICENSE",
+		"/F/Utility/darkc0de.txt",
+		"/C/Users/Mark/AppData/Local/Temp/scp17520/home/mark/pearcel_bot/chatlog/log.txt",
+		"/F/Programming/Java/Android App/TidalBotApp/build.gradle",
+		"/F/Programming/Java/Alexa/PearcelBotSkill/src/com/miningmark48/pearcelbotskill/handler/BotSpeechletRequestStreamHandler.java",
+		"/F/Programming/Java/Alexa/PearcelBotSkill/src/com/miningmark48/pearcelbotskill/Responses.java",
+		"/F/Programming/Java/Alexa/PearcelBotSkill/src/com/miningmark48/pearcelbotskill/Util.java",
+		"/F/Programming/Java/Alexa/PearcelBotSkill/src/com/miningmark48/pearcelbotskill/BotSpeechlet.java",
+		"/F/Programming/Java/Alexa/PearcelBotSkill/src/com/miningmark48/pearcelbotskill/Reference.java",
+		"/F/Programming/Java/Android App/TidalBotApp/app/build.gradle",
+		"/F/Programming/Java/Alexa/PearcelBotSkill/build.gradle",
+		"/F/Programming/Java/Tidal-Bot/build.gradle",
+		"/F/Programming/Java/Android App/TidalBotApp/local.properties",
+		"/F/Programming/Java/Android App/TidalBotApp/settings.gradle",
+		"/F/Programming/Java/Android App/TidalBotApp/gradle.properties",
+		"/C/Users/Mark/Desktop/HowTo.txt",
+		"/C/Users/Mark/AppData/Local/Temp/scp52495/home/mark/pearcel_bot/messages/general.json",
+		"/C/Users/Mark/Desktop/Mark's Stuff/Programming/JSON/binary.json",
+		"/C/Users/Mark/Desktop/Mark's Stuff/Other/FF.txt",
+		"/C/Users/Mark/Desktop/sounds.json",
+		"/C/Users/Mark/Desktop/backup/21ce20ed-aa76-4b45-b952-a15a579bd413.dat",
+		"/C/Users/Mark/Desktop/21ce20ed-aa76-4b45-b952-a15a579bd413.dat",
+		"/C/Users/Mark/Desktop/Jokes.txt",
+		"/C/Users/Mark/Desktop/dht.txt",
+		"/C/Users/Mark/Desktop/CoolStuff.txt",
+		"/C/Users/Mark/Desktop/Deposit Receipt.docx",
+		"/C/Users/Mark/Desktop/mcmod.info",
+		"/C/Users/Mark/Desktop/companyNames",
+		"/F/Utility/2ndKeyboard/2nd keyboard if using luamacros.ahk",
+		"/F/IFTTT.txt",
+		"/F/Utility/2ndKeyboard/keypressed.txt",
+		"/C/Users/Mark/AppData/Local/Temp/scp37001/var/log/btmp",
+		"/C/Users/Mark/AppData/Local/Temp/scp32523/var/log/journal/a173c2580e69435fbefbafd84d1e064b/system@f8fa77324a3145e18862f0cd7e307b3b-0000000000d4c82b-0005778e75f72dc2.journal",
+		"/C/Users/Mark/Downloads/CoolStuff.txt",
+		"/C/Users/Mark/AppData/Local/Temp/scp18258/var/www/html/keybase.txt",
+		"/C/Users/Mark/AppData/Local/Temp/scp17185/home/mark/discordrelay/config.json",
+		"/C/Users/Mark/AppData/Local/Temp/scp28756/home/mark/pearcel_bot/chatlog/log.txt",
+		"/C/Users/Mark/AppData/Local/Temp/scp16927/home/mark/pearcel_bot/custom_commands.json",
+		"/C/Users/Mark/AppData/Local/Temp/scp15768/home/mark/pearcel_bot/config.json",
+		"/C/Users/Mark/AppData/Local/Temp/scp14557/home/mark/pearcel_bot/commands.json",
+		"/C/Users/Mark/AppData/Local/Temp/scp13390/home/mark/pearcel_bot/misc/voiceChatMessages.json",
+		"/C/Users/Mark/AppData/Local/Temp/scp12591/home/mark/pearcel_bot/chatlog/log.txt",
+		"/C/Users/Mark/AppData/Local/Temp/scp13565/home/mark/pearcel_bot/chatlog/server_blacklist.json",
+		"/F/Programming/Java/Tidal-Bot/ar_blacklist.json",
+		"/F/Programming/Java/Tidal-Bot/command_blacklist.json",
+		"/F/Programming/Java/Tidal-Bot/config.json",
+		"/F/Programming/Java/Tidal-Bot/custom_commands.json",
+		"/C/Users/Mark/Desktop/emotes/emotes.txt",
+		"/C/Users/Mark/Desktop/emotes/bobross/emotes.txt",
+		"/F/Games/Jensen's Adventure Game/1.1/logs/log-20181224201456.txt",
+		"/C/Users/Mark/Downloads/crash-2018-12-24_18.47.08-server.txt",
+		"/F/Programming/HTML/Mark's Website/index.html",
+		"/F/Programming/HTML/Mark's Website/projects.html",
+		"/F/Programming/HTML/REALLY Old Website/index.html",
+		"/F/Programming/HTML/click me.html",
+		"/F/Programming/HTML/troll button.html",
+		"/F/Programming/AutoHotkey Scripts/repeat_shift.ahk",
+		"/F/Programming/AutoHotkey Scripts/mine.ahk",
+		"/F/Programming/AutoHotkey Scripts/dice_rolls.ahk",
+		"/F/Programming/AutoHotkey Scripts/aliases.ahk",
+		"/F/Programming/VBS/null",
+		"/F/Programming/VBS/dance.vbs",
+		"/F/Programming/VBS/test.vbs",
+		"/F/Programming/VBS/typethis.vbs",
+		"/F/Programming/VBS/text.vbs"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"developer tools",
+			"u",
+			"\\",
+			"owner",
+			"delay",
+			"tidal bot dev",
+			"Potentiality",
+			"\"compressedbase:compressed_base\"",
+			"\n    }",
+			"✓ ",
+			"}",
+			"\">\n",
+			"project",
+			"github",
+			".JPG",
+			"house_one",
+			"two",
+			"b421e461b4fd9a8fc6e24b0b17be466a",
+			"primary",
+			"heavy",
+			"durable",
+			"fortified",
+			"lucky",
+			"sluggish",
+			"annoying",
+			"frenzying",
+			"quick",
+			"trigger(Entity",
+			"trigger(",
+			"ssl_cert",
+			"connect",
+			"disable_plainte",
+			"!include conf.d/*.conf",
+			"mail_loc",
+			"protocol",
+			"socket",
+			"extension",
+			"mininglib",
+			"stimulus:stimulation_charge",
+			"minecraft:redstone"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"the bot",
+			"\"displaycase:display_case\"",
+			"",
+			".jpg",
+			"house_two",
+			"light",
+			"heavy",
+			"durable",
+			"fortified",
+			"lucky",
+			"sluggish",
+			"annoying",
+			"frenzying",
+			"stimulus:stimulation_dust",
+			"stimulus:stimulation_charge"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 96.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "ttte.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
