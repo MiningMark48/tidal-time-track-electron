@@ -78,8 +78,8 @@ function createMenus() {
     }
   ]
 
-  const menu = Menu.buildFromTemplate(template)
-  Menu.setApplicationMenu(menu)
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
 }
 
 function saveData() {
@@ -91,7 +91,27 @@ function loadData() {
 }
 
 function showAboutDialog() {
-  console.log("TODO");
+  let aboutDialogWindow = new BrowserWindow({
+    'parent': mainWindow,
+    'modal': true,
+    'width': 600,
+    'height': 300,
+    'minWidth': 600,
+    'minHeight': 300,
+    webPreferences: {
+      nodeIntegration: true
+    }      
+  })
+
+  aboutDialogWindow.setMenu(null);
+  aboutDialogWindow.setResizable(false);
+
+  aboutDialogWindow.loadFile('about.html');
+
+  aboutDialogWindow.on('closed', function () {
+    aboutDialogWindow = null;
+  })
+
 }
 
 app.on('ready', doReady)
