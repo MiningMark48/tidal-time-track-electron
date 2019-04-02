@@ -23,19 +23,14 @@ setInterval(function() {
   appname.textContent = "Current ID: " + objectInfo["id"];
 
   if (!hasLoaded) {
-    
     storage.get('entries', function(error, data) {
       if (error) throw error;
-      entries = JSON.parse(data);
+      var parsedData = JSON.parse(data);
+      for (i = 0; i < parsedData.length; i++) {
+        var key = parsedData[i];
+        addEntry(key["appID"], key["appTitle"], key["appOwner"], key["appTime"]);
+      }
     });
-    
-    storage.get('entryIDs', function(error, data) {
-      if (error) throw error;
-      entryIDs = JSON.parse(data);
-    });
-    
-//    entries = JSON.parse(loadDataEntries());
-//    entryIDs = JSON.parse(loadDataEntryIDs());
     hasLoaded = true;
   }
   
@@ -46,11 +41,11 @@ setInterval(function() {
   
   var testEntry = getNewEntry(objectInfo["id"], objectInfo["title"], objectInfo["owner"]["name"], 0);
   if (!entryIDs.includes(testEntry.appID)) {
-      addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, 0);
+    addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, 0);
   } else {
-      var prevTime = entries[entryIDs.indexOf(testEntry.appID)].appTime;
-      removeEntry(testEntry.appID);
-      addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, (prevTime + 1));
+    var prevTime = entries[entryIDs.indexOf(testEntry.appID)].appTime;
+    removeEntry(testEntry.appID);
+    addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, (prevTime + 1));
   }
 
   updateTable();
