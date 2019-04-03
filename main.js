@@ -1,4 +1,5 @@
-const {app, dialog, BrowserWindow, ipcMain, Menu, remote} = require('electron');
+const {app, dialog, BrowserWindow, ipcMain, Menu, remote, Tray} = require('electron');
+const path = require('path');
 const windowStateKeeper = require('electron-window-state');
 const debug = require('electron-debug');
 
@@ -7,7 +8,7 @@ const datahandler = require('./datahandler');
 debug();
 
 let mainWindow;
-
+let appIcon = null;
 
 function doReady() {
   createWindow();
@@ -30,6 +31,7 @@ function createWindow () {
       'height': mainWindowState.height,
       'minWidth': 1350,
       'minHeight': 700,
+      'icon': './icon.png',
       webPreferences: {
         nodeIntegration: true
       }      
@@ -43,7 +45,13 @@ function createWindow () {
 
   mainWindow.on('closed', function () {
     mainWindow = null;
-  })
+  });
+
+  mainWindow.on('minimize', function(event) {
+    event.preventDefault();
+    showTrayApp(mainWindow);
+    mainWindow.hide();
+  });
     
 }
 
@@ -82,6 +90,23 @@ function createMenus() {
   Menu.setApplicationMenu(menu);
 }
 
+function showTrayApp(mainWin) {
+  const iconName = 'icon.png';
+  const iconPath = path.join(__dirname, iconName);
+  appIcon = new Tray(iconPath);
+
+  const contextMenu = Menu.buildFromTemplate([{
+    label: 'Open',
+    click: () => {
+      mainWin.show();
+      appIcon.destroy();
+    }
+  }]);
+
+  appIcon.setToolTip('Tidal Time Tracker');
+  appIcon.setContextMenu(contextMenu);
+}
+
 function saveData() {
   mainWindow.webContents.send('data', 'save');
 }
@@ -114,15 +139,14 @@ function showAboutDialog() {
 
 }
 
-app.on('ready', doReady)
-
+app.on('ready', doReady);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
-})
+});
 
 app.on('activate', function () {
   if (mainWindow === null) createWindow()
-})
+});
 
