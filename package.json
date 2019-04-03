@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "package": "",
-    "buildwin": "electron-packager . TidalTimeTracker --overwrite --platform=win32 --arch=ia32 --prune=true --out=release-builds/win",
+    "buildwin": "electron-packager . TidalTimeTracker --overwrite --prune=true --out=release-builds/win",
     "buildmac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds/mac"
   },
   "repository": "",
