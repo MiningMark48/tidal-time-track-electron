@@ -15,17 +15,22 @@ const textformatter = require('./textformatter');
 const appname = document.querySelector('#appname');
 const table = document.querySelector('#infoTable').querySelector('tbody');
 const pieChart  = document.querySelector("#pieChart");
+const pauseButton = document.querySelector("#pauseButton");
 
 var naStr = "N/A";
 
+var isPaused = false;
 var entries = [];
 var entryIDs = []; 
 var hasLoaded = false;
 var pieChartAct;
 
 setInterval(function() {
+
+  if (isPaused) return;
+
   var objectInfo = activeWin.sync();
-  appname.textContent = "Current ID: " + objectInfo["id"];
+  appname.textContent = "Current Window: " + objectInfo["title"];
 
   if (!hasLoaded) {
     storage.get('entries', function(error, data) {
@@ -180,4 +185,15 @@ ipcRenderer.on('data', (event, arg) => {
 
 document.querySelector("#refreshButton").addEventListener('click', (event) => {
   renderPieChart();
+});
+
+pauseButton.addEventListener('click', (event) => {
+  isPaused = !isPaused;
+  if (isPaused) {
+    pauseButton.textContent = "Resume";
+    pauseButton.classList.add("controlButtons-paused");
+  } else {
+    pauseButton.textContent = "Pause";
+    pauseButton.classList.remove("controlButtons-paused");
+  }
 });
