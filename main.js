@@ -95,13 +95,25 @@ function showTrayApp(mainWin) {
   const iconPath = path.join(__dirname, iconName);
   appIcon = new Tray(iconPath);
 
-  const contextMenu = Menu.buildFromTemplate([{
-    label: 'Open',
-    click: () => {
-      mainWin.show();
-      appIcon.destroy();
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'Open',
+      click: () => {
+        mainWin.show();
+        appIcon.destroy();
+      }
+    },
+    {
+      type: 'separator'
+    },
+    { 
+      label: 'Quit',
+      click: () => {
+        appIcon.destroy();
+        mainWindow.close();
+      }
     }
-  }]);
+  ]);
 
   appIcon.setToolTip('Tidal Time Tracker');
   appIcon.setContextMenu(contextMenu);
