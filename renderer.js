@@ -77,6 +77,8 @@ setInterval(function() {
 	}
 	*/
 
+  // renderPieChart();
+
 }, 1000);
 
 function addEntry(id, title, owner, time) {
@@ -156,6 +158,9 @@ function renderPieChart() {
       title: {
         display: false,
         text: 'Time Spent'
+      },
+      animation: {
+        duration: 0
       }
     }
   });

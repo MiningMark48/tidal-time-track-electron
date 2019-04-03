@@ -19,8 +19,8 @@ function doReady() {
 function createWindow () {
     
   let mainWindowState = windowStateKeeper({
-      defaultWidth: 1200,
-      defaultHeight: 600,
+      defaultWidth: 1350,
+      defaultHeight: 700,
   });
 
   mainWindow = new BrowserWindow({
@@ -28,8 +28,8 @@ function createWindow () {
       'y': mainWindowState.y,
       'width': mainWindowState.width,
       'height': mainWindowState.height,
-      'minWidth': 1200,
-      'minHeight': 600,
+      'minWidth': 1350,
+      'minHeight': 700,
       webPreferences: {
         nodeIntegration: true
       }      
