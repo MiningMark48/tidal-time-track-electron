@@ -4,6 +4,7 @@ const windowStateKeeper = require('electron-window-state');
 const debug = require('electron-debug');
 
 const datahandler = require('./datahandler');
+const preferences = require('./preferences');
 
 debug();
 
@@ -76,6 +77,16 @@ function createMenus() {
       ]
     },
     {
+      label: 'Edit',
+      submenu: [
+          { 
+            label: "Preferences",
+            accelerator: "CmdOrCtrl+Shift+P",
+            click: () => showPreferencesDialog()
+          }    
+      ]
+    },
+    {
       label: 'Help',
       submenu: [
         { 
@@ -127,6 +138,10 @@ function loadData() {
   mainWindow.webContents.send('data', 'load');
 }
 
+function showPreferencesDialog() {
+  preferences.show();
+}
+
 function showAboutDialog() {
   let aboutDialogWindow = new BrowserWindow({
     'parent': mainWindow,
@@ -162,3 +177,6 @@ app.on('activate', function () {
   if (mainWindow === null) createWindow()
 });
 
+preferences.on('save', (preferences) => {
+  console.log("Preferences were saved.", JSON.stringify(preferences, null, 4));
+});

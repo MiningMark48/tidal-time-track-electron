@@ -5,7 +5,7 @@
 		[
 			[
 				"app",
-				"getTrayApp"
+				"appIcon"
 			],
 			[
 				"con",
@@ -397,10 +397,10 @@
 			}
 		},
 		{
-			"file": "about.html",
+			"file": "datahandler.js",
 			"settings":
 			{
-				"buffer_size": 1010,
+				"buffer_size": 722,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -409,16 +409,19 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 3100,
+				"buffer_size": 3417,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
+			"contents": "// This file is required by the index.html file and will\n// be executed in the renderer process for that window.\n// All of the Node.js APIs are available in this process.\n\nconst {ipcRenderer} = require('electron');\nconst jquery = require('jquery');\nconst activeWin = require('active-win');\nconst storage = require('electron-json-storage');\nconst chart = require('electron-chartjs');\n\nconst colorgenerator = require('./colorgenerator');\nconst datahandler = require('./datahandler');\nconst textformatter = require('./textformatter');\n\nconst appname = document.querySelector('#appname');\nconst table = document.querySelector('#infoTable').querySelector('tbody');\nconst pieChart  = document.querySelector(\"#pieChart\");\nconst pauseButton = document.querySelector(\"#pauseButton\");\n\nvar naStr = \"N/A\";\n\nvar isPaused = false;\nvar entries = [];\nvar entryIDs = []; \nvar hasLoaded = false;\nvar pieChartAct;\n\nsetInterval(function() {\n\n  if (isPaused) return;\n\n  var objectInfo = activeWin.sync();\n  appname.textContent = \"Current Window: \" + objectInfo[\"title\"];\n\n  if (!hasLoaded) {\n    storage.get('entries', function(error, data) {\n      if (error) throw error;\n      var parsedData = JSON.parse(data);\n      for (i = 0; i < parsedData.length; i++) {\n        var key = parsedData[i];\n        addEntry(key[\"appID\"], key[\"appTitle\"], key[\"appOwner\"], key[\"appTime\"]);\n      }\n    });\n    hasLoaded = true;\n  }\n  \n  if (entries === undefined || entryIDs === undefined) {\n    entries = {};\n    entryIDs = {};\n  } \n  \n  var testEntry = getNewEntry(objectInfo[\"id\"], objectInfo[\"title\"], objectInfo[\"owner\"][\"name\"], 0);\n  if (!entryIDs.includes(testEntry.appID)) {\n    addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, 1);\n  } else {\n    var prevTime = entries[entryIDs.indexOf(testEntry.appID)].appTime;\n    removeEntry(testEntry.appID);\n    addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, (prevTime + 1));\n  }\n\n  updateTable();\n  updateEntries();\n//  console.log(entries);\n    \n    /*\n\t{\n\t\ttitle: 'Unicorns - Google Search',\n\t\tid: 5762,\n\t\tbounds: {\n\t\t\tx: 0,\n\t\t\ty: 0,\n\t\t\theight: 900,\n\t\t\twidth: 1440\n\t\t},\n\t\towner: {\n\t\t\tname: 'Google Chrome',\n\t\t\tprocessId: 310,\n\t\t\tbundleId: 'com.google.Chrome',\n\t\t\tpath: '/Applications/Google Chrome.app'\n\t\t},\n\t\tmemoryUsage: 11015432\n\t}\n\t*/\n\n  // renderPieChart();\n\n}, 1000);\n\nfunction addEntry(id, title, owner, time) {\n  entries.push(getNewEntry(id, title, owner, time));\n  entryIDs.push(id);\n  updateEntries();\n}\n\nfunction removeEntry(testEntryID) {\n    for ( var i = 0; i < entryIDs.length; i++){ \n        if ( entryIDs[i] === testEntryID) {\n            entries.splice(i, 1); \n            entryIDs.splice(i, 1); \n            updateEntries();\n        }\n    }\n}\n\nfunction isValidEntry(entry) {\n  if (entry.appTitle === naStr && entry.appOwner === naStr && appTime === 0) return false;\n  return true;\n}\n\nfunction updateTable() {\n    table.innerHTML = \"\";\n    entries.forEach(function(entry) {\n       if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr><td>' + (entry.appTitle === \"\" ? naStr : entry.appTitle) + '</td><td>' + (entry.appOwner === \"\" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');     \n    });\n}\n\nfunction getNewEntry(id, title, owner, time) {\n    var entry = {\n        appID: id,\n        appTitle: title,\n        appOwner: owner,\n        appTime: time\n    }\n    return entry;\n}\n\nfunction updateEntries() {\n  datahandler.saveData(entries, entryIDs);\n}\n\nfunction renderPieChart() {\n  var ctx = pieChart.getContext('2d');\n\n  var data = [];\n  var labels = [];\n  var colors = [];\n\n  for (i = 0; i < entries.length; i++) {\n    var time = entries[i][\"appTime\"];\n    data.push(entries[i][\"appTime\"]);\n    labels.push(entries[i][\"appTitle\"].substring(0, 15) + \" - \" + textformatter.toHHMMSS(entries[i][\"appTime\"]));\n    colors.push(colorgenerator.getRandomColor());\n  }\n\n  if (pieChartAct != undefined) {\n    pieChartAct.destroy();\n  }\n\n  pieChartAct = new Chart(ctx, {\n    type: 'pie',\n    data: {\n      labels: labels,\n      datasets: [{\n        label: \"Time Spent\",\n        backgroundColor: colors,\n        data: data\n      }]\n    },\n    options: {\n      legend: {\n        display: false\n      },\n      title: {\n        display: false,\n        text: 'Time Spent'\n      },\n      animation: {\n        duration: 0\n      }\n    }\n  });\n\n}\n\nipcRenderer.on('data', (event, arg) => {\n\n  if (arg === \"save\") {\n    updateEntries();\n  } else if (arg === \"load\") {\n    entries = datahandler.loadDataEntries();\n    entryIDs = datahandler.loadDataEntryIDs();\n  } else if (arg === \"export\") { \n    datahandler.exportData(entries);\n  } else {\n    console.log(\"MESSAGE: \" + arg)\n  }\n});\n\ndocument.querySelector(\"#refreshButton\").addEventListener('click', (event) => {\n  renderPieChart();\n});\n\npauseButton.addEventListener('click', (event) => {\n  isPaused = !isPaused;\n  if (isPaused) {\n    pauseButton.textContent = \"Resume\";\n    pauseButton.classList.add(\"controlButtons-paused\");\n  } else {\n    pauseButton.textContent = \"Pause\";\n    pauseButton.classList.remove(\"controlButtons-paused\");\n  }\n});",
 			"file": "renderer.js",
+			"file_size": 5349,
+			"file_write_time": 131987409522123464,
 			"settings":
 			{
-				"buffer_size": 5083,
+				"buffer_size": 5155,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -501,6 +504,7 @@
 	],
 	"file_history":
 	[
+		"/F/Programming/Electron/tidal-time-track-electron/about.html",
 		"/F/Programming/Electron/tidal-time-track-electron/package.json",
 		"/F/Programming/Electron/tidal-time-track-electron/build.bat",
 		"/F/Programming/Electron/tidal-time-track-electron/.gitignore",
@@ -627,12 +631,11 @@
 		"/F/Programming/HTML/Mark's Website/index.html",
 		"/F/Programming/HTML/Mark's Website/projects.html",
 		"/F/Programming/HTML/REALLY Old Website/index.html",
-		"/F/Programming/HTML/click me.html",
-		"/F/Programming/HTML/troll button.html"
+		"/F/Programming/HTML/click me.html"
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -727,7 +730,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -743,8 +746,8 @@
 						"selection":
 						[
 							[
-								1982,
-								1982
+								907,
+								907
 							]
 						],
 						"settings":
@@ -763,24 +766,24 @@
 				},
 				{
 					"buffer": 1,
-					"file": "about.html",
+					"file": "datahandler.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1010,
+						"buffer_size": 722,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								652,
-								652
+								691,
+								691
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -788,13 +791,13 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -803,15 +806,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3100,
+						"buffer_size": 3417,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								889,
-								889
+								2698,
+								2698
 							]
 						],
 						"settings":
@@ -822,10 +825,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1260.0,
+						"translation.y": 1428.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -834,15 +837,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5083,
+						"buffer_size": 5155,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								855,
-								855
+								4739,
+								4739
 							]
 						],
 						"settings":
@@ -852,7 +855,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 140.0,
+						"translation.y": 2324.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -883,7 +886,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -912,7 +915,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]

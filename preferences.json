@@ -1,0 +1,18 @@
+{
+    "charts": {
+        "chart_refresh": false
+    },
+    "drawer": {
+        "show": true
+    },
+    "markdown": {
+        "auto_format_links": true,
+        "show_gutter": false
+    },
+    "preview": {
+        "show": true
+    },
+    "styles": {
+        "theme": "dark"
+    }
+}

@@ -1,0 +1,27 @@
+body {
+	background: #ffffff;
+	color: #3F4144;
+}
+
+.controlButtons {
+	background-color: #CACACA;
+	color: #3F4144;
+}
+
+.controlButtons-paused {
+	background-color: #D47171;
+	color: white;
+}
+
+.table {
+	color: #3F4144;
+}
+
+.table thead {
+	background: #B1B1B1;
+	color: #3F4144;
+}
+
+.table tbody {
+	background: #CACACA;
+}

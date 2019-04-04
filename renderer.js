@@ -2,7 +2,7 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 
-const {ipcRenderer} = require('electron');
+const {ipcRenderer, remote} = require('electron');
 const jquery = require('jquery');
 const activeWin = require('active-win');
 const storage = require('electron-json-storage');
@@ -19,10 +19,13 @@ const pauseButton = document.querySelector("#pauseButton");
 
 var naStr = "N/A";
 
+var preferences = ipcRenderer.sendSync('getPreferences');
 var isPaused = false;
+var hasLoaded = false;
+var chartRefresh = false;
 var entries = [];
 var entryIDs = []; 
-var hasLoaded = false;
+
 var pieChartAct;
 
 setInterval(function() {
@@ -33,6 +36,8 @@ setInterval(function() {
   appname.textContent = "Current Window: " + objectInfo["title"];
 
   if (!hasLoaded) {
+    updatePrefs();
+
     storage.get('entries', function(error, data) {
       if (error) throw error;
       var parsedData = JSON.parse(data);
@@ -82,7 +87,7 @@ setInterval(function() {
 	}
 	*/
 
-  // renderPieChart();
+  if (chartRefresh) refreshCharts(); 
 
 }, 1000);
 
@@ -126,6 +131,10 @@ function getNewEntry(id, title, owner, time) {
 
 function updateEntries() {
   datahandler.saveData(entries, entryIDs);
+}
+
+function refreshCharts() {
+  renderPieChart();
 }
 
 function renderPieChart() {
@@ -172,6 +181,42 @@ function renderPieChart() {
 
 }
 
+function getPrefs() {
+  preferences = ipcRenderer.sendSync('getPreferences');
+}
+
+function updatePrefs() {
+  chartRefresh = preferences['charts']['chart_refresh'];
+  changeCSS();
+
+  console.log('Preferences were updated.')
+}
+
+function changeCSS() {
+  var cssFile;
+  var cssLinkIndex = 2;
+
+  switch (preferences["styles"]["theme"]) {
+    default:
+    case 'dark':
+      cssFile = "dark.css";
+      break;
+    case 'light':
+      cssFile = "light.css";
+      break;
+  }
+
+  var oldLink = document.getElementsByTagName("link").item(cssLinkIndex);
+
+  var newLink = document.createElement("link");
+  newLink.setAttribute("rel", "stylesheet");
+  newLink.setAttribute("type", "text/css");
+  newLink.setAttribute("href", "css/" + cssFile);
+
+  if(newLink != oldLink) document.getElementsByTagName("head").item(0).replaceChild(newLink, oldLink);
+}
+
+// IPC Messages
 ipcRenderer.on('data', (event, arg) => {
   if (arg === "save") {
     updateEntries();
@@ -183,8 +228,15 @@ ipcRenderer.on('data', (event, arg) => {
   }
 });
 
+ipcRenderer.on('preferencesUpdated', (e, preferences) => {
+    getPrefs();
+    console.log('Preferences were reloaded.');
+    updatePrefs();
+});
+
+// Buttons
 document.querySelector("#refreshButton").addEventListener('click', (event) => {
-  renderPieChart();
+  refreshCharts();
 });
 
 pauseButton.addEventListener('click', (event) => {
