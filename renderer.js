@@ -137,6 +137,13 @@ function getNewEntry(id, title, owner, time) {
     return entry;
 }
 
+function deleteAllEntries() {
+  entries = [];
+  entryIDs = [];
+  updateEntries();
+  updateTable();
+}
+
 function updateEntries() {
   datahandler.saveData(entries, entryIDs);
 }
@@ -262,4 +269,27 @@ pauseButton.addEventListener('click', (event) => {
     pauseButton.classList.remove("controlButtons-paused");
     timerClock.classList.remove("timer-paused");
   }
+});
+
+document.querySelector("#deleteEntriesButton").addEventListener('click', (event) => {
+  console.log("Deleting all (" + entries.length + ") entries...");
+  ipcRenderer.send('delete-entries-dialog');
+});
+
+ipcRenderer.on('delete-entries-dialog-response', (event, index) => {
+  let confirm;
+  if (index === 0){
+   confirm = true;
+  } else {
+    confirm = false;
+  }
+
+  if (confirm) { 
+    deleteAllEntries();
+    console.log("All entries deleted."); 
+  } else {
+    console.log("Canceled entry deletion.");
+  }
+  
+
 });

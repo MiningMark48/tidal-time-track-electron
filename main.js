@@ -192,3 +192,15 @@ app.on('activate', function () {
 preferences.on('save', (preferences) => {
   console.log("Preferences were saved.", JSON.stringify(preferences, null, 4));
 });
+
+ipcMain.on('delete-entries-dialog', (event) => {
+  const options = {
+    type: 'info',
+    title: 'Are you sure?',
+    message: 'Are you sure you would like to delete all entries? \nThis action cannot be undone.',
+    buttons: [ 'Yes', 'No' ]
+  }
+  dialog.showMessageBox(options, (index) => {
+    event.sender.send('delete-entries-dialog-response', index);
+  })
+});
