@@ -8,8 +8,8 @@ const preferences = require('./preferences');
 
 debug();
 
-let mainWindow;
-let appIcon = null;
+var mainWindow;
+var appIcon = null;
 
 function doReady() {
   createWindow();
@@ -37,7 +37,7 @@ function createWindow () {
       webPreferences: {
         nodeIntegration: true
       }      
-  })
+  });
   
   mainWindowState.manage(mainWindow);
   

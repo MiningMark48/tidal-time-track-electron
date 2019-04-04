@@ -43,9 +43,9 @@ setInterval(function() {
 
     storage.get('entries', function(error, data) {
       if (error) throw error;
-      var parsedData = JSON.parse(data);
+      let parsedData = JSON.parse(data);
       for (i = 0; i < parsedData.length; i++) {
-        var key = parsedData[i];
+        let key = parsedData[i];
         addEntry(key["appID"], key["appTitle"], key["appOwner"], key["appTime"]);
       }
     });
@@ -54,7 +54,7 @@ setInterval(function() {
 
   if (preferences["general"]["show_timer"]) timerClock.textContent = textformatter.toHHMMSS(overallTime); 
   
-  var objectInfo = activeWin.sync();
+  let objectInfo = activeWin.sync();
   appname.textContent = "Current Window: " + objectInfo["title"];
   
   if (entries === undefined || entryIDs === undefined) {
@@ -62,11 +62,11 @@ setInterval(function() {
     entryIDs = {};
   } 
   
-  var testEntry = getNewEntry(objectInfo["id"], objectInfo["title"], objectInfo["owner"]["name"], 0);
+  let testEntry = getNewEntry(objectInfo["id"], objectInfo["title"], objectInfo["owner"]["name"], 0);
   if (!entryIDs.includes(testEntry.appID)) {
     addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, 1);
   } else {
-    var prevTime = entries[entryIDs.indexOf(testEntry.appID)].appTime;
+    let prevTime = entries[entryIDs.indexOf(testEntry.appID)].appTime;
     removeEntry(testEntry.appID);
     addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, (prevTime + 1));
   }
@@ -106,7 +106,7 @@ function addEntry(id, title, owner, time) {
 }
 
 function removeEntry(testEntryID) {
-    for ( var i = 0; i < entryIDs.length; i++){ 
+    for ( let i = 0; i < entryIDs.length; i++){ 
         if ( entryIDs[i] === testEntryID) {
             entries.splice(i, 1); 
             entryIDs.splice(i, 1); 
@@ -128,7 +128,7 @@ function updateTable() {
 }
 
 function getNewEntry(id, title, owner, time) {
-    var entry = {
+    let entry = {
         appID: id,
         appTitle: title,
         appOwner: owner,
@@ -153,14 +153,14 @@ function refreshCharts() {
 }
 
 function renderPieChart() {
-  var ctx = pieChart.getContext('2d');
+  let ctx = pieChart.getContext('2d');
 
-  var data = [];
-  var labels = [];
-  var colors = [];
+  let data = [];
+  let labels = [];
+  let colors = [];
 
   for (i = 0; i < entries.length; i++) {
-    var time = entries[i]["appTime"];
+    let time = entries[i]["appTime"];
     data.push(entries[i]["appTime"]);
     labels.push(entries[i]["appTitle"].substring(0, 15) + " - " + textformatter.toHHMMSS(entries[i]["appTime"]));
     colors.push(colorgenerator.getRandomColor());
@@ -209,9 +209,9 @@ function updatePrefs() {
 }
 
 function changeCSS() {
-  var cssFile;
-  var cssLinkIndex = 2;
-  var theme = preferences["styles"]["theme"];
+  let cssFile;
+  let cssLinkIndex = 2;
+  let theme = preferences["styles"]["theme"];
 
   switch (theme) {
     default:
@@ -223,11 +223,11 @@ function changeCSS() {
       break;
   }
 
-  var oldLink = document.getElementsByTagName("link").item(cssLinkIndex);
+  let oldLink = document.getElementsByTagName("link").item(cssLinkIndex);
 
   if (oldLink.getAttribute('href') === ("css/" + cssFile)) return;
 
-  var newLink = document.createElement("link");
+  let newLink = document.createElement("link");
   newLink.setAttribute("rel", "stylesheet");
   newLink.setAttribute("type", "text/css");
   newLink.setAttribute("href", "css/" + cssFile);
