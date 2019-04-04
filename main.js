@@ -1,4 +1,4 @@
-const {app, dialog, BrowserWindow, ipcMain, Menu, remote, Tray} = require('electron');
+const {app, dialog, BrowserWindow, globalShortcut, ipcMain, Menu, remote, Tray} = require('electron');
 const path = require('path');
 const windowStateKeeper = require('electron-window-state');
 const debug = require('electron-debug');
@@ -14,6 +14,7 @@ let appIcon = null;
 function doReady() {
   createWindow();
   createMenus();
+  registerGlobalKeys();
 //  loadData();
 
 }
@@ -128,6 +129,17 @@ function showTrayApp(mainWin) {
 
   appIcon.setToolTip('Tidal Time Tracker');
   appIcon.setContextMenu(contextMenu);
+}
+
+function registerGlobalKeys() {
+  globalShortcut.register('CommandOrControl+Alt+J', () => {
+    dialog.showMessageBox({
+      type: 'info',
+      message: 'Cody',
+      detail: 'JENSEN!',
+      buttons: [ 'OK' ]
+    })
+  });
 }
 
 function saveData() {

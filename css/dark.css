@@ -29,3 +29,18 @@ body {
 .timer-paused {
 	color: #BB6464;
 }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #3F4144; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #484b52; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #484b52; 
+}
