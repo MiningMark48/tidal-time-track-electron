@@ -170,8 +170,10 @@ function renderPieChart() {
     pieChartAct.destroy();
   }
 
+  let chartType = preferences["charts"]["chart_type_pie"];
+  let chartAnimationDuration = preferences["charts"]["chart_animationLength"];
   pieChartAct = new Chart(ctx, {
-    type: 'pie',
+    type: chartType,
     data: {
       labels: labels,
       datasets: [{
@@ -189,7 +191,7 @@ function renderPieChart() {
         text: 'Time Spent'
       },
       animation: {
-        duration: 0
+        duration: chartAnimationDuration
       }
     }
   });
@@ -201,10 +203,11 @@ function getPrefs() {
 }
 
 function updatePrefs() {
+  changeCSS();
+  refreshCharts();
   if (!preferences['general']['show_timer']) timerClock.textContent = "";
   chartRefresh = preferences['charts']['chart_refresh'];
-  changeCSS();  
-
+  
   console.log('Preferences were updated.')
 }
 

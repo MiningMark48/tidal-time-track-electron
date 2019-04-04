@@ -11,7 +11,8 @@ const preferences = new ElectronPreferences({
       'show_timer': true
     },
     'charts': {
-      'chart_refresh': false
+      'chart_refresh': false,
+      'chart_type_pie': 'pie'
     },
     'styles': {
       'theme': 'dark'
@@ -83,6 +84,24 @@ const preferences = new ElectronPreferences({
                   { 'label': 'No', 'value': false }
                 ],
                 'help': 'Should charts refresh on every entry update?'
+              },
+              {
+                'label': 'Animation Duration',
+                'key': 'chart_animationLength',
+                'type': 'slider',
+                'min': 0,
+                'max': 1500,
+                'help': 'Chart animation duration in milliseconds (0 for no animation)'
+              },
+              {
+                'label': 'Pie Chart Type',
+                'key': 'chart_type_pie',
+                'type': 'radio',
+                'options': [
+                  { 'label': 'Full', 'value': 'pie' },
+                  { 'label': 'Hollow', 'value': 'doughnut' }
+                ],
+                'help': 'Pie chart display type'
               }
             ]
           }
