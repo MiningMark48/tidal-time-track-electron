@@ -13,16 +13,20 @@ const datahandler = require('./datahandler');
 const textformatter = require('./textformatter');
 
 const appname = document.querySelector('#appname');
-const table = document.querySelector('#infoTable').querySelector('tbody');
-const pieChart  = document.querySelector("#pieChart");
 const pauseButton = document.querySelector("#pauseButton");
+const pieChart  = document.querySelector("#pieChart");
+const table = document.querySelector('#infoTable').querySelector('tbody');
+const timerClock = document.querySelector("#timerClock");
 
+var interval = 1; //seconds
 var naStr = "N/A";
 
 var preferences = ipcRenderer.sendSync('getPreferences');
-var isPaused = false;
-var hasLoaded = false;
 var chartRefresh = false;
+var hasLoaded = false;
+var isPaused = false;
+var overallTime = 0;
+
 var entries = [];
 var entryIDs = []; 
 
@@ -30,10 +34,9 @@ var pieChartAct;
 
 setInterval(function() {
 
-  if (isPaused) return;
+  if (isPaused) return; 
 
-  var objectInfo = activeWin.sync();
-  appname.textContent = "Current Window: " + objectInfo["title"];
+  overallTime++;
 
   if (!hasLoaded) {
     updatePrefs();
@@ -48,6 +51,11 @@ setInterval(function() {
     });
     hasLoaded = true;
   }
+
+  if (preferences["general"]["show_timer"]) timerClock.textContent = textformatter.toHHMMSS(overallTime); 
+  
+  var objectInfo = activeWin.sync();
+  appname.textContent = "Current Window: " + objectInfo["title"];
   
   if (entries === undefined || entryIDs === undefined) {
     entries = {};
@@ -89,7 +97,7 @@ setInterval(function() {
 
   if (chartRefresh) refreshCharts(); 
 
-}, 1000);
+}, interval * 1000);
 
 function addEntry(id, title, owner, time) {
   entries.push(getNewEntry(id, title, owner, time));
@@ -186,8 +194,9 @@ function getPrefs() {
 }
 
 function updatePrefs() {
+  if (!preferences['general']['show_timer']) timerClock.textContent = "";
   chartRefresh = preferences['charts']['chart_refresh'];
-  changeCSS();
+  changeCSS();  
 
   console.log('Preferences were updated.')
 }
@@ -195,8 +204,9 @@ function updatePrefs() {
 function changeCSS() {
   var cssFile;
   var cssLinkIndex = 2;
+  var theme = preferences["styles"]["theme"];
 
-  switch (preferences["styles"]["theme"]) {
+  switch (theme) {
     default:
     case 'dark':
       cssFile = "dark.css";
@@ -208,12 +218,14 @@ function changeCSS() {
 
   var oldLink = document.getElementsByTagName("link").item(cssLinkIndex);
 
+  if (oldLink.getAttribute('href') === ("css/" + cssFile)) return;
+
   var newLink = document.createElement("link");
   newLink.setAttribute("rel", "stylesheet");
   newLink.setAttribute("type", "text/css");
   newLink.setAttribute("href", "css/" + cssFile);
 
-  if(newLink != oldLink) document.getElementsByTagName("head").item(0).replaceChild(newLink, oldLink);
+  document.getElementsByTagName("head").item(0).replaceChild(newLink, oldLink);
 }
 
 // IPC Messages
@@ -244,8 +256,10 @@ pauseButton.addEventListener('click', (event) => {
   if (isPaused) {
     pauseButton.textContent = "Resume";
     pauseButton.classList.add("controlButtons-paused");
+    timerClock.classList.add("timer-paused");
   } else {
     pauseButton.textContent = "Pause";
     pauseButton.classList.remove("controlButtons-paused");
+    timerClock.classList.remove("timer-paused");
   }
 });

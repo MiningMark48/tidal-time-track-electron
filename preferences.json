@@ -1,9 +1,12 @@
 {
     "charts": {
-        "chart_refresh": false
+        "chart_refresh": true
     },
     "drawer": {
         "show": true
+    },
+    "general": {
+        "show_timer": true
     },
     "markdown": {
         "auto_format_links": true,

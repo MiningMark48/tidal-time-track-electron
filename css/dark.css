@@ -25,3 +25,7 @@ body {
 .table tbody {
 	background: #484b52;
 }
+
+.timer-paused {
+	color: #BB6464;
+}

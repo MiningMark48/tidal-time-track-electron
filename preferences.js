@@ -7,6 +7,9 @@ const ElectronPreferences = require('electron-preferences');
 const preferences = new ElectronPreferences({
   'dataStore': path.resolve(__dirname, 'preferences.json'),
   'defaults': {
+    'general': {
+      'show_timer': true
+    },
     'charts': {
       'chart_refresh': false
     },
@@ -38,6 +41,30 @@ const preferences = new ElectronPreferences({
     'devTools': true
   },
   'sections': [
+    {
+      'id': 'general',
+      'label': 'General',
+      'icon': 'settings-gear-63',
+      'form': {
+        'groups': [
+          {
+            'label': 'General',
+            'fields': [
+              {
+                'label': 'Timer',
+                'key': 'show_timer',
+                'type': 'radio',
+                'options': [
+                  { 'label': 'Yes', 'value': true },
+                  { 'label': 'No', 'value': false }
+                ],
+                'help': 'When enabled, a current session time is displayed'
+              }
+            ]
+          }
+        ]
+      }
+    },
     {
       'id': 'charts',
       'label': 'Charts',
