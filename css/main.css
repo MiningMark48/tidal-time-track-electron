@@ -7,6 +7,11 @@ body {
 	text-align: center;
 }
 
+.charts {
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
 .entries {
 	overflow-y: scroll;
 	height: 85vh;

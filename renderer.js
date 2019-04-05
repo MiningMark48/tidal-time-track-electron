@@ -8,13 +8,15 @@ const activeWin = require('active-win');
 const storage = require('electron-json-storage');
 const chart = require('electron-chartjs');
 
+const chartdefaults = require('./chartdefaults');
 const colorgenerator = require('./colorgenerator');
 const datahandler = require('./datahandler');
 const textformatter = require('./textformatter');
 
 const appname = document.querySelector('#appname');
 const pauseButton = document.querySelector("#pauseButton");
-const pieChart  = document.querySelector("#pieChart");
+const chartOne  = document.querySelector("#chartOne");
+const chartTwo  = document.querySelector("#chartTwo");
 const table = document.querySelector('#infoTable').querySelector('tbody');
 const timerClock = document.querySelector("#timerClock");
 
@@ -31,7 +33,8 @@ var overallTime = 0;
 var entries = [];
 var entryIDs = []; 
 
-var pieChartAct;
+var chartOneAct;
+var chartTwoAct;
 
 setInterval(function() {
 
@@ -150,11 +153,24 @@ function updateEntries() {
 }
 
 function refreshCharts() {
-  renderPieChart();
+  renderChartOne();
+  renderChartTwo();
 }
 
-function renderPieChart() {
-  let ctx = pieChart.getContext('2d');
+function renderChartOne() {
+  if (chartOneAct != undefined) chartOneAct.destroy();
+  let chartType = preferences["charts"]["chart_type_one"];
+  if (canRenderChart(chartType)) chartOneAct = getChart(chartOne, chartType);
+}
+
+function renderChartTwo() {
+  if (chartTwoAct != undefined) chartTwoAct.destroy();
+  let chartType = preferences["charts"]["chart_type_two"];
+  if (canRenderChart(chartType)) chartTwoAct = getChart(chartTwo, chartType);
+}
+
+function getChart(chartNum, chartType) {
+  let ctx = chartNum.getContext('2d');
 
   let data = [];
   let labels = [];
@@ -167,36 +183,25 @@ function renderPieChart() {
     colors.push(colorgenerator.getRandomColor());
   }
 
-  if (pieChartAct != undefined) {
-    pieChartAct.destroy();
+  let chartAnimationDuration = preferences["charts"]["chart_animationLength"];
+
+  switch (chartType) {
+    default:
+    case 'pie':
+      return chartdefaults.pie_doughnut(ctx, 'pie', data, labels, colors, chartAnimationDuration);
+      break;
+    case 'doughnut':
+      return chartdefaults.pie_doughnut(ctx, 'doughnut', data, labels, colors, chartAnimationDuration);
+      break;
+    case 'bar':
+      return chartdefaults.bar(ctx, data, labels, colors, chartAnimationDuration);
+      break;
   }
 
-  let chartType = preferences["charts"]["chart_type_pie"];
-  let chartAnimationDuration = preferences["charts"]["chart_animationLength"];
-  pieChartAct = new Chart(ctx, {
-    type: chartType,
-    data: {
-      labels: labels,
-      datasets: [{
-        label: "Time Spent",
-        backgroundColor: colors,
-        data: data
-      }]
-    },
-    options: {
-      legend: {
-        display: false
-      },
-      title: {
-        display: false,
-        text: 'Time Spent'
-      },
-      animation: {
-        duration: chartAnimationDuration
-      }
-    }
-  });
+}
 
+function canRenderChart(chartType) {
+  return (chartType != undefined && chartType != "");
 }
 
 function getPrefs() {

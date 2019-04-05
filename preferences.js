@@ -4,6 +4,12 @@ const path = require('path');
 const os = require('os');
 const ElectronPreferences = require('electron-preferences');
 
+const chartOptions =  [
+                        { 'label': 'Pie', 'value': 'pie' },
+                        { 'label': 'Doughnut', 'value': 'doughnut' },
+                        { 'label': 'Bar', 'value': 'bar' }
+                      ];
+
 const preferences = new ElectronPreferences({
   'dataStore': path.resolve(__dirname, 'preferences.json'),
   'defaults': {
@@ -12,7 +18,8 @@ const preferences = new ElectronPreferences({
     },
     'charts': {
       'chart_refresh': false,
-      'chart_type_pie': 'pie'
+      'chart_type_one': 'pie',
+      'chart_type_two': 'doughnut'
     },
     'styles': {
       'theme': 'dark'
@@ -94,14 +101,18 @@ const preferences = new ElectronPreferences({
                 'help': 'Chart animation duration in milliseconds (0 for no animation)'
               },
               {
-                'label': 'Pie Chart Type',
-                'key': 'chart_type_pie',
-                'type': 'radio',
-                'options': [
-                  { 'label': 'Full', 'value': 'pie' },
-                  { 'label': 'Hollow', 'value': 'doughnut' }
-                ],
-                'help': 'Pie chart display type'
+                'label': 'Chart One Type',
+                'key': 'chart_type_one',
+                'type': 'dropdown',
+                'options': chartOptions,
+                'help': 'Chart one display type'
+              },
+              {
+                'label': 'Chart Two Type',
+                'key': 'chart_type_two',
+                'type': 'dropdown',
+                'options': chartOptions,
+                'help': 'Chart two display type'
               }
             ]
           }
