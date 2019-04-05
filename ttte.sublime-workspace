@@ -4,6 +4,102 @@
 		"selected_items":
 		[
 			[
+				"elect",
+				"electron-builder"
+			],
+			[
+				"ele",
+				"electron-builder"
+			],
+			[
+				"da",
+				"date"
+			],
+			[
+				"export",
+				"exportType"
+			],
+			[
+				"padding",
+				"padding-top\tproperty"
+			],
+			[
+				"pie",
+				"pie_doughnut"
+			],
+			[
+				"pe",
+				"pie_doughnut"
+			],
+			[
+				"chartOne",
+				"chartOne"
+			],
+			[
+				"cha",
+				"chartTwoAct"
+			],
+			[
+				"chartT",
+				"chartType"
+			],
+			[
+				"chart",
+				"chart_type_two"
+			],
+			[
+				"tes",
+				"testEntryID"
+			],
+			[
+				"en",
+				"entryIDs"
+			],
+			[
+				"ent",
+				"entryIDs"
+			],
+			[
+				"upda",
+				"updateTable"
+			],
+			[
+				"entry",
+				"entryIDDelete"
+			],
+			[
+				"remov",
+				"removeEntry"
+			],
+			[
+				"show",
+				"show-context-menu"
+			],
+			[
+				"con",
+				"contextmenu"
+			],
+			[
+				"in",
+				"interval"
+			],
+			[
+				"charts",
+				"refreshCharts"
+			],
+			[
+				"up",
+				"updateTable"
+			],
+			[
+				"entr",
+				"entries"
+			],
+			[
+				"data",
+				"datahandler"
+			],
+			[
 				"pre",
 				"preferences"
 			],
@@ -28,10 +124,6 @@
 				"newLink"
 			],
 			[
-				"chart",
-				"chartRefresh"
-			],
-			[
 				"upd",
 				"updatePrefs"
 			],
@@ -50,10 +142,6 @@
 			[
 				"app",
 				"appIcon"
-			],
-			[
-				"con",
-				"contextMenu"
 			],
 			[
 				"icon",
@@ -108,16 +196,8 @@
 				"pieChartAct"
 			],
 			[
-				"pie",
-				"pieChart"
-			],
-			[
 				"paddin",
 				"padding-bottom\tproperty"
-			],
-			[
-				"padding",
-				"padding-right\tproperty"
 			],
 			[
 				"toolti",
@@ -130,10 +210,6 @@
 			[
 				"padin",
 				"padding-bottom\tproperty"
-			],
-			[
-				"cha",
-				"chartLabels"
 			],
 			[
 				"render",
@@ -431,16 +507,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 2250,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "preferences.js",
-			"settings":
-			{
-				"buffer_size": 2849,
+				"buffer_size": 2642,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -449,7 +516,16 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 3993,
+				"buffer_size": 5028,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "preferences.js",
+			"settings":
+			{
+				"buffer_size": 3946,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -458,7 +534,7 @@
 			"file": "renderer.js",
 			"settings":
 			{
-				"buffer_size": 6755,
+				"buffer_size": 8864,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -467,7 +543,7 @@
 			"file": "css/main.css",
 			"settings":
 			{
-				"buffer_size": 641,
+				"buffer_size": 697,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,16 +626,18 @@
 	],
 	"file_history":
 	[
+		"/F/Programming/Electron/tidal-time-track-electron/package.json",
+		"/F/Programming/Electron/tidal-time-track-electron/datahandler.js",
+		"/F/Programming/Electron/tidal-time-track-electron/chartdefaults.js",
+		"/C/Users/Mark/AppData/Roaming/Sublime Text 3/Packages/User/electron.sublime-build",
 		"/F/Programming/Electron/tidal-time-track-electron/css/wtf.css",
 		"/F/Programming/Electron/tidal-time-track-electron/node_modules/console-control-strings/index.js",
 		"/F/Programming/Electron/tidal-time-track-electron/.gitignore",
 		"/F/Programming/Electron/tidal-time-track-electron/preferences.json",
-		"/F/Programming/Electron/tidal-time-track-electron/datahandler.js",
 		"/F/Programming/Electron/tidal-time-track-electron/textformatter.js",
 		"/C/Users/Mark/AppData/Roaming/Sublime Text 3/Packages/AutoHotkey/AutoHotkey.sublime-settings",
 		"/F/Programming/Electron/electron-preferences/example/preferences.json",
 		"/F/Programming/Electron/electron-preferences/example/package.json",
-		"/F/Programming/Electron/tidal-time-track-electron/package.json",
 		"/F/Programming/Electron/electron-preferences/package.json",
 		"/C/Users/Mark/Desktop/chm.pdf",
 		"/C/Users/Mark/Desktop/CHM 152 Exam 2 Sp 19 [REDACTED].pdf",
@@ -675,9 +753,7 @@
 		"/C/Users/Mark/AppData/Local/Temp/scp13390/home/mark/pearcel_bot/misc/voiceChatMessages.json",
 		"/C/Users/Mark/AppData/Local/Temp/scp12591/home/mark/pearcel_bot/chatlog/log.txt",
 		"/C/Users/Mark/AppData/Local/Temp/scp13565/home/mark/pearcel_bot/chatlog/server_blacklist.json",
-		"/F/Programming/Java/Tidal-Bot/ar_blacklist.json",
-		"/F/Programming/Java/Tidal-Bot/command_blacklist.json",
-		"/F/Programming/Java/Tidal-Bot/config.json"
+		"/F/Programming/Java/Tidal-Bot/ar_blacklist.json"
 	],
 	"find":
 	{
@@ -695,6 +771,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"swit",
+			"pieChart",
+			"renderPieChart",
+			"pieChartAct",
+			"removeEn",
 			"    ",
 			"setResizable",
 			"myCha",
@@ -751,6 +832,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"chartOne",
+			"renderChartOne",
+			"chartOneAct",
 			"  ",
 			"",
 			"the bot",
@@ -778,7 +862,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -787,15 +871,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2250,
+						"buffer_size": 2642,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1782,
-								1782
+								2383,
+								2383
 							]
 						],
 						"settings":
@@ -806,63 +890,27 @@
 							"word_wrap": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 126.0,
+						"translation.y": 532.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "preferences.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2849,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2515,
-								2515
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1148.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 2,
 					"file": "main.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3993,
+						"buffer_size": 5028,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2779,
-								2779
+								1907,
+								1907
 							]
 						],
 						"settings":
@@ -873,27 +921,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1386.0,
+						"translation.y": 2163.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "renderer.js",
+					"buffer": 2,
+					"file": "preferences.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6755,
+						"buffer_size": 3946,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5474,
-								5474
+								3946,
+								3946
 							]
 						],
 						"settings":
@@ -903,10 +951,46 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2490.0,
+						"translation.y": 949.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "renderer.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8864,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5404,
+								5404
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1708.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -915,15 +999,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 641,
+						"buffer_size": 697,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								641,
-								641
+								355,
+								355
 							]
 						],
 						"settings":
@@ -931,10 +1015,10 @@
 							"syntax": "Packages/CSS/CSS.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 197.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -950,8 +1034,8 @@
 						"selection":
 						[
 							[
-								311,
-								311
+								346,
+								346
 							]
 						],
 						"settings":
@@ -991,7 +1075,7 @@
 						"translation.y": 126.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -1037,13 +1121,13 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 96.0
+		"height": 27.0
 	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "",
+	"pinned_build_system": "Packages/User/electron.sublime-build",
 	"project": "ttte.sublime-project",
 	"replace":
 	{
@@ -1077,7 +1161,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
