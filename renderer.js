@@ -256,6 +256,15 @@ ipcRenderer.on('data', (event, arg) => {
   }
 });
 
+ipcRenderer.on('import-data', (event, arg) => {
+  deleteAllEntries();
+  let parsedData = JSON.parse(arg);
+  for (i = 0; i < parsedData.length; i++) {
+    let key = parsedData[i];
+    addEntry(key["appID"], key["appTitle"], key["appOwner"], key["appTime"]);
+  } 
+});
+
 ipcRenderer.on('export-data', (event, arg) => {
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, '0');

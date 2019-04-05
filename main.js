@@ -1,4 +1,5 @@
 const {app, dialog, BrowserWindow, globalShortcut, ipcMain, Menu, MenuItem, remote, Tray} = require('electron');
+const fs = require('fs');
 const path = require('path');
 const windowStateKeeper = require('electron-window-state');
 const debug = require('electron-debug');
@@ -68,9 +69,8 @@ function createMenus() {
             click: () => saveData()
           },
           { 
-            label: "Import",
-            accelerator: "CmdOrCtrl+O",
-            click: () => loadData()
+            label: "Import...",
+            click: () => importData()
           },
           { type: 'separator' },  
           { 
@@ -170,9 +170,24 @@ function loadData() {
   mainWindow.webContents.send('data', 'load');
 }
 
+function importData() {
+  const options = {
+    title: 'Import',
+    properties: [ 'openFile' ],
+    filters: [{ name: 'JSON', extensions: ['json'] }]
+  }
+  dialog.showOpenDialog(options, (files) => {
+    if (files) {
+      fs.readFile(files[0], 'utf-8', (err, data) => {
+        if (err) return;
+        mainWindow.webContents.send('import-data', data);
+      });
+    }
+  });
+}
+
 function exportData(type) {
   mainWindow.webContents.send('export-data', type);
-  
 }
 
 function showPreferencesDialog() {
