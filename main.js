@@ -77,12 +77,20 @@ function createMenus() {
             label: "Export As",
             submenu: [
               {
+                label: 'Plain Text',
+                click: () => exportData('txt')
+              },
+              {
                 label: 'JSON',
                 click: () => exportData('json')
               },
               {
                 label: 'CSV',
                 click: () => exportData('csv')
+              },
+              {
+                label: 'XLS',
+                click: () => exportData('xls')
               }
             ]
           },
