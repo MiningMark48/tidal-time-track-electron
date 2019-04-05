@@ -73,7 +73,19 @@ function createMenus() {
             click: () => loadData()
           },
           { type: 'separator' },  
-          { label: "Export As" },
+          { 
+            label: "Export As",
+            submenu: [
+              {
+                label: 'JSON',
+                click: () => exportData('json')
+              },
+              {
+                label: 'CSV',
+                click: () => exportData('csv')
+              }
+            ]
+          },
           { role: 'close' }          
       ]
     },
@@ -148,6 +160,11 @@ function saveData() {
 
 function loadData() {
   mainWindow.webContents.send('data', 'load');
+}
+
+function exportData(type) {
+  mainWindow.webContents.send('export-data', type);
+  
 }
 
 function showPreferencesDialog() {

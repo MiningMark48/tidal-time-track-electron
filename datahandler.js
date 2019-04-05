@@ -1,4 +1,5 @@
 const storage = require('electron-json-storage');
+const jsonExport = require('export-from-json');
 
 module.exports.saveData = function(entries, entryIDs) {
   
@@ -26,6 +27,7 @@ module.exports.loadDataEntryIDs = function() {
   });
 }
 
-module.exports.exportData = function() {
+module.exports.exportData = function(data, filename, exportType) {
   console.log("Export!");
+  jsonExport({ data: data, fileName: filename, exportType: exportType });
 }

@@ -62,8 +62,8 @@ setInterval(function() {
   appname.textContent = "Current Window: " + objectInfo["title"];
   
   if (entries === undefined || entryIDs === undefined) {
-    entries = {};
-    entryIDs = {};
+    entries = [];
+    entryIDs = [];
   } 
   
   let testEntry = getNewEntry(objectInfo["id"], objectInfo["title"], objectInfo["owner"]["name"], 0);
@@ -127,7 +127,7 @@ function isValidEntry(entry) {
 function updateTable() {
     table.innerHTML = "";
     entries.forEach(function(entry) {
-       if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr id="' + entry.appID +'""><td>' + (entry.appTitle === "" ? naStr : entry.appTitle) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');     
+       if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr id="' + entry.appID +'""><td>' + (entry.appTitle === "" ? naStr : entry.appTitle.substring(0, 85)) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');     
     });
 }
 
@@ -254,6 +254,16 @@ ipcRenderer.on('data', (event, arg) => {
   } else {
     console.log("MESSAGE: " + arg)
   }
+});
+
+ipcRenderer.on('export-data', (event, arg) => {
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0');
+  let yyyy = today.getFullYear();
+  let date = mm + '-' + dd + '-' + yyyy;
+  let filename = 'entries_' + date;
+  datahandler.exportData(JSON.stringify(entries), filename, arg);
 });
 
 ipcRenderer.on('preferencesUpdated', (event, preferences) => {
