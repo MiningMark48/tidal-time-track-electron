@@ -1,4 +1,4 @@
-const {app, dialog, BrowserWindow, globalShortcut, ipcMain, Menu, remote, Tray} = require('electron');
+const {app, dialog, BrowserWindow, globalShortcut, ipcMain, Menu, MenuItem, remote, Tray} = require('electron');
 const path = require('path');
 const windowStateKeeper = require('electron-window-state');
 const debug = require('electron-debug');
@@ -191,6 +191,13 @@ app.on('activate', function () {
 
 preferences.on('save', (preferences) => {
   console.log("Preferences were saved.", JSON.stringify(preferences, null, 4));
+});
+
+ipcMain.on('show-context-entry-delete', (event) => {
+  const menuEntry = new Menu();
+  menuEntry.append(new MenuItem({ label: 'Delete Entry', click() { event.sender.send('context-reply-delete'); } }));
+  const win = BrowserWindow.fromWebContents(event.sender);
+  menuEntry.popup(win);
 });
 
 ipcMain.on('delete-entries-dialog', (event) => {

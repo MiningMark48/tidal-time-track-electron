@@ -23,6 +23,7 @@ var naStr = "N/A";
 
 var preferences = ipcRenderer.sendSync('getPreferences');
 var chartRefresh = false;
+var entryIDDelete = 0;
 var hasLoaded = false;
 var isPaused = false;
 var overallTime = 0;
@@ -106,13 +107,13 @@ function addEntry(id, title, owner, time) {
 }
 
 function removeEntry(testEntryID) {
-    for ( let i = 0; i < entryIDs.length; i++){ 
-        if ( entryIDs[i] === testEntryID) {
-            entries.splice(i, 1); 
-            entryIDs.splice(i, 1); 
-            updateEntries();
-        }
+  for ( i = 0; i < entryIDs.length; i++){ 
+    if ( entryIDs[i] === parseInt(testEntryID)) {
+      entries.splice(i, 1); 
+      entryIDs.splice(i, 1); 
+      updateEntries();
     }
+  }
 }
 
 function isValidEntry(entry) {
@@ -123,7 +124,7 @@ function isValidEntry(entry) {
 function updateTable() {
     table.innerHTML = "";
     entries.forEach(function(entry) {
-       if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr><td>' + (entry.appTitle === "" ? naStr : entry.appTitle) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');     
+       if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr id="' + entry.appID +'""><td>' + (entry.appTitle === "" ? naStr : entry.appTitle) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');     
     });
 }
 
@@ -250,13 +251,26 @@ ipcRenderer.on('data', (event, arg) => {
   }
 });
 
-ipcRenderer.on('preferencesUpdated', (e, preferences) => {
+ipcRenderer.on('preferencesUpdated', (event, preferences) => {
     getPrefs();
     console.log('Preferences were reloaded.');
     updatePrefs();
 });
 
+ipcRenderer.on('context-reply-delete', (event, arg) => {
+  removeEntry(entryIDDelete);
+  updateTable();
+});
+
 // Buttons
+table.addEventListener('contextmenu', (event) => {
+  let x = event.clientX;
+  let y = event.clientY;
+  entryIDDelete = document.elementFromPoint(x, y).parentElement.id;
+
+  ipcRenderer.send('show-context-entry-delete');
+});
+
 document.querySelector("#refreshButton").addEventListener('click', (event) => {
   refreshCharts();
 });
@@ -293,6 +307,5 @@ ipcRenderer.on('delete-entries-dialog-response', (event, index) => {
   } else {
     console.log("Canceled entry deletion.");
   }
-  
 
 });
