@@ -1,11 +1,18 @@
+:root {
+	--body-font-color: #E3E3E3;
+	--table-font-color: #E3E3E3;
+	--table-head-background-color: #3F4144;
+	--table-body-background-color: #484b52;
+}
+
 body {
 	background: #2f3136;
-	color: #E3E3E3;
+	color: var(--body-font-color);
 }
 
 .controlButtons {
-	background-color: #484b52;
-	color: #E3E3E3;
+	background-color: var(--table-body-background-color);
+	color: var(--table-font-color);
 }
 
 .controlButtons-paused {
@@ -14,16 +21,16 @@ body {
 }
 
 .table {
-	color: #E3E3E3;
+	color: var(--table-font-color);
 }
 
 .table thead {
-	background: #3F4144;
-	color: white;
+	background: var(--table-head-background-color);
+	color: var(--body-font-color);
 }
 
 .table tbody {
-	background: #484b52;
+	background: var(--table-body-background-color);
 }
 
 .timer-paused {
@@ -32,15 +39,15 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #3F4144; 
+  background: var(--table-head-background-color); 
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #484b52; 
+  background: var(--table-body-background-color); 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #484b52; 
+  background: var(--table-body-background-color); 
 }

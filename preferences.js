@@ -139,11 +139,6 @@ const preferences = new ElectronPreferences({
                   { 'label': 'Dracula', 'value': 'dracula' }
                 ],
                 'help': 'Default theme'
-              },
-              {
-                'heading': 'Coming Soon',
-                'content': '<p>Custom CSS Coming Soon</p>',
-                'type': 'message',
               }
             ]
           }

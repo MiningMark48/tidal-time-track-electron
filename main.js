@@ -70,6 +70,7 @@ function createMenus() {
           },
           { 
             label: "Import...",
+            accelerator: "CmdOrCtrl+O",
             click: () => importData()
           },
           { type: 'separator' },  
