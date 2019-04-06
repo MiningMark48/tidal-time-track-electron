@@ -12,6 +12,7 @@ const chartdefaults = require('./chartdefaults');
 const colorgenerator = require('./colorgenerator');
 const datahandler = require('./datahandler');
 const textformatter = require('./textformatter');
+const timeanddate = require('./timeanddate');
 
 const appname = document.querySelector('#appname');
 const pauseButton = document.querySelector("#pauseButton");
@@ -77,27 +78,6 @@ setInterval(function() {
 
   updateTable();
   updateEntries();
-//  console.log(entries);
-    
-    /*
-	{
-		title: 'Unicorns - Google Search',
-		id: 5762,
-		bounds: {
-			x: 0,
-			y: 0,
-			height: 900,
-			width: 1440
-		},
-		owner: {
-			name: 'Google Chrome',
-			processId: 310,
-			bundleId: 'com.google.Chrome',
-			path: '/Applications/Google Chrome.app'
-		},
-		memoryUsage: 11015432
-	}
-	*/
 
   if (chartRefresh) refreshCharts(); 
 
@@ -246,13 +226,17 @@ function changeCSS() {
 
 // IPC Messages
 ipcRenderer.on('data', (event, arg) => {
-  if (arg === "save") {
-    updateEntries();
-  } else if (arg === "load") {
-    entries = datahandler.loadDataEntries();
-    entryIDs = datahandler.loadDataEntryIDs();
-  } else {
-    console.log("MESSAGE: " + arg)
+  switch (arg) {
+    default:
+      console.log("Unknown: ", arg);
+      break;
+    case 'save':
+      updateEntries();
+      break;
+    case 'load':
+      entries = datahandler.loadDataEntries();
+      entryIDs = datahandler.loadDataEntryIDs();
+      break;
   }
 });
 
@@ -266,11 +250,7 @@ ipcRenderer.on('import-data', (event, arg) => {
 });
 
 ipcRenderer.on('export-data', (event, arg) => {
-  let today = new Date();
-  let dd = String(today.getDate()).padStart(2, '0');
-  let mm = String(today.getMonth() + 1).padStart(2, '0');
-  let yyyy = today.getFullYear();
-  let date = mm + '-' + dd + '-' + yyyy;
+  let date = timeanddate.getDateToday();
   let filename = 'entries_' + date;
   datahandler.exportData(JSON.stringify(entries), filename, arg);
 });
