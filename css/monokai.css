@@ -1,0 +1,46 @@
+body {
+	background: #282923;
+	color: #e7b248;
+}
+
+.controlButtons {
+	background-color: #6E7160;
+	color: #c9f8c4;
+}
+
+.controlButtons-paused {
+	background-color: #ae2824;
+	color: #E3E3E3;
+}
+
+.table {
+	color: #c9f8c4;
+}
+
+.table thead {
+	background: #484A3F;
+	color: #e7b248;
+}
+
+.table tbody {
+	background: #6E7160;
+}
+
+.timer-paused {
+	color: #BB6464;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #484A3F; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6E7160; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6E7160; 
+}

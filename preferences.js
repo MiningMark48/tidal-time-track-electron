@@ -134,7 +134,8 @@ const preferences = new ElectronPreferences({
                 'type': 'dropdown',
                 'options': [
                   { 'label': 'Dark', 'value': 'dark' },
-                  { 'label': 'Light', 'value': 'light' }
+                  { 'label': 'Light', 'value': 'light' },
+                  { 'label': 'Monokai', 'value': 'monokai' }
                 ],
                 'help': 'Default theme'
               },
