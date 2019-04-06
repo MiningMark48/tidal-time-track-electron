@@ -198,19 +198,11 @@ function updatePrefs() {
 }
 
 function changeCSS() {
-  let cssFile;
+  let cssFile = 'dark.css';
   let cssLinkIndex = 2;
   let theme = preferences["styles"]["theme"];
 
-  switch (theme) {
-    default:
-    case 'dark':
-      cssFile = "dark.css";
-      break;
-    case 'light':
-      cssFile = "light.css";
-      break;
-  }
+  if (theme) cssFile = theme + '.css';
 
   let oldLink = document.getElementsByTagName("link").item(cssLinkIndex);
 
