@@ -135,7 +135,8 @@ const preferences = new ElectronPreferences({
                 'options': [
                   { 'label': 'Dark', 'value': 'dark' },
                   { 'label': 'Light', 'value': 'light' },
-                  { 'label': 'Monokai', 'value': 'monokai' }
+                  { 'label': 'Monokai', 'value': 'monokai' },
+                  { 'label': 'Dracula', 'value': 'dracula' }
                 ],
                 'help': 'Default theme'
               },
