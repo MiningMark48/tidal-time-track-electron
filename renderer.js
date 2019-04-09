@@ -248,6 +248,10 @@ ipcRenderer.on('context-reply-delete', (event, arg) => {
   updateTable();
 });
 
+ipcRenderer.on('thanos-snap', (event) => {
+  csshandler.changeCSS('thanos');
+});
+
 // Buttons
 table.addEventListener('contextmenu', (event) => {
   let x = event.clientX;

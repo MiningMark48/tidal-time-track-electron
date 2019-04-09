@@ -157,12 +157,14 @@ function showTrayApp(mainWin) {
 }
 
 function registerGlobalKeys() {
-  globalShortcut.register('CommandOrControl+Alt+J', () => {
+  globalShortcut.register('CommandOrControl+Shift+S', () => {
     dialog.showMessageBox({
       type: 'info',
-      message: 'Cody',
-      detail: 'JENSEN!',
+      message: 'Thanos',
+      detail: 'The end is near.',
       buttons: [ 'OK' ]
+    }, () => {
+      mainWindow.webContents.send('thanos-snap');
     })
   });
 }
