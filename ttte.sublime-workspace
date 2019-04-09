@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"ent",
+				"entries"
+			],
+			[
+				"ma",
+				"mainWindow"
+			],
+			[
+				"web",
+				"webContents"
+			],
+			[
+				"load",
+				"loadFile"
+			],
+			[
+				"table",
+				"table-head-background-color"
+			],
+			[
+				"tab",
+				"table-body-background-color"
+			],
+			[
+				"bod",
+				"body-font-color"
+			],
+			[
+				"enty",
+				"entryIDs"
+			],
+			[
+				"dat",
+				"data"
+			],
+			[
 				"elect",
 				"electron-builder"
 			],
@@ -53,10 +89,6 @@
 			],
 			[
 				"en",
-				"entryIDs"
-			],
-			[
-				"ent",
 				"entryIDs"
 			],
 			[
@@ -482,22 +514,6 @@
 			[
 				"ah",
 				"ahk_class"
-			],
-			[
-				"deob",
-				"deobfCompile"
-			],
-			[
-				"pearcel",
-				"pearcel_charcoal"
-			],
-			[
-				"pearce",
-				"pearcel_glass"
-			],
-			[
-				"pear",
-				"pearcelmod"
 			]
 		]
 	},
@@ -507,7 +523,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 2642,
+				"buffer_size": 2727,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -516,7 +532,16 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 5028,
+				"buffer_size": 6013,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "stats.html",
+			"settings":
+			{
+				"buffer_size": 1187,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -525,16 +550,7 @@
 			"file": "preferences.js",
 			"settings":
 			{
-				"buffer_size": 3946,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": ".gitignore",
-			"settings":
-			{
-				"buffer_size": 50,
+				"buffer_size": 3900,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -543,7 +559,16 @@
 			"file": "renderer.js",
 			"settings":
 			{
-				"buffer_size": 8864,
+				"buffer_size": 8372,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "statsrenderer.js",
+			"settings":
+			{
+				"buffer_size": 1373,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -552,25 +577,7 @@
 			"file": "css/main.css",
 			"settings":
 			{
-				"buffer_size": 697,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "css/dark.css",
-			"settings":
-			{
-				"buffer_size": 564,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "css/light.css",
-			"settings":
-			{
-				"buffer_size": 564,
+				"buffer_size": 1304,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -635,13 +642,22 @@
 	],
 	"file_history":
 	[
-		"/F/Programming/Electron/tidal-time-track-electron/package.json",
+		"/F/Programming/Electron/tidal-time-track-electron/csshandler.js",
+		"/F/Programming/Electron/tidal-time-track-electron/css/monokai.css",
+		"/F/Programming/Electron/tidal-time-track-electron/css/dark.css",
+		"/F/Programming/Electron/tidal-time-track-electron/css/light.css",
+		"/F/Programming/Electron/tidal-time-track-electron/css/dracula.css",
+		"/C/Users/Mark/Desktop/testing/entries_04-06-2019.json",
+		"/F/Programming/Electron/tidal-time-track-electron/timeanddate.js",
+		"/C/Users/Mark/Desktop/testing/IMPORT.json",
+		"/C/Users/Mark/Desktop/testing/entries_04-05-2019.txt",
 		"/F/Programming/Electron/tidal-time-track-electron/datahandler.js",
+		"/F/Programming/Electron/tidal-time-track-electron/.gitignore",
+		"/F/Programming/Electron/tidal-time-track-electron/package.json",
 		"/F/Programming/Electron/tidal-time-track-electron/chartdefaults.js",
 		"/C/Users/Mark/AppData/Roaming/Sublime Text 3/Packages/User/electron.sublime-build",
 		"/F/Programming/Electron/tidal-time-track-electron/css/wtf.css",
 		"/F/Programming/Electron/tidal-time-track-electron/node_modules/console-control-strings/index.js",
-		"/F/Programming/Electron/tidal-time-track-electron/.gitignore",
 		"/F/Programming/Electron/tidal-time-track-electron/preferences.json",
 		"/F/Programming/Electron/tidal-time-track-electron/textformatter.js",
 		"/C/Users/Mark/AppData/Roaming/Sublime Text 3/Packages/AutoHotkey/AutoHotkey.sublime-settings",
@@ -753,20 +769,11 @@
 		"/C/Users/Mark/AppData/Local/Temp/scp37001/var/log/btmp",
 		"/C/Users/Mark/AppData/Local/Temp/scp32523/var/log/journal/a173c2580e69435fbefbafd84d1e064b/system@f8fa77324a3145e18862f0cd7e307b3b-0000000000d4c82b-0005778e75f72dc2.journal",
 		"/C/Users/Mark/Downloads/CoolStuff.txt",
-		"/C/Users/Mark/AppData/Local/Temp/scp18258/var/www/html/keybase.txt",
-		"/C/Users/Mark/AppData/Local/Temp/scp17185/home/mark/discordrelay/config.json",
-		"/C/Users/Mark/AppData/Local/Temp/scp28756/home/mark/pearcel_bot/chatlog/log.txt",
-		"/C/Users/Mark/AppData/Local/Temp/scp16927/home/mark/pearcel_bot/custom_commands.json",
-		"/C/Users/Mark/AppData/Local/Temp/scp15768/home/mark/pearcel_bot/config.json",
-		"/C/Users/Mark/AppData/Local/Temp/scp14557/home/mark/pearcel_bot/commands.json",
-		"/C/Users/Mark/AppData/Local/Temp/scp13390/home/mark/pearcel_bot/misc/voiceChatMessages.json",
-		"/C/Users/Mark/AppData/Local/Temp/scp12591/home/mark/pearcel_bot/chatlog/log.txt",
-		"/C/Users/Mark/AppData/Local/Temp/scp13565/home/mark/pearcel_bot/chatlog/server_blacklist.json",
-		"/F/Programming/Java/Tidal-Bot/ar_blacklist.json"
+		"/C/Users/Mark/AppData/Local/Temp/scp18258/var/www/html/keybase.txt"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -780,6 +787,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			" changeCss",
 			"swit",
 			"pieChart",
 			"renderPieChart",
@@ -871,7 +879,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -880,15 +888,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2642,
+						"buffer_size": 2727,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2383,
-								2383
+								2138,
+								2138
 							]
 						],
 						"settings":
@@ -899,10 +907,10 @@
 							"word_wrap": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 532.0,
+						"translation.y": 378.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -911,15 +919,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5028,
+						"buffer_size": 6013,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1907,
-								1907
+								5909,
+								5909
 							]
 						],
 						"settings":
@@ -930,27 +938,57 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2163.0,
+						"translation.y": 3122.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "preferences.js",
+					"file": "stats.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3946,
+						"buffer_size": 1187,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3946,
-								3946
+								1167,
+								1167
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 42.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "preferences.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3900,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3434,
+								3434
 							]
 						],
 						"settings":
@@ -960,44 +998,16 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 949.0,
+						"translation.y": 420.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": ".gitignore",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 50,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								50,
-								50
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Git Formats/Git Ignore.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1006,15 +1016,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8864,
+						"buffer_size": 8372,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5404,
-								5404
+								1401,
+								1401
 							]
 						],
 						"settings":
@@ -1024,7 +1034,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1708.0,
+						"translation.y": 322.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -1032,76 +1042,49 @@
 				},
 				{
 					"buffer": 5,
-					"file": "css/main.css",
+					"file": "statsrenderer.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 697,
+						"buffer_size": 1373,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								355,
-								355
+								979,
+								979
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 336.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "css/dark.css",
+					"file": "css/main.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 564,
+						"buffer_size": 1304,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								346,
-								346
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "css/light.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 564,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								564,
-								564
+								291,
+								291
 							]
 						],
 						"settings":
@@ -1109,10 +1092,10 @@
 							"syntax": "Packages/CSS/CSS.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 126.0,
+						"translation.y": 43.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1198,7 +1181,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

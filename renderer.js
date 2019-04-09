@@ -10,6 +10,7 @@ const chart = require('electron-chartjs');
 
 const chartdefaults = require('./chartdefaults');
 const colorgenerator = require('./colorgenerator');
+const csshandler = require('./csshandler');
 const datahandler = require('./datahandler');
 const textformatter = require('./textformatter');
 const timeanddate = require('./timeanddate');
@@ -198,25 +199,14 @@ function updatePrefs() {
 }
 
 function changeCSS() {
-  let cssFile = 'dark.css';
-  let cssLinkIndex = 2;
-  let theme = preferences["styles"]["theme"];
-
-  if (theme) cssFile = theme + '.css';
-
-  let oldLink = document.getElementsByTagName("link").item(cssLinkIndex);
-
-  if (oldLink.getAttribute('href') === ("css/" + cssFile)) return;
-
-  let newLink = document.createElement("link");
-  newLink.setAttribute("rel", "stylesheet");
-  newLink.setAttribute("type", "text/css");
-  newLink.setAttribute("href", "css/" + cssFile);
-
-  document.getElementsByTagName("head").item(0).replaceChild(newLink, oldLink);
+  csshandler.changeCSS(preferences["styles"]["theme"]);
 }
 
 // IPC Messages
+ipcRenderer.on('do-initial-load', (event) => {
+  changeCSS();
+});
+
 ipcRenderer.on('data', (event, arg) => {
   switch (arg) {
     default:
@@ -304,4 +294,8 @@ ipcRenderer.on('delete-entries-dialog-response', (event, index) => {
     console.log("Canceled entry deletion.");
   }
 
+});
+
+document.querySelector("#statsButton").addEventListener('click', (event) => {
+  ipcRenderer.send('show-statistics', entries);
 });

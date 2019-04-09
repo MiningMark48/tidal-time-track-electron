@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Tidal Time Tracker</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/dark.css" rel="stylesheet">
+    <link href="css/dark.css" rel="stylesheet">
+
+  </head>
+  <body>
+        
+    <div class="container">
+      <div class="container heading">
+        <h1>Statistics</h1>  
+      </div>
+      <div class="row">
+        <div class="container col-lg-3">
+          <button id="backButton" class="controlButtons">Back</button>
+        </div>  
+      </div>
+      <div class="container statsContainer">
+        <div class="row">
+          <div class="container col-lg-6">
+            <div class="container">
+              <h4>Average Application Time</h4>
+            </div>
+            <div class="container itemStat">
+              <p id="averageTime"></p>
+            </div>
+          </div>
+          <div class="container col-lg-6">
+            <div class="container">
+              <h4>Most Used Application</h4>
+            </div>
+            <div class="container itemStat">
+              <p id="mostUsedApp"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      require('./statsrenderer.js')
+    </script>
+    <script type="text/javascript" src="./tablesorter.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+
+  </body>
+</html>

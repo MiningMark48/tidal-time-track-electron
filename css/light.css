@@ -20,6 +20,10 @@ body {
 	color: white;
 }
 
+.itemStat {
+	color: var(--table-font-color);
+}
+
 .table {
 	color: var(--table-font-color);
 }

@@ -55,6 +55,10 @@ function createWindow () {
     showTrayApp(mainWindow);
     mainWindow.hide();
   });
+
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.webContents.send('do-initial-load');
+  });
     
 }
 
@@ -251,4 +255,14 @@ ipcMain.on('delete-entries-dialog', (event) => {
   dialog.showMessageBox(options, (index) => {
     event.sender.send('delete-entries-dialog-response', index);
   })
+});
+
+ipcMain.on('show-statistics', (event, args) => {
+  mainWindow.loadFile('stats.html');
+  mainWindow.webContents.send('send-data');
+});
+
+//From Stats
+ipcMain.on('back-to-main', (event) => {
+  mainWindow.loadFile('index.html');
 });
