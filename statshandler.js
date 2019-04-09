@@ -27,3 +27,21 @@ module.exports.getMostUsedApp = function (data) {
 
 	return maxes;
 } 
+
+module.exports.getLeastUsedApp = function (data) {
+	let times = [];
+	let minTime;
+	let minEntry;
+	let mins;
+	for (i = 0; i < data.length; i++) {
+		let entry = data[i];
+		let time = entry["appTime"];
+		times.push(time);
+	}
+	minTime = Math.min(...times);
+	minEntry = data[times.indexOf(minTime)]["appTitle"];
+
+	mins = { time: minTime, title: minEntry };
+
+	return mins;
+} 

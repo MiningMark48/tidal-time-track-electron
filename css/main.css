@@ -33,7 +33,7 @@ body {
 }
 
 .statsContainer {
-	padding-top: 30px;
+	padding-top: 10px;
 	text-align: center;
 }
 
@@ -44,6 +44,10 @@ body {
 
 .statsContainer p {
 	font-size: 18px;
+}
+
+.statsContainer .row {
+	padding-top: 25px;
 }
 
 .timer {

@@ -18,9 +18,10 @@ var entryIDs = [];
 
 function doLoad() {
   document.querySelector("#averageTime").textContent = textformatter.toHHMMSS(statshandler.getAverageTime(entries));
-
   let mostUsed = statshandler.getMostUsedApp(entries);
   document.querySelector("#mostUsedApp").textContent = mostUsed["title"].substring(0, 50) + " (" + textformatter.toHHMMSS(mostUsed["time"]) + ")";
+  let leastUsed = statshandler.getLeastUsedApp(entries);
+  document.querySelector("#leastUsedApp").textContent = leastUsed["title"].substring(0, 50) + " (" + textformatter.toHHMMSS(leastUsed["time"]) + ")";
 }
 
 function getEntries() {
