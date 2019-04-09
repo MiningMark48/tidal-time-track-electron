@@ -259,10 +259,42 @@ ipcMain.on('delete-entries-dialog', (event) => {
 
 ipcMain.on('show-statistics', (event, args) => {
   mainWindow.loadFile('stats.html');
-  mainWindow.webContents.send('send-data');
+  
+  const template = [
+    {
+      label: 'File',
+      submenu: [
+        { role: 'close' }          
+      ]
+    },
+    {
+      label: 'Edit',
+      submenu: [
+        { 
+          label: "Preferences",
+          accelerator: "CmdOrCtrl+Shift+P",
+          click: () => showPreferencesDialog()
+        }    
+      ]
+    },
+    {
+      label: 'Help',
+      submenu: [
+        { 
+          label: "About",
+          click: () => showAboutDialog()
+        }
+      ]
+    }
+  ]
+
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);  
+
 });
 
 //From Stats
 ipcMain.on('back-to-main', (event) => {
   mainWindow.loadFile('index.html');
+  createMenus();
 });

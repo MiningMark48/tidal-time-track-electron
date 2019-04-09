@@ -70,10 +70,6 @@ ipcRenderer.on('do-initial-load', (event) => {
   getEntries();
 });
 
-ipcRenderer.on('send-data', (event) => {
-  console.log("SEND DATA")
-});
-
 ipcRenderer.on('preferencesUpdated', (event, preferences) => {
     getPrefs();
     console.log('Preferences were reloaded.');

@@ -41,6 +41,10 @@ body {
 	color: #BB6464;
 }
 
+.statsContainerItem {
+	background-color: var(--table-body-background-color);
+}
+
 /* Track */
 ::-webkit-scrollbar-track {
   background: var(--table-head-background-color); 
