@@ -18,6 +18,7 @@ const preferences = new ElectronPreferences({
     },
     'charts': {
       'chart_refresh': false,
+      'chart_colors': false,
       'chart_type_one': 'pie',
       'chart_type_two': 'doughnut'
     },
@@ -91,6 +92,16 @@ const preferences = new ElectronPreferences({
                   { 'label': 'No', 'value': false }
                 ],
                 'help': 'Should charts refresh on every entry update?'
+              },
+              {
+                'label': 'Random Chart Colors',
+                'key': 'chart_colors',
+                'type': 'radio',
+                'options': [
+                  { 'label': 'Yes', 'value': true },
+                  { 'label': 'No', 'value': false }
+                ],
+                'help': 'When enabled, chart colors will be randomly generated each interval.'
               },
               {
                 'label': 'Animation Duration',

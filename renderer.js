@@ -34,6 +34,7 @@ var overallTime = 0;
 
 var entries = [];
 var entryIDs = []; 
+var entryColors = [];
 
 var chartOneAct;
 var chartTwoAct;
@@ -71,6 +72,7 @@ setInterval(function() {
   let testEntry = getNewEntry(objectInfo["id"], objectInfo["title"], objectInfo["owner"]["name"], 0);
   if (!entryIDs.includes(testEntry.appID)) {
     addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, 1);
+    entryColors.push(colorgenerator.getRandomColor());
   } else {
     let prevTime = entries[entryIDs.indexOf(testEntry.appID)].appTime;
     removeEntry(testEntry.appID);
@@ -157,11 +159,16 @@ function getChart(chartNum, chartType) {
   let labels = [];
   let colors = [];
 
+  if (!preferences["charts"]["chart_colors"]) colors = entryColors;
+
   for (i = 0; i < entries.length; i++) {
     let time = entries[i]["appTime"];
     data.push(entries[i]["appTime"]);
     labels.push(entries[i]["appTitle"].substring(0, 15) + " - " + textformatter.toHHMMSS(entries[i]["appTime"]));
-    colors.push(colorgenerator.getRandomColor());
+
+    for (j = 0; j < (entries.length - colors.length); j++) {
+      colors.push(colorgenerator.getRandomColor());
+    }
   }
 
   let chartAnimationDuration = preferences["charts"]["chart_animationLength"];
