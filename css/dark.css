@@ -1,12 +1,12 @@
 :root {
-	--body-font-color: #dddbd7;
-	--table-font-color: #dddbd7;
-	--table-head-background-color: #18191d;
-	--table-body-background-color: #22262e;
+	--body-font-color: #E3E3E3;
+	--table-font-color: #E3E3E3;
+	--table-head-background-color: #3F4144;
+	--table-body-background-color: #484b52;
 }
 
 body {
-	background: #030303;
+	background: #2f3136;
 	color: var(--body-font-color);
 }
 
