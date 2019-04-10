@@ -37,14 +37,11 @@ const preferences = new ElectronPreferences({
     }
   },
   'onLoad': (data) => {
-
     // console.log('data', data);
-
     return data;
-
   },
   'afterLoad': ({ preferences }) => {
-    console.log('afterLoad', preferences);
+    // console.log('afterLoad', preferences);
   },
   'webPreferences': {
     'devTools': true
@@ -149,7 +146,7 @@ const preferences = new ElectronPreferences({
                   { 'label': 'Blackout', 'value': 'blackout' },
                   { 'label': 'Dracula', 'value': 'dracula' },
                   { 'label': 'Midnight', 'value': 'midnight' },
-                  { 'label': 'Monokai', 'value': 'monokai' }                  
+                  { 'label': 'Monokai', 'value': 'monokai' }
                 ],
                 'help': 'Default theme'
               }
