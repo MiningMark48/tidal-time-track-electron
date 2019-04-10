@@ -12,6 +12,7 @@ const chartdefaults = require('./util/chartdefaults');
 const colorgenerator = require('./util/colorgenerator');
 const csshandler = require('./util/csshandler');
 const datahandler = require('./util/datahandler');
+const tablesorter = require('./util/tablesorter');
 const textformatter = require('./util/textformatter');
 const timeanddate = require('./util/timeanddate');
 
@@ -31,6 +32,9 @@ var entryIDDelete = 0;
 var hasLoaded = false;
 var isPaused = false;
 var overallTime = 0;
+
+var tableSortDir = 'asc';
+var tableSortIndex = 2;
 
 var entries = [];
 var entryIDs = [];
@@ -112,6 +116,7 @@ function updateTable() {
     entries.forEach(function(entry) {
        if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr id="' + entry.appID +'""><td>' + (entry.appTitle === "" ? naStr : entry.appTitle.substring(0, 100)) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');
     });
+    tablesorter.sortTable(infoTable, tableSortIndex, tableSortDir);
 }
 
 function getNewEntry(id, title, owner, time) {
@@ -257,6 +262,26 @@ ipcRenderer.on('context-reply-delete', (event, arg) => {
 
 ipcRenderer.on('thanos-snap', (event) => {
   csshandler.changeCSS('thanos');
+});
+
+//Table Sort Control
+document.querySelector("#tableColumn0").addEventListener('click', (event) => {
+  tableSortDir = (tableSortDir === 'desc') ? 'asc' : 'desc';
+  tableSortIndex = 0;
+  updateTable();
+  console.log("INDEX: " + tableSortIndex + " DIR: " + tableSortDir);
+});
+
+document.querySelector("#tableColumn1").addEventListener('click', (event) => {
+  tableSortDir = (tableSortDir === 'desc') ? 'asc' : 'desc';
+  tableSortIndex = 1;
+  updateTable();
+});
+
+document.querySelector("#tableColumn2").addEventListener('click', (event) => {
+  tableSortDir = (tableSortDir === 'desc') ? 'asc' : 'desc';
+  tableSortIndex = 2;
+  updateTable();
 });
 
 // Buttons

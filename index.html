@@ -14,8 +14,8 @@
   </head>
   <body>
     <div class="container heading">
-      <h1>Tidal Time Tracker</h1>  
-    </div>    
+      <h1>Tidal Time Tracker</h1>
+    </div>
 
     <div>
       <div class="row">
@@ -24,9 +24,9 @@
             <table class="table table-bordered" id="infoTable">
               <thead>
                 <tr>
-                    <th scope="col" onclick="sortTable(0)">Application</th>
-                    <th scope="col" onclick="sortTable(1)">Process</th>
-                    <th scope="col" onclick="sortTable(2)">Time</th>
+                    <th scope="col" id="tableColumn0">Application</th>
+                    <th scope="col" id="tableColumn1">Process</th>
+                    <th scope="col" id="tableColumn2">Time</th>
                 </tr>
               </thead>
               <tbody>
@@ -70,7 +70,7 @@
     <script>
       require('./renderer.js')
     </script>
-    <script type="text/javascript" src="./tablesorter.js"></script>
+    <script type="text/javascript" src="./util/tablesorter.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 
   </body>
