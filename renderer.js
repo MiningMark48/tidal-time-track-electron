@@ -33,7 +33,7 @@ var isPaused = false;
 var overallTime = 0;
 
 var entries = [];
-var entryIDs = []; 
+var entryIDs = [];
 var entryColors = [];
 
 var chartOneAct;
@@ -41,7 +41,7 @@ var chartTwoAct;
 
 setInterval(function() {
 
-  if (isPaused) return; 
+  if (isPaused) return;
 
   overallTime++;
 
@@ -59,16 +59,16 @@ setInterval(function() {
     hasLoaded = true;
   }
 
-  if (preferences["general"]["show_timer"]) timerClock.textContent = textformatter.toHHMMSS(overallTime); 
-  
+  if (preferences["general"]["show_timer"]) timerClock.textContent = textformatter.toHHMMSS(overallTime);
+
   let objectInfo = activeWin.sync();
   appname.textContent = "Current Window: " + objectInfo["title"];
-  
+
   if (entries === undefined || entryIDs === undefined) {
     entries = [];
     entryIDs = [];
-  } 
-  
+  }
+
   let testEntry = getNewEntry(objectInfo["id"], objectInfo["title"], objectInfo["owner"]["name"], 0);
   if (!entryIDs.includes(testEntry.appID)) {
     addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, 1);
@@ -82,7 +82,7 @@ setInterval(function() {
   updateTable();
   updateEntries();
 
-  if (chartRefresh) refreshCharts(); 
+  if (chartRefresh) refreshCharts();
 
 }, interval * 1000);
 
@@ -93,10 +93,10 @@ function addEntry(id, title, owner, time) {
 }
 
 function removeEntry(testEntryID) {
-  for ( i = 0; i < entryIDs.length; i++){ 
+  for ( i = 0; i < entryIDs.length; i++){
     if ( entryIDs[i] === parseInt(testEntryID)) {
-      entries.splice(i, 1); 
-      entryIDs.splice(i, 1); 
+      entries.splice(i, 1);
+      entryIDs.splice(i, 1);
       updateEntries();
     }
   }
@@ -110,7 +110,7 @@ function isValidEntry(entry) {
 function updateTable() {
     table.innerHTML = "";
     entries.forEach(function(entry) {
-       if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr id="' + entry.appID +'""><td>' + (entry.appTitle === "" ? naStr : entry.appTitle.substring(0, 85)) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');     
+       if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr id="' + entry.appID +'""><td>' + (entry.appTitle === "" ? naStr : entry.appTitle.substring(0, 100)) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');     
     });
 }
 
@@ -201,7 +201,7 @@ function updatePrefs() {
   refreshCharts();
   if (!preferences['general']['show_timer']) timerClock.textContent = "";
   chartRefresh = preferences['charts']['chart_refresh'];
-  
+
   console.log('Preferences were updated.')
 }
 
@@ -235,7 +235,7 @@ ipcRenderer.on('import-data', (event, arg) => {
   for (i = 0; i < parsedData.length; i++) {
     let key = parsedData[i];
     addEntry(key["appID"], key["appTitle"], key["appOwner"], key["appTime"]);
-  } 
+  }
 });
 
 ipcRenderer.on('export-data', (event, arg) => {
@@ -298,9 +298,9 @@ ipcRenderer.on('delete-entries-dialog-response', (event, index) => {
     confirm = false;
   }
 
-  if (confirm) { 
+  if (confirm) {
     deleteAllEntries();
-    console.log("All entries deleted."); 
+    console.log("All entries deleted.");
   } else {
     console.log("Canceled entry deletion.");
   }

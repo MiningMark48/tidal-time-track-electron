@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"color",
+				"colorgenerator"
+			],
+			[
+				"entr",
+				"entryColors"
+			],
+			[
+				"crea",
+				"createMenus"
+			],
+			[
+				"st",
+				"statshandler"
+			],
+			[
+				"tex",
+				"textformatter"
+			],
+			[
+				"padd",
+				"padding-top\tproperty"
+			],
+			[
+				"tit",
+				"totalTime"
+			],
+			[
+				"en",
+				"entries"
+			],
+			[
+				"marg",
+				"margin-left\tproperty"
+			],
+			[
 				"ent",
 				"entries"
 			],
@@ -88,10 +124,6 @@
 				"testEntryID"
 			],
 			[
-				"en",
-				"entryIDs"
-			],
-			[
 				"upda",
 				"updateTable"
 			],
@@ -122,10 +154,6 @@
 			[
 				"up",
 				"updateTable"
-			],
-			[
-				"entr",
-				"entries"
 			],
 			[
 				"data",
@@ -190,10 +218,6 @@
 			[
 				"is",
 				"isPaused"
-			],
-			[
-				"tex",
-				"textContent"
 			],
 			[
 				"sort",
@@ -296,10 +320,6 @@
 				"stimulator_charge"
 			],
 			[
-				"st",
-				"stimulus"
-			],
-			[
 				"house",
 				"house_one"
 			],
@@ -324,10 +344,6 @@
 				"audio_button"
 			],
 			[
-				"padd",
-				"padding-bottom"
-			],
-			[
 				"wid",
 				"width"
 			],
@@ -338,14 +354,6 @@
 			[
 				"nav",
 				"navbar"
-			],
-			[
-				"marg",
-				"margin"
-			],
-			[
-				"color",
-				"color-primary-1"
 			],
 			[
 				"font-",
@@ -506,14 +514,6 @@
 			[
 				"Mouse",
 				"MouseClick"
-			],
-			[
-				"ifw",
-				"IfWinExist\t#IfWinExist"
-			],
-			[
-				"ah",
-				"ahk_class"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 2727,
+				"buffer_size": 2775,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,16 +532,7 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 6013,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "stats.html",
-			"settings":
-			{
-				"buffer_size": 1187,
+				"buffer_size": 6620,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,8 +541,16 @@
 			"file": "preferences.js",
 			"settings":
 			{
-				"buffer_size": 3900,
+				"buffer_size": 4476,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "colorgenerator.js",
+			"settings":
+			{
+				"buffer_size": 272,
 				"line_ending": "Windows"
 			}
 		},
@@ -559,16 +558,7 @@
 			"file": "renderer.js",
 			"settings":
 			{
-				"buffer_size": 8372,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "statsrenderer.js",
-			"settings":
-			{
-				"buffer_size": 1373,
+				"buffer_size": 8670,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -577,7 +567,7 @@
 			"file": "css/main.css",
 			"settings":
 			{
-				"buffer_size": 1304,
+				"buffer_size": 928,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -642,11 +632,21 @@
 	],
 	"file_history":
 	[
-		"/F/Programming/Electron/tidal-time-track-electron/csshandler.js",
-		"/F/Programming/Electron/tidal-time-track-electron/css/monokai.css",
+		"/F/Programming/Electron/tidal-time-track-electron/stats.html",
+		"/F/Programming/Electron/tidal-time-track-electron/statsrenderer.js",
+		"/F/Programming/Electron/tidal-time-track-electron/css/thanos.css",
+		"/F/Programming/Electron/tidal-time-track-electron/statshandler.js",
+		"/F/Programming/Electron/tidal-time-track-electron/preferences.js",
 		"/F/Programming/Electron/tidal-time-track-electron/css/dark.css",
+		"/F/Programming/Electron/tidal-time-track-electron/css/accent.css",
+		"/F/Programming/Electron/tidal-time-track-electron/css/charcoal.css",
+		"/F/Programming/Electron/tidal-time-track-electron/css/incognito.css",
+		"/F/Programming/Electron/tidal-time-track-electron/css/night.css",
+		"/F/Programming/Electron/tidal-time-track-electron/css/monokai.css",
 		"/F/Programming/Electron/tidal-time-track-electron/css/light.css",
 		"/F/Programming/Electron/tidal-time-track-electron/css/dracula.css",
+		"/F/Programming/Electron/tidal-time-track-electron/preferences.json",
+		"/F/Programming/Electron/tidal-time-track-electron/csshandler.js",
 		"/C/Users/Mark/Desktop/testing/entries_04-06-2019.json",
 		"/F/Programming/Electron/tidal-time-track-electron/timeanddate.js",
 		"/C/Users/Mark/Desktop/testing/IMPORT.json",
@@ -658,7 +658,6 @@
 		"/C/Users/Mark/AppData/Roaming/Sublime Text 3/Packages/User/electron.sublime-build",
 		"/F/Programming/Electron/tidal-time-track-electron/css/wtf.css",
 		"/F/Programming/Electron/tidal-time-track-electron/node_modules/console-control-strings/index.js",
-		"/F/Programming/Electron/tidal-time-track-electron/preferences.json",
 		"/F/Programming/Electron/tidal-time-track-electron/textformatter.js",
 		"/C/Users/Mark/AppData/Roaming/Sublime Text 3/Packages/AutoHotkey/AutoHotkey.sublime-settings",
 		"/F/Programming/Electron/electron-preferences/example/preferences.json",
@@ -760,20 +759,11 @@
 		"/C/Users/Mark/Desktop/Jokes.txt",
 		"/C/Users/Mark/Desktop/dht.txt",
 		"/C/Users/Mark/Desktop/CoolStuff.txt",
-		"/C/Users/Mark/Desktop/Deposit Receipt.docx",
-		"/C/Users/Mark/Desktop/mcmod.info",
-		"/C/Users/Mark/Desktop/companyNames",
-		"/F/Utility/2ndKeyboard/2nd keyboard if using luamacros.ahk",
-		"/F/IFTTT.txt",
-		"/F/Utility/2ndKeyboard/keypressed.txt",
-		"/C/Users/Mark/AppData/Local/Temp/scp37001/var/log/btmp",
-		"/C/Users/Mark/AppData/Local/Temp/scp32523/var/log/journal/a173c2580e69435fbefbafd84d1e064b/system@f8fa77324a3145e18862f0cd7e307b3b-0000000000d4c82b-0005778e75f72dc2.journal",
-		"/C/Users/Mark/Downloads/CoolStuff.txt",
-		"/C/Users/Mark/AppData/Local/Temp/scp18258/var/www/html/keybase.txt"
+		"/C/Users/Mark/Desktop/Deposit Receipt.docx"
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -787,6 +777,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"%;\n",
+			");\n",
+			"get",
 			" changeCss",
 			"swit",
 			"pieChart",
@@ -879,7 +872,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -888,15 +881,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2727,
+						"buffer_size": 2775,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2138,
-								2138
+								807,
+								807
 							]
 						],
 						"settings":
@@ -907,7 +900,7 @@
 							"word_wrap": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 378.0,
+						"translation.y": 94.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -919,15 +912,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6013,
+						"buffer_size": 6620,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5909,
-								5909
+								2561,
+								2561
 							]
 						],
 						"settings":
@@ -938,57 +931,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3122.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "stats.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1187,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1167,
-								1167
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 42.0,
+						"translation.y": 1297.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "preferences.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3900,
+						"buffer_size": 4476,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3434,
-								3434
+								905,
+								905
 							]
 						],
 						"settings":
@@ -998,16 +961,44 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 420.0,
+						"translation.y": 168.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "colorgenerator.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 272,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								272,
+								272
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1016,15 +1007,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8372,
+						"buffer_size": 8670,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1401,
-								1401
+								4667,
+								4667
 							]
 						],
 						"settings":
@@ -1034,57 +1025,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 322.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "statsrenderer.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1373,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								979,
-								979
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 336.0,
+						"translation.y": 1974.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "css/main.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1304,
+						"buffer_size": 928,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								291,
-								291
+								413,
+								413
 							]
 						],
 						"settings":
@@ -1092,7 +1053,7 @@
 							"syntax": "Packages/CSS/CSS.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 43.0,
+						"translation.y": 168.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
@@ -1181,7 +1142,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
