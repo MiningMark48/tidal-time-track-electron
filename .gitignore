@@ -4,3 +4,6 @@ dist
 
 preferences.json
 process-palette.json
+
+*.sublime-project
+*.sublime-workspace
