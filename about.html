@@ -9,25 +9,31 @@
 
     <link href="css/main.css" rel="stylesheet">
     <link href="css/dark.css" rel="stylesheet">
+    <link href="css/dark.css" rel="stylesheet">
+    
   </head>
   <body>
     <div class="container heading">
-      <h1>Tidal Time Tracker</h1>  
-    </div>    
+      <h1>Tidal Time Tracker</h1>
+    </div>
 
     <div class="container">
       <div class="row">
-        <div class="col-sm-12">        
+        <div class="col-sm-12">
           <p style="text-align: center;">
             v0.0.1
             <br>
             MiningMark48
+            <br><br>
+            Electron v<span id=versionElectron></span>
           </p>
         </div>
       </div>
     </div>
 
-    <div id="appname"></div>
 
+    <script>
+      require('./aboutrenderer.js')
+    </script>
   </body>
 </html>

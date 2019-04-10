@@ -223,6 +223,10 @@ function showAboutDialog() {
     aboutDialogWindow = null;
   })
 
+  aboutDialogWindow.webContents.on('did-finish-load', () => {
+    aboutDialogWindow.webContents.send('do-initial-load');
+  });
+
 }
 
 app.on('ready', doReady);
