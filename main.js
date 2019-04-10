@@ -4,7 +4,7 @@ const path = require('path');
 const windowStateKeeper = require('electron-window-state');
 const debug = require('electron-debug');
 
-const datahandler = require('./datahandler');
+const datahandler = require('./util/datahandler');
 const preferences = require('./preferences');
 
 debug();
@@ -21,7 +21,7 @@ function doReady() {
 }
 
 function createWindow () {
-    
+
   let mainWindowState = windowStateKeeper({
       defaultWidth: 1350,
       defaultHeight: 700,
@@ -37,11 +37,11 @@ function createWindow () {
       'icon': './icon.png',
       webPreferences: {
         nodeIntegration: true
-      }      
+      }
   });
-  
+
   mainWindowState.manage(mainWindow);
-  
+
   loadData();
 
   mainWindow.loadFile('index.html');
@@ -59,7 +59,7 @@ function createWindow () {
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.webContents.send('do-initial-load');
   });
-    
+
 }
 
 function createMenus() {
@@ -67,18 +67,18 @@ function createMenus() {
     {
       label: 'File',
       submenu: [
-          { 
+          {
             label: "Save",
             accelerator: "CmdOrCtrl+S",
             click: () => saveData()
           },
-          { 
+          {
             label: "Import...",
             accelerator: "CmdOrCtrl+O",
             click: () => importData()
           },
-          { type: 'separator' },  
-          { 
+          { type: 'separator' },
+          {
             label: "Export As",
             submenu: [
               {
@@ -99,23 +99,23 @@ function createMenus() {
               }
             ]
           },
-          { role: 'close' }          
+          { role: 'close' }
       ]
     },
     {
       label: 'Edit',
       submenu: [
-          { 
+          {
             label: "Preferences",
             accelerator: "CmdOrCtrl+Shift+P",
             click: () => showPreferencesDialog()
-          }    
+          }
       ]
     },
     {
       label: 'Help',
       submenu: [
-        { 
+        {
           label: "About",
           click: () => showAboutDialog()
         }
@@ -143,7 +143,7 @@ function showTrayApp(mainWin) {
     {
       type: 'separator'
     },
-    { 
+    {
       label: 'Quit',
       click: () => {
         appIcon.destroy();
@@ -211,7 +211,7 @@ function showAboutDialog() {
     'minHeight': 300,
     webPreferences: {
       nodeIntegration: true
-    }      
+    }
   })
 
   aboutDialogWindow.setMenu(null);
@@ -261,28 +261,28 @@ ipcMain.on('delete-entries-dialog', (event) => {
 
 ipcMain.on('show-statistics', (event, args) => {
   mainWindow.loadFile('stats.html');
-  
+
   const template = [
     {
       label: 'File',
       submenu: [
-        { role: 'close' }          
+        { role: 'close' }
       ]
     },
     {
       label: 'Edit',
       submenu: [
-        { 
+        {
           label: "Preferences",
           accelerator: "CmdOrCtrl+Shift+P",
           click: () => showPreferencesDialog()
-        }    
+        }
       ]
     },
     {
       label: 'Help',
       submenu: [
-        { 
+        {
           label: "About",
           click: () => showAboutDialog()
         }
@@ -291,7 +291,7 @@ ipcMain.on('show-statistics', (event, args) => {
   ]
 
   const menu = Menu.buildFromTemplate(template);
-  Menu.setApplicationMenu(menu);  
+  Menu.setApplicationMenu(menu);
 
 });
 

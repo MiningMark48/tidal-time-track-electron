@@ -8,12 +8,12 @@ const activeWin = require('active-win');
 const storage = require('electron-json-storage');
 const chart = require('electron-chartjs');
 
-const chartdefaults = require('./chartdefaults');
-const colorgenerator = require('./colorgenerator');
-const csshandler = require('./csshandler');
-const datahandler = require('./datahandler');
-const textformatter = require('./textformatter');
-const timeanddate = require('./timeanddate');
+const chartdefaults = require('./util/chartdefaults');
+const colorgenerator = require('./util/colorgenerator');
+const csshandler = require('./util/csshandler');
+const datahandler = require('./util/datahandler');
+const textformatter = require('./util/textformatter');
+const timeanddate = require('./util/timeanddate');
 
 const appname = document.querySelector('#appname');
 const pauseButton = document.querySelector("#pauseButton");
@@ -110,7 +110,7 @@ function isValidEntry(entry) {
 function updateTable() {
     table.innerHTML = "";
     entries.forEach(function(entry) {
-       if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr id="' + entry.appID +'""><td>' + (entry.appTitle === "" ? naStr : entry.appTitle.substring(0, 100)) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');     
+       if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr id="' + entry.appID +'""><td>' + (entry.appTitle === "" ? naStr : entry.appTitle.substring(0, 100)) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');
     });
 }
 

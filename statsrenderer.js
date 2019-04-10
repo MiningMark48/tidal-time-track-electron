@@ -3,11 +3,11 @@ const jquery = require('jquery');
 const storage = require('electron-json-storage');
 const chart = require('electron-chartjs');
 
-const chartdefaults = require('./chartdefaults');
-const colorgenerator = require('./colorgenerator');
-const csshandler = require('./csshandler');
-const statshandler = require('./statshandler')
-const textformatter = require('./textformatter');
+const chartdefaults = require('./util/chartdefaults');
+const colorgenerator = require('./util/colorgenerator');
+const csshandler = require('./util/csshandler');
+const statshandler = require('./util/statshandler')
+const textformatter = require('./util/textformatter');
 
 var naStr = "N/A";
 
@@ -57,7 +57,7 @@ function getPrefs() {
 
 function updatePrefs() {
   changeCSS();
-  
+
   console.log('Preferences were updated.')
 }
 
