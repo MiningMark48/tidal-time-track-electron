@@ -269,7 +269,6 @@ document.querySelector("#tableColumn0").addEventListener('click', (event) => {
   tableSortDir = (tableSortDir === 'desc') ? 'asc' : 'desc';
   tableSortIndex = 0;
   updateTable();
-  console.log("INDEX: " + tableSortIndex + " DIR: " + tableSortDir);
 });
 
 document.querySelector("#tableColumn1").addEventListener('click', (event) => {
