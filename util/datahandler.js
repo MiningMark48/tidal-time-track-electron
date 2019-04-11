@@ -1,12 +1,13 @@
-const storage = require('electron-json-storage');
 const jsonExport = require('export-from-json');
+const log = require('electron-log');
+const storage = require('electron-json-storage');
 
 module.exports.saveData = function(entries, entryIDs) {
-  
+
   storage.set('entries', JSON.stringify(entries), function(error) {
     if (error) throw error;
   });
-  
+
   storage.set('entryIDs', JSON.stringify(entryIDs), function(error) {
     if (error) throw error;
   });
@@ -28,6 +29,6 @@ module.exports.loadDataEntryIDs = function() {
 }
 
 module.exports.exportData = function(data, filename, exportType) {
-  console.log("Export!");
+  log.info("Exporting data as %c." + exportType, 'color: blue');
   jsonExport({ data: data, fileName: filename, exportType: exportType });
 }

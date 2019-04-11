@@ -3,10 +3,12 @@
 // All of the Node.js APIs are available in this process.
 
 const {ipcRenderer, remote} = require('electron');
-const jquery = require('jquery');
 const activeWin = require('active-win');
-const storage = require('electron-json-storage');
 const chart = require('electron-chartjs');
+const jquery = require('jquery');
+const log = require('electron-log');
+const storage = require('electron-json-storage');
+
 
 const chartdefaults = require('./util/chartdefaults');
 const colorgenerator = require('./util/colorgenerator');
@@ -52,6 +54,7 @@ setInterval(function() {
   overallTime++;
 
   if (!hasLoaded) {
+    setupLogging();
     updatePrefs();
 
     storage.get('entries', function(error, data) {
@@ -61,6 +64,7 @@ setInterval(function() {
         let key = parsedData[i];
         addEntry(key["appID"], key["appTitle"], key["appOwner"], key["appTime"]);
       }
+      log.info("%cExisting entries loaded.", 'color: green');
     });
     hasLoaded = true;
   }
@@ -92,6 +96,10 @@ setInterval(function() {
 
 }, interval * 1000);
 
+function setupLogging() {
+  log.transports.console.format = '{h}:{i}:{s} > {text}';
+}
+
 function addEntry(id, title, owner, time) {
   entries.push(getNewEntry(id, title, owner, time));
   entryIDs.push(id);
@@ -114,21 +122,21 @@ function isValidEntry(entry) {
 }
 
 function updateTable() {
-    table.innerHTML = "";
-    entries.forEach(function(entry) {
-       if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr id="' + entry.appID +'""><td>' + (entry.appTitle === "" ? naStr : entry.appTitle.substring(0, 100)) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');
-    });
-    tablesorter.sortTable(infoTable, tableSortIndex, tableSortDir);
+  table.innerHTML = "";
+  entries.forEach(function(entry) {
+    if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr id="' + entry.appID +'""><td>' + (entry.appTitle === "" ? naStr : entry.appTitle.substring(0, 100)) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');
+  });
+  tablesorter.sortTable(infoTable, tableSortIndex, tableSortDir);
 }
 
 function getNewEntry(id, title, owner, time) {
-    let entry = {
-        appID: id,
-        appTitle: title,
-        appOwner: owner,
-        appTime: time
-    }
-    return entry;
+  let entry = {
+    appID: id,
+    appTitle: title,
+    appOwner: owner,
+    appTime: time
+  }
+  return entry;
 }
 
 function deleteAllEntries() {
@@ -209,7 +217,7 @@ function updatePrefs() {
   if (!preferences['general']['show_timer']) timerClock.textContent = "";
   chartRefresh = preferences['charts']['chart_refresh'];
 
-  // console.log('Preferences were updated.')
+  log.info("%cPreferences were updated.", 'color: green');
 }
 
 function changeCSS() {
@@ -239,7 +247,7 @@ ipcRenderer.on('do-initial-load', (event) => {
 ipcRenderer.on('data', (event, arg) => {
   switch (arg) {
     default:
-      console.log("Unknown: ", arg);
+      log.error("Unknown Data Argument: ", arg);
       break;
     case 'save':
       updateEntries();
@@ -329,7 +337,7 @@ pauseButton.addEventListener('click', (event) => {
 });
 
 document.querySelector("#deleteEntriesButton").addEventListener('click', (event) => {
-  console.log("Deleting all (" + entries.length + ") entries...");
+  log.info("Deleting all (" + entries.length + ") entries...");
   ipcRenderer.send('delete-entries-dialog');
 });
 
@@ -343,9 +351,9 @@ ipcRenderer.on('delete-entries-dialog-response', (event, index) => {
 
   if (confirm) {
     deleteAllEntries();
-    console.log("All entries deleted.");
+    log.info("All entries deleted.");
   } else {
-    console.log("Canceled entry deletion.");
+    log.info("Canceled entry deletion.");
   }
 
 });

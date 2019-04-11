@@ -1,3 +1,5 @@
+const log = require('electron-log');
+
 module.exports.changeCSS = function(theme) {
   let cssFile = 'dark.css';
   let cssLinkIndex = 3;
@@ -14,13 +16,15 @@ module.exports.changeCSS = function(theme) {
   newLink.setAttribute("href", "css/" + cssFile);
 
   document.getElementsByTagName("head").item(0).replaceChild(newLink, oldLink);
+
+  log.info("Changed theme to: %c" + theme, 'color: blue');
 }
 
 module.exports.setCustomStyle = function(type, element, style, reset) {
   let s = (reset ? style : "");
   switch (type) {
     default:
-      console.log("Unknown type.")
+      log.error("Unknown type: %c" + type, 'color: red');
       break;
     case 'bg':
       element.style.backgroundColor = s;
