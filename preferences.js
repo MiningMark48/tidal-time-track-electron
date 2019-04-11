@@ -23,7 +23,8 @@ const preferences = new ElectronPreferences({
       'chart_type_two': 'doughnut'
     },
     'styles': {
-      'theme': 'dark'
+      'theme': 'dark',
+      'styles_useCustom': false
     },
     'markdown': {
       'auto_format_links': true,
@@ -143,12 +144,74 @@ const preferences = new ElectronPreferences({
                 'options': [
                   { 'label': 'Dark', 'value': 'dark' },
                   { 'label': 'Light', 'value': 'light' },
+                  { 'label': 'Custom', 'value': 'custom' },
                   { 'label': 'Blackout', 'value': 'blackout' },
                   { 'label': 'Dracula', 'value': 'dracula' },
                   { 'label': 'Midnight', 'value': 'midnight' },
                   { 'label': 'Monokai', 'value': 'monokai' }
                 ],
                 'help': 'Default theme'
+              },
+              {
+                'heading': 'Custom Styles',
+                'content': '<p>Use the theme "Custom" to enable custom styles below</p>',
+                'type': 'message',
+              },
+              {
+                'label': 'Background Color',
+                'key': 'styles_color_background',
+                'type': 'color',
+                'format': 'hex',
+                'help': 'Custom style'
+              },
+              {
+                'label': 'Font Color',
+                'key': 'styles_color_font',
+                'type': 'color',
+                'format': 'hex',
+                'help': 'Custom style'
+              },
+              {
+                'label': 'Table Head Background Color',
+                'key': 'styles_color_thBackground',
+                'type': 'color',
+                'format': 'hex',
+                'help': 'Custom style'
+              },
+              {
+                'label': 'Table Body Background Color',
+                'key': 'styles_color_tbBackground',
+                'type': 'color',
+                'format': 'hex',
+                'help': 'Custom style'
+              },
+              {
+                'label': 'Table Head Font Color',
+                'key': 'styles_color_thFont',
+                'type': 'color',
+                'format': 'hex',
+                'help': 'Custom style'
+              },
+              {
+                'label': 'Table Body Font Color',
+                'key': 'styles_color_tbFont',
+                'type': 'color',
+                'format': 'hex',
+                'help': 'Custom style'
+              },
+              {
+                'label': 'Button Background Color',
+                'key': 'styles_color_buttonBackground',
+                'type': 'color',
+                'format': 'hex',
+                'help': 'Custom style'
+              },
+              {
+                'label': 'Button Font Color',
+                'key': 'styles_color_buttonFont',
+                'type': 'color',
+                'format': 'hex',
+                'help': 'Custom style'
               }
             ]
           }

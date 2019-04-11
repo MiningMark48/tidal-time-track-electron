@@ -15,3 +15,18 @@ module.exports.changeCSS = function(theme) {
 
   document.getElementsByTagName("head").item(0).replaceChild(newLink, oldLink);
 }
+
+module.exports.setCustomStyle = function(type, element, style, reset) {
+  let s = (reset ? style : "");
+  switch (type) {
+    default:
+      console.log("Unknown type.")
+      break;
+    case 'bg':
+      element.style.backgroundColor = s;
+      break;
+    case 'fc':
+      element.style.color = s;
+      break;
+  }
+}

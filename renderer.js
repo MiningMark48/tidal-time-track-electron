@@ -16,11 +16,13 @@ const tablesorter = require('./util/tablesorter');
 const textformatter = require('./util/textformatter');
 const timeanddate = require('./util/timeanddate');
 
+const controlButtons  = document.getElementsByClassName('controlButtons');
 const appname = document.querySelector('#appname');
-const pauseButton = document.querySelector("#pauseButton");
-const chartOne  = document.querySelector("#chartOne");
-const chartTwo  = document.querySelector("#chartTwo");
+const chartOne  = document.querySelector('#chartOne');
+const chartTwo  = document.querySelector('#chartTwo');
+const pauseButton = document.querySelector('#pauseButton');
 const table = document.querySelector('#infoTable').querySelector('tbody');
+const tableHead = document.querySelector("#infoTable").querySelector('thead');
 const timerClock = document.querySelector("#timerClock");
 
 var interval = 1; //seconds
@@ -207,11 +209,26 @@ function updatePrefs() {
   if (!preferences['general']['show_timer']) timerClock.textContent = "";
   chartRefresh = preferences['charts']['chart_refresh'];
 
-  console.log('Preferences were updated.')
+  // console.log('Preferences were updated.')
 }
 
 function changeCSS() {
-  csshandler.changeCSS(preferences["styles"]["theme"]);
+  let prefStyles = preferences["styles"];
+  let useCustom = (prefStyles["theme"] === 'custom');
+
+  if(!useCustom) csshandler.changeCSS(prefStyles["theme"]);
+
+  csshandler.setCustomStyle('bg', document.body, prefStyles["styles_color_background"], useCustom);
+  csshandler.setCustomStyle('bg', tableHead, prefStyles["styles_color_thBackground"], useCustom);
+  csshandler.setCustomStyle('bg', table, prefStyles["styles_color_tbBackground"], useCustom);
+  csshandler.setCustomStyle('fc', document.body, prefStyles["styles_color_font"], useCustom);
+  csshandler.setCustomStyle('fc', tableHead, prefStyles["styles_color_thFont"], useCustom);
+  csshandler.setCustomStyle('fc', table, prefStyles["styles_color_tbFont"], useCustom);
+
+  Array.prototype.slice.call(controlButtons).forEach(function(button) {
+    csshandler.setCustomStyle('bg', button, prefStyles["styles_color_buttonBackground"], useCustom);
+    csshandler.setCustomStyle('fc', button, prefStyles["styles_color_buttonFont"], useCustom);
+  });
 }
 
 // IPC Messages
@@ -251,7 +268,7 @@ ipcRenderer.on('export-data', (event, arg) => {
 
 ipcRenderer.on('preferencesUpdated', (event, preferences) => {
     getPrefs();
-    console.log('Preferences were reloaded.');
+    // console.log('Preferences were reloaded.');
     updatePrefs();
 });
 
@@ -300,12 +317,14 @@ pauseButton.addEventListener('click', (event) => {
   isPaused = !isPaused;
   if (isPaused) {
     pauseButton.textContent = "Resume";
+    pauseButton.style = "";
     pauseButton.classList.add("controlButtons-paused");
     timerClock.classList.add("timer-paused");
   } else {
     pauseButton.textContent = "Pause";
     pauseButton.classList.remove("controlButtons-paused");
     timerClock.classList.remove("timer-paused");
+    changeCSS();
   }
 });
 
