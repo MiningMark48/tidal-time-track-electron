@@ -1,0 +1,62 @@
+:root {
+	--body-font-color: #FFFFFF;
+	--table-font-color: #BF0A30;
+	--table-head-background-color: #BF0A30;
+	--table-body-background-color: #FFFFFF;
+}
+
+body {
+	background: #002868;
+	color: var(--body-font-color);
+}
+
+.controlButtons {
+	background-color: var(--table-body-background-color);
+	color: var(--table-font-color);
+}
+
+.controlButtons-paused {
+	background-color: #BF0A30;
+	color: var(--item-stat-font-color);
+}
+
+.itemStat {
+	color: var(--table-font-color);
+}
+
+.table {
+	color: var(--table-font-color);
+}
+
+.table thead {
+	background: var(--table-head-background-color);
+	color: var(--body-font-color);
+}
+
+.table tbody {
+	background: var(--table-body-background-color);
+}
+
+.timer-paused {
+	color: #BF0A30;
+}
+
+.statsContainerItem {
+	background-color: var(--table-body-background-color);
+	color: #002868;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--table-head-background-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--table-body-background-color);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--table-body-background-color);
+}

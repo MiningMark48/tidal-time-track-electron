@@ -148,7 +148,8 @@ const preferences = new ElectronPreferences({
                   { 'label': 'Blackout', 'value': 'blackout' },
                   { 'label': 'Dracula', 'value': 'dracula' },
                   { 'label': 'Midnight', 'value': 'midnight' },
-                  { 'label': 'Monokai', 'value': 'monokai' }
+                  { 'label': 'Monokai', 'value': 'monokai' },
+                  { 'label': 'Old Glory', 'value': 'oldglory' }
                 ],
                 'help': 'Default theme'
               },
