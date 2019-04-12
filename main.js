@@ -53,9 +53,11 @@ function createWindow () {
   });
 
   mainWindow.on('minimize', function(event) {
-    event.preventDefault();
-    showTrayApp(mainWindow);
-    mainWindow.hide();
+    if (preferences.value("general.minimize_to_tray")) {
+      event.preventDefault();
+      showTrayApp(mainWindow);
+      mainWindow.hide();
+    }
   });
 
   mainWindow.webContents.on('did-finish-load', () => {

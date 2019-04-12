@@ -14,7 +14,8 @@ const preferences = new ElectronPreferences({
   'dataStore': path.resolve(__dirname, 'preferences.json'),
   'defaults': {
     'general': {
-      'show_timer': true
+      'show_timer': true,
+      'minimize_to_tray': true
     },
     'charts': {
       'chart_refresh': false,
@@ -66,6 +67,16 @@ const preferences = new ElectronPreferences({
                   { 'label': 'No', 'value': false }
                 ],
                 'help': 'When enabled, a current session time is displayed'
+              },
+              {
+                'label': 'Minimize to Tray',
+                'key': 'minimize_to_tray',
+                'type': 'radio',
+                'options': [
+                  { 'label': 'Yes', 'value': true },
+                  { 'label': 'No', 'value': false }
+                ],
+                'help': 'When enabled, the application will minimize to system try.'
               }
             ]
           }
