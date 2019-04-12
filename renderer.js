@@ -314,7 +314,7 @@ ipcRenderer.on('theme-export', (event) => {
     styles_color_thBackground: styles["styles_color_thBackground"],
     styles_color_thFont: styles["styles_color_thFont"]
   };
-  datahandler.exportData(data, 'custom', 'json');
+  datahandler.exportData(data, 'custom_theme', 'json');
 });
 
 ipcRenderer.on('thanos-snap', (event) => {
