@@ -335,10 +335,6 @@ ipcMain.on('show-statistics', (event, args) => {
 
 });
 
-ipcMain.on('set-style', (event, arg) => {
-  // preferences.value
-});
-
 //From Stats
 ipcMain.on('back-to-main', (event) => {
   mainWindow.loadFile('index.html');

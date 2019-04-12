@@ -9,7 +9,8 @@ const csshandler = require('./util/csshandler');
 const statshandler = require('./util/statshandler')
 const textformatter = require('./util/textformatter');
 
-var naStr = "N/A";
+const controlButtons  = document.getElementsByClassName('controlButtons');
+const statsContainers  = document.getElementsByClassName('statsContainerItem');
 
 var preferences = ipcRenderer.sendSync('getPreferences');
 
@@ -62,7 +63,24 @@ function updatePrefs() {
 }
 
 function changeCSS() {
-  csshandler.changeCSS(preferences["styles"]["theme"]);
+  let prefStyles = preferences["styles"];
+  let useCustom = (prefStyles["theme"] === 'custom');
+
+  if(!useCustom) csshandler.changeCSS(prefStyles["theme"]);
+
+  csshandler.setCustomStyle('bg', document.body, prefStyles["styles_color_background"], useCustom);
+  csshandler.setCustomStyle('fc', document.body, prefStyles["styles_color_font"], useCustom);
+
+  Array.prototype.slice.call(statsContainers).forEach(function(container) {
+    csshandler.setCustomStyle('bg', container, prefStyles["styles_color_buttonBackground"], useCustom);
+    csshandler.setCustomStyle('fc', container, prefStyles["styles_color_buttonFont"], useCustom);
+  });
+
+  Array.prototype.slice.call(controlButtons).forEach(function(button) {
+    csshandler.setCustomStyle('bg', button, prefStyles["styles_color_buttonBackground"], useCustom);
+    csshandler.setCustomStyle('fc', button, prefStyles["styles_color_buttonFont"], useCustom);
+  });
+
 }
 
 // IPC Messages

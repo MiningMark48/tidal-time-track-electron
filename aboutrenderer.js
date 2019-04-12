@@ -5,8 +5,11 @@ const csshandler = require('./util/csshandler');
 
 var preferences = ipcRenderer.sendSync('getPreferences');
 
+var version;
+
 function doLoad() {
   document.querySelector("#versionElectron").textContent = process.versions.electron;
+  document.querySelector("#versionApp").textContent = remote.app.getVersion();
 }
 
 function getPrefs() {
@@ -19,7 +22,14 @@ function updatePrefs() {
 }
 
 function changeCSS() {
-  csshandler.changeCSS(preferences["styles"]["theme"]);
+  let prefStyles = preferences["styles"];
+  let useCustom = (prefStyles["theme"] === 'custom');
+
+  if(!useCustom) csshandler.changeCSS(prefStyles["theme"]);
+
+  csshandler.setCustomStyle('bg', document.body, prefStyles["styles_color_background"], useCustom);
+  csshandler.setCustomStyle('fc', document.body, prefStyles["styles_color_font"], useCustom);
+
 }
 
 // IPC Messages
