@@ -285,6 +285,38 @@ ipcRenderer.on('context-reply-delete', (event, arg) => {
   updateTable();
 });
 
+ipcRenderer.on('theme-import', (event, arg) => {
+  let data = JSON.parse(arg);
+  let tempPrefs = preferences;
+  tempPrefs['styles']['styles_color_background'] = data['styles_color_background'];
+  tempPrefs['styles']['styles_color_buttonBackground'] = data['styles_color_buttonBackground'];
+  tempPrefs['styles']['styles_color_buttonFont'] = data['styles_color_buttonFont'];
+  tempPrefs['styles']['styles_color_font'] = data['styles_color_font'];
+  tempPrefs['styles']['styles_color_tbBackground'] = data['styles_color_tbBackground'];
+  tempPrefs['styles']['styles_color_tbFont'] = data['styles_color_tbFont'];
+  tempPrefs['styles']['styles_color_thBackground'] = data['styles_color_thBackground'];
+  tempPrefs['styles']['styles_color_thFont'] = data['styles_color_thFont'];
+
+  ipcRenderer.sendSync('setPreferences', tempPrefs);
+  changeCSS();
+  log.info("%cImported custom theme.", 'color: green');
+});
+
+ipcRenderer.on('theme-export', (event) => {
+  let styles = preferences['styles'];
+  let data = {
+    styles_color_background: styles["styles_color_background"],
+    styles_color_buttonBackground: styles["styles_color_buttonBackground"],
+    styles_color_buttonFont: styles["styles_color_buttonFont"],
+    styles_color_font: styles["styles_color_font"],
+    styles_color_tbBackground: styles["styles_color_tbBackground"],
+    styles_color_tbFont: styles["styles_color_tbFont"],
+    styles_color_thBackground: styles["styles_color_thBackground"],
+    styles_color_thFont: styles["styles_color_thFont"]
+  };
+  datahandler.exportData(data, 'custom', 'json');
+});
+
 ipcRenderer.on('thanos-snap', (event) => {
   csshandler.changeCSS('thanos');
 });

@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const windowStateKeeper = require('electron-window-state');
 const debug = require('electron-debug');
+const jsonExport = require('export-from-json');
+const log = require('electron-log');
 
 const datahandler = require('./util/datahandler');
 const preferences = require('./preferences');
@@ -109,7 +111,21 @@ function createMenus() {
             label: "Preferences",
             accelerator: "CmdOrCtrl+Shift+P",
             click: () => showPreferencesDialog()
-          }
+          },
+          { type: 'separator' },
+          {
+            label: "Theme",
+            submenu: [
+              {
+                label: "Import",
+                click: () => importTheme()
+              },
+              {
+                label: "Export",
+                click: () => exportTheme()
+              }
+            ]
+          },
       ]
     },
     {
@@ -197,6 +213,26 @@ function exportData(type) {
   mainWindow.webContents.send('export-data', type);
 }
 
+function importTheme() {
+  const options = {
+    title: 'Import',
+    properties: [ 'openFile' ],
+    filters: [{ name: 'JSON', extensions: ['json'] }]
+  }
+  dialog.showOpenDialog(options, (files) => {
+    if (files) {
+      fs.readFile(files[0], 'utf-8', (err, data) => {
+        if (err) return;
+        mainWindow.webContents.send('theme-import', data);
+      });
+    }
+  });
+}
+
+function exportTheme() {
+  mainWindow.webContents.send('theme-export');
+}
+
 function showPreferencesDialog() {
   preferences.show();
 }
@@ -212,7 +248,7 @@ function showAboutDialog() {
     webPreferences: {
       nodeIntegration: true
     }
-  })
+  });
 
   aboutDialogWindow.setMenu(null);
   aboutDialogWindow.setResizable(false);
@@ -297,6 +333,10 @@ ipcMain.on('show-statistics', (event, args) => {
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 
+});
+
+ipcMain.on('set-style', (event, arg) => {
+  // preferences.value
 });
 
 //From Stats
