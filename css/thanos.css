@@ -47,15 +47,15 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--table-head-background-color); 
+  background: var(--table-head-background-color);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--table-body-background-color); 
+  background: var(--table-body-background-color);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--table-body-background-color); 
+  background: var(--table-body-background-color);
 }

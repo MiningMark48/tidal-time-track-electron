@@ -532,7 +532,7 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 6688,
+				"buffer_size": 7641,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -541,7 +541,7 @@
 			"file": "preferences.js",
 			"settings":
 			{
-				"buffer_size": 6713,
+				"buffer_size": 7137,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -550,7 +550,7 @@
 			"file": "renderer.js",
 			"settings":
 			{
-				"buffer_size": 10790,
+				"buffer_size": 12329,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -904,7 +904,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6688,
+						"buffer_size": 7641,
 						"regions":
 						{
 						},
@@ -935,7 +935,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6713,
+						"buffer_size": 7137,
 						"regions":
 						{
 						},
@@ -971,7 +971,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10790,
+						"buffer_size": 12329,
 						"regions":
 						{
 						},

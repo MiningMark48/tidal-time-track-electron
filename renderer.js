@@ -14,6 +14,7 @@ const chartdefaults = require('./util/chartdefaults');
 const colorgenerator = require('./util/colorgenerator');
 const csshandler = require('./util/csshandler');
 const datahandler = require('./util/datahandler');
+const snackbarhandler = require('./util/snackbarhandler');
 const tablesorter = require('./util/tablesorter');
 const textformatter = require('./util/textformatter');
 const timeanddate = require('./util/timeanddate');
@@ -23,12 +24,14 @@ const appname = document.querySelector('#appname');
 const chartOne  = document.querySelector('#chartOne');
 const chartTwo  = document.querySelector('#chartTwo');
 const pauseButton = document.querySelector('#pauseButton');
+const snackbar = document.querySelector('#snackbar');
 const table = document.querySelector('#infoTable').querySelector('tbody');
 const tableHead = document.querySelector("#infoTable").querySelector('thead');
 const timerClock = document.querySelector("#timerClock");
 
 var interval = 1; //seconds
 var naStr = "N/A";
+var snackbarTime = 3;
 
 var preferences = ipcRenderer.sendSync('getPreferences');
 var chartRefresh = false;
@@ -299,6 +302,7 @@ ipcRenderer.on('theme-import', (event, arg) => {
 
   ipcRenderer.sendSync('setPreferences', tempPrefs);
   changeCSS();
+  snackbarhandler.show("Imported custom theme", snackbarTime);
   log.info("%cImported custom theme.", 'color: green');
 });
 
@@ -351,6 +355,7 @@ table.addEventListener('contextmenu', (event) => {
 
 document.querySelector("#refreshButton").addEventListener('click', (event) => {
   refreshCharts();
+  snackbarhandler.show("Charts refreshed", snackbarTime);
 });
 
 pauseButton.addEventListener('click', (event) => {
@@ -360,11 +365,13 @@ pauseButton.addEventListener('click', (event) => {
     pauseButton.style = "";
     pauseButton.classList.add("controlButtons-paused");
     timerClock.classList.add("timer-paused");
+    snackbarhandler.show("Paused", snackbarTime);
   } else {
     pauseButton.textContent = "Pause";
     pauseButton.classList.remove("controlButtons-paused");
     timerClock.classList.remove("timer-paused");
     changeCSS();
+    snackbarhandler.show("Resumed", snackbarTime);
   }
 });
 
@@ -383,6 +390,7 @@ ipcRenderer.on('delete-entries-dialog-response', (event, index) => {
 
   if (confirm) {
     deleteAllEntries();
+    snackbarhandler.show("All entries deleted", snackbarTime);
     log.info("All entries deleted.");
   } else {
     log.info("Canceled entry deletion.");
@@ -391,5 +399,6 @@ ipcRenderer.on('delete-entries-dialog-response', (event, index) => {
 });
 
 document.querySelector("#statsButton").addEventListener('click', (event) => {
+  snackbarhandler.show("Loading statistics...", snackbarTime);
   ipcRenderer.send('show-statistics', entries);
 });
