@@ -1,6 +1,8 @@
 body {
 	padding-left: 15px;
 	padding-right: 15px;
+	background: var(--body-background-color);
+	color: var(--body-font-color);
 }
 
 .chartHeading {
@@ -11,6 +13,17 @@ body {
 .charts {
 	padding-top: 10px;
 	padding-bottom: 20px;
+}
+
+.controlButtons {
+	width: 100%;
+	background-color: var(--table-body-background-color);
+	color: var(--table-font-color);
+}
+
+.controlButtons-paused {
+	background-color: var(--paused-color);
+	color: var(--item-stat-font-color);
 }
 
 .entries {
@@ -24,8 +37,8 @@ body {
 	text-align: center;
 }
 
-.controlButtons {
-	width: 100%;
+.itemStat {
+	color: var(--table-font-color);
 }
 
 .refreshButtonContainer {
@@ -50,11 +63,32 @@ body {
 	padding-top: 25px;
 }
 
+.statsContainerItem {
+	background-color: var(--table-body-background-color);
+}
+
+.table {
+	color: var(--table-font-color);
+}
+
+.table thead {
+	background: var(--table-head-background-color);
+	color: var(--body-font-color);
+}
+
+.table tbody {
+	background: var(--table-body-background-color);
+}
+
 .timer {
 	font-family: sans-serif;
 	font-size: 48px;
 	padding: 5px;
 	text-align: center;
+}
+
+.timer-paused {
+	color: var(--paused-color);
 }
 
 /* Scrollbars */
@@ -65,17 +99,19 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-
+  background: var(--table-head-background-color);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   border-radius: 50px;
+	  background: var(--table-body-background-color);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   border-radius: 50px;
+	  background: var(--table-body-background-color);
 }
 
 /* Snackbar */

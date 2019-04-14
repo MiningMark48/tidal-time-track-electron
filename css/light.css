@@ -1,8 +1,10 @@
 :root {
+	--body-background-color: #ffffff;
 	--body-font-color: #3F4144;
 	--table-font-color: #3F4144;
 	--table-head-background-color: #B1B1B1;
 	--table-body-background-color: #CACACA;
+	--paused-color: #D47171;
 }
 
 body {
