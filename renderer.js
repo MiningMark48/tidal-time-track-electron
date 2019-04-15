@@ -269,6 +269,8 @@ ipcRenderer.on('import-data', (event, arg) => {
     let key = parsedData[i];
     addEntry(key["appID"], key["appTitle"], key["appOwner"], key["appTime"]);
   }
+  snackbarhandler.show("Imported entry data", snackbarTime);
+  log.info("%cImported entry data.", 'color: green');
 });
 
 ipcRenderer.on('export-data', (event, arg) => {

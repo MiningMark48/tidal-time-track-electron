@@ -21,7 +21,7 @@ module.exports.pie_doughnut = function(ctx, chartType, data, labels, colors, cha
       },
       animation: {
         duration: chartAnimationDuration
-      } 
+      }
     }
   });
 }
@@ -54,7 +54,7 @@ module.exports.bar = function(ctx, data, labels, colors, chartAnimationDuration)
                 display: false
             }
         }]
-      } 
+      }
     }
   });
 }
