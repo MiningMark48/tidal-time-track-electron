@@ -170,6 +170,11 @@ function showTrayApp(mainWin) {
     }
   ]);
 
+  appIcon.on('click', function(event) {
+    mainWin.show();
+    appIcon.destroy();
+  });
+
   appIcon.setToolTip('Tidal Time Tracker');
   appIcon.setContextMenu(contextMenu);
 }
