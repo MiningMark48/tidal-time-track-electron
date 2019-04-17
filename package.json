@@ -20,7 +20,7 @@
     "tracker"
   ],
   "author": "MiningMark48",
-  "license": "All Rights Reserved",
+  "license": "Apache 2.0",
   "devDependencies": {
     "asar": "^1.0.0",
     "electron": "^4.1.4",
