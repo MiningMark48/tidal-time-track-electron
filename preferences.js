@@ -4,11 +4,12 @@ const path = require('path');
 const os = require('os');
 const ElectronPreferences = require('electron-preferences');
 
-const chartOptions =  [
-                        { 'label': 'Pie', 'value': 'pie' },
-                        { 'label': 'Doughnut', 'value': 'doughnut' },
-                        { 'label': 'Bar', 'value': 'bar' }
-                      ];
+const chartOptions =
+  [
+    { 'label': 'Pie', 'value': 'pie' },
+    { 'label': 'Doughnut', 'value': 'doughnut' },
+    { 'label': 'Bar', 'value': 'bar' }
+  ];
 
 const preferences = new ElectronPreferences({
   'dataStore': path.resolve(__dirname, 'preferences.json'),
