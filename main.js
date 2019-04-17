@@ -6,8 +6,8 @@ const debug = require('electron-debug');
 const jsonExport = require('export-from-json');
 const log = require('electron-log');
 
-const datahandler = require('./util/datahandler');
-const preferences = require('./preferences');
+const datahandler = require('./src/util/datahandler');
+const preferences = require('./src/preferences');
 
 debug();
 
@@ -46,7 +46,7 @@ function createWindow () {
 
   loadData();
 
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile('./src/index.html');
 
   mainWindow.on('closed', function () {
     mainWindow = null;
@@ -250,7 +250,7 @@ function showAboutDialog() {
   aboutDialogWindow.setMenu(null);
   aboutDialogWindow.setResizable(false);
 
-  aboutDialogWindow.loadFile('about.html');
+  aboutDialogWindow.loadFile('./src/about.html');
 
   aboutDialogWindow.on('closed', function () {
     aboutDialogWindow = null;
@@ -303,7 +303,7 @@ ipcMain.on('delete-entries-dialog', (event) => {
 });
 
 ipcMain.on('show-statistics', (event, args) => {
-  mainWindow.loadFile('stats.html');
+  mainWindow.loadFile('./src/stats.html');
 
   const template = [
     {
@@ -340,6 +340,6 @@ ipcMain.on('show-statistics', (event, args) => {
 
 //From Stats
 ipcMain.on('back-to-main', (event) => {
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile('./src/index.html');
   createMenus();
 });
