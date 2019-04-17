@@ -12,7 +12,7 @@ const chartOptions =
   ];
 
 const preferences = new ElectronPreferences({
-  'dataStore': path.resolve(__dirname, 'preferences.json'),
+  'dataStore': path.resolve(__dirname, '../preferences.json'),
   'defaults': {
     'general': {
       'show_timer': true,
