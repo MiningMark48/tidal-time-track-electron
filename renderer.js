@@ -35,7 +35,7 @@ var snackbarTime = 3;
 
 var preferences = ipcRenderer.sendSync('getPreferences');
 var chartRefresh = false;
-var entryIDDelete = 0;
+var entryIDContextSelect = 0;
 var hasLoaded = false;
 var isPaused = false;
 var overallTime = 0;
@@ -286,7 +286,7 @@ ipcRenderer.on('preferencesUpdated', (event, preferences) => {
 });
 
 ipcRenderer.on('context-reply-delete', (event, arg) => {
-  removeEntry(entryIDDelete);
+  removeEntry(entryIDContextSelect);
   updateTable();
 });
 
@@ -350,9 +350,9 @@ document.querySelector("#tableColumn2").addEventListener('click', (event) => {
 table.addEventListener('contextmenu', (event) => {
   let x = event.clientX;
   let y = event.clientY;
-  entryIDDelete = document.elementFromPoint(x, y).parentElement.id;
+  entryIDContextSelect = document.elementFromPoint(x, y).parentElement.id;
 
-  ipcRenderer.send('show-context-entry-delete');
+  ipcRenderer.send('show-context-entry');
 });
 
 document.querySelector("#refreshButton").addEventListener('click', (event) => {

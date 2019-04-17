@@ -287,9 +287,15 @@ preferences.on('save', (preferences) => {
   console.log("Preferences were saved.", JSON.stringify(preferences, null, 4));
 });
 
-ipcMain.on('show-context-entry-delete', (event) => {
-  const menuEntry = new Menu();
-  menuEntry.append(new MenuItem({ label: 'Delete Entry', click() { event.sender.send('context-reply-delete'); } }));
+ipcMain.on('show-context-entry', (event) => {
+  const menuEntry = Menu.buildFromTemplate([
+    {
+      label: 'Delete Entry',
+      click: () => {
+        event.sender.send('context-reply-delete');
+      }
+    }
+  ]);
   const win = BrowserWindow.fromWebContents(event.sender);
   menuEntry.popup(win);
 });
