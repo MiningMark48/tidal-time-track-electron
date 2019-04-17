@@ -71,63 +71,53 @@ function createMenus() {
     {
       label: 'File',
       submenu: [
-          {
-            label: "Save",
-            accelerator: "CmdOrCtrl+S",
-            click: () => saveData()
-          },
-          {
-            label: "Import...",
-            accelerator: "CmdOrCtrl+O",
-            click: () => importData()
-          },
-          { type: 'separator' },
-          {
-            label: "Export As",
-            submenu: [
-              {
-                label: 'Plain Text',
-                click: () => exportData('txt')
-              },
-              {
-                label: 'JSON',
-                click: () => exportData('json')
-              },
-              {
-                label: 'CSV',
-                click: () => exportData('csv')
-              },
-              {
-                label: 'XLS',
-                click: () => exportData('xls')
-              }
-            ]
-          },
-          { role: 'close' }
-      ]
-    },
-    {
-      label: 'Edit',
-      submenu: [
-          {
-            label: "Preferences",
-            accelerator: "CmdOrCtrl+Shift+P",
-            click: () => showPreferencesDialog()
-          },
-          { type: 'separator' },
-          {
-            label: "Theme",
-            submenu: [
-              {
-                label: "Import",
-                click: () => importTheme()
-              },
-              {
-                label: "Export",
-                click: () => exportTheme()
-              }
-            ]
-          },
+        {
+          label: "Save Data",
+          accelerator: "CmdOrCtrl+S",
+          click: () => saveData()
+        },
+        {
+          label: "Import Data...",
+          accelerator: "CmdOrCtrl+O",
+          click: () => importData()
+        },
+        {
+          label: "Export Data As",
+          submenu: [
+            {
+              label: 'Plain Text',
+              click: () => exportData('txt')
+            },
+            {
+              label: 'JSON',
+              click: () => exportData('json')
+            },
+            {
+              label: 'CSV',
+              click: () => exportData('csv')
+            },
+            {
+              label: 'XLS',
+              click: () => exportData('xls')
+            }
+          ]
+        },
+        { type: 'separator' },
+        {
+          label: "Import Theme...",
+          click: () => importTheme()
+        },
+        {
+          label: "Export Theme...",
+          click: () => exportTheme()
+        },
+        { type: 'separator' },
+        {
+          label: "Preferences",
+          accelerator: "CmdOrCtrl+Shift+P",
+          click: () => showPreferencesDialog()
+        },
+        { role: 'close' }
       ]
     },
     {
