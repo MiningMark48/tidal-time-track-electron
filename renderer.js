@@ -57,7 +57,6 @@ setInterval(function() {
   overallTime++;
 
   if (!hasLoaded) {
-    setupLogging();
     updatePrefs();
 
     storage.get('entries', function(error, data) {
@@ -98,10 +97,6 @@ setInterval(function() {
   if (chartRefresh) refreshCharts();
 
 }, interval * 1000);
-
-function setupLogging() {
-  log.transports.console.format = '{h}:{i}:{s} > {text}';
-}
 
 function addEntry(id, title, owner, time) {
   entries.push(getNewEntry(id, title, owner, time));

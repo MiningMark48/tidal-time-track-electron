@@ -18,8 +18,8 @@ function doReady() {
   createWindow();
   createMenus();
   registerGlobalKeys();
+  log.transports.console.format = '{h}:{i}:{s} > {text}';
 //  loadData();
-
 }
 
 function createWindow () {
