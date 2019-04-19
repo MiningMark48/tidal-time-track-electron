@@ -15,11 +15,16 @@ var mainWindow;
 var appIcon = null;
 
 function doReady() {
+  setupLogging();
   createWindow();
   createMenus();
   registerGlobalKeys();
-  log.transports.console.format = '{h}:{i}:{s} > {text}';
 //  loadData();
+}
+
+function setupLogging() {
+  log.transports.console.format = '{h}:{i}:{s} > {text}';
+  log.transports.file.fileName = './logs/log.log';
 }
 
 function createWindow () {
