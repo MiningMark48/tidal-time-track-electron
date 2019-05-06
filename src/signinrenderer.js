@@ -102,6 +102,20 @@ resetPasswordButton.addEventListener('click', function() {
   })
 });
 
+emailField.addEventListener('keyup', function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    signInButton.click();
+  }
+});
+
+passwordField.addEventListener('keyup', function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    signInButton.click();
+  }
+});
+
 // IPC Messages
 ipcRenderer.on('do-initial-load', (event) => {
   changeCSS();
