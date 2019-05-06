@@ -131,6 +131,12 @@ body {
   font-size: 17px;
 }
 
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
 /* Signin Menu */
 .signin-container {
 	margin: 0;
@@ -147,12 +153,6 @@ body {
 
 .signin-form-showpw {
 	margin-left: 10px;
-}
-
-#snackbar.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
 @-webkit-keyframes fadein {
