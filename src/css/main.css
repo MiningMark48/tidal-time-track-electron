@@ -132,9 +132,21 @@ body {
 }
 
 /* Signin Menu */
+.signin-container {
+	margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 .signin-form {
-	align-items: center;
 	margin-bottom: 10px;
+}
+
+.signin-form-showpw {
+	margin-left: 10px;
 }
 
 #snackbar.show {
