@@ -51,7 +51,7 @@ function createWindow () {
 
   loadData();
 
-  mainWindow.loadFile('./src/index.html');
+  mainWindow.loadFile('./src/signin.html');
 
   mainWindow.on('closed', function () {
     mainWindow = null;

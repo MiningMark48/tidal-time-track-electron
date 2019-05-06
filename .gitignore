@@ -8,3 +8,5 @@ process-palette.json
 
 *.sublime-project
 *.sublime-workspace
+
+firebaseconfig.js
