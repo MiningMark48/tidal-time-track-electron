@@ -314,12 +314,8 @@ ipcMain.on('show-statistics', (event, args) => {
     {
       label: 'File',
       submenu: [
-        { role: 'close' }
-      ]
-    },
-    {
-      label: 'Edit',
-      submenu: [
+        { role: 'close' },
+        { type: 'separator' },
         {
           label: "Preferences",
           accelerator: "CmdOrCtrl+Shift+P",
