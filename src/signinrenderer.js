@@ -1,6 +1,6 @@
 const {ipcRenderer, remote} = require('electron');
 const jquery = require('jquery');
-// const firebase = require('firebase');
+const log = require('electron-log');
 
 const firebaseconfig = require('./firebaseconfig');
 const csshandler = require('./util/csshandler');
@@ -45,13 +45,14 @@ function changeCSS() {
 
 signInButton.addEventListener('click', function() {
   firebase.auth().signInWithEmailAndPassword(emailField.value, passwordField.value).then(function() {
-    // remote.getCurrentWindow().close();
     remote.getCurrentWindow().loadFile('./src/index.html');
+    log.info("%Sign in successfull.", 'color: green');
+    // remote.getCurrentWindow().close();
     // snackbarhandler.show("Success", snackbarTime);
   }).catch(function(error) {
     if (error != null) {
       snackbarhandler.show("Invalid email/password", snackbarTime);
-      console.log(error.message);
+      log.error(error.message);
       return;
     }
   })
@@ -60,10 +61,11 @@ signInButton.addEventListener('click', function() {
 resetPasswordButton.addEventListener('click', function() {
   firebase.auth().sendPasswordResetEmail(emailField.value).then(function() {
     snackbarhandler.show("Password reset successfully sent to " + emailField.value, snackbarTime);
+    log.info("%cPassword reset email sent.", 'color: blue');
   }).catch(function(error) {
     if (error != null) {
       snackbarhandler.show("Invalid email", snackbarTime);
-      console.log(error.message);
+      log.error(error.message);
       return;
     }
   })
