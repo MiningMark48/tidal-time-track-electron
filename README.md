@@ -42,7 +42,7 @@ Charts show application time per entry. Hovering over the chart will show additi
 Each can be configured in the preferences. Available charts include pie, donut, and bar.
 
 ## Preferences
-Preferences can be displayed under File > Preferences or by pressing Ctrl+Shift+P (Cmd+Shift+P).
+Preferences can be displayed under `File > Preferences` or by pressing `Ctrl+Shift+P` (`Cmd+Shift+P`).
 
 ### General
 ![Prefs-General](https://i.imgur.com/ZRASIDV.png)
@@ -99,4 +99,4 @@ About will show information about the program, such as the current version of El
 Please report and issues or suggestions to the [issue tracker](https://github.com/MiningMark48/tidal-time-track-electron/issues).
 
 # Additional Information
-Application data is saved under AppData > Roaming (%AppData%) > tidal-time-track on Windows. This directory contains the application logs. 
+Application data is saved under `AppData > Roaming (%AppData%) > tidal-time-track` on Windows. This directory contains the application logs.
