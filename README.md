@@ -2,7 +2,7 @@
 
 Tidal Time Tracker, TTT, is a program used for monitoring time spent on applications on your system.
 
-Although the program is available for download, use of the program currently requires an account. Accounts are **private** (for now) and are made upon submission and acceptance of beta testing the application.
+Although the program is available for download, use of the program currently requires an account. Accounts are **private** for the duration of the beta testing and are made upon acceptance into the beta testing program.
 
 If you would like to beta test the program, submit an application [here](https://forms.gle/DsUkRg5qnEFXaLcr6).
 
@@ -14,12 +14,12 @@ Each entry, or application, is listed cleanly in a table showing the application
 
 ![Entry Listing](https://i.imgur.com/Dq1zAng.png)
 
-## Timer
-A timer is displayed that shows the current session time.
-
 ## Controls
 
 ![Controls](https://i.imgur.com/evydAAG.png)
+
+### Timer
+A timer is displayed that shows the current session time.
 
 ### Pause Button
 Pauses current session, preventing additional entries being added and current entries scaling up on time.
