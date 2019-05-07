@@ -1,6 +1,6 @@
 # Tidal Time Tracker
 
-Tidal Time Tracker, TTT, is a program used for monitoring time spent on applications on your system.
+Tidal Time Tracker, TTT, is a program built on [Electron](https://electronjs.org/) that is used for monitoring time spent on applications on your system.
 
 Although the program is available for download, use of the program currently requires an account. Accounts are **private** for the duration of the beta testing and are made upon acceptance into the beta testing program.
 
@@ -99,4 +99,6 @@ About will show information about the program, such as the current version of El
 Please report and issues or suggestions to the [issue tracker](https://github.com/MiningMark48/tidal-time-track-electron/issues).
 
 # Additional Information
+Tidal Time Tracker is built on a version of Google Chrome using a library known as [Electron](https://electronjs.org/).
+
 Application data is saved under `AppData > Roaming (%AppData%) > tidal-time-track` on Windows. This directory contains the application logs.
