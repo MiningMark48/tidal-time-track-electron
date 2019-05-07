@@ -1,5 +1,5 @@
 {
-  "name": "tidal-time-track",
+  "name": "Tidal Time Tracker",
   "version": "0.0.2",
   "description": "An application to track all your program usage.",
   "main": "main.js",
