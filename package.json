@@ -1,6 +1,6 @@
 {
   "name": "tidal-time-track",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An application to track all your program usage.",
   "main": "main.js",
   "build": {
@@ -15,7 +15,7 @@
     "dist": "electron-builder",
     "erebuild": "./node_modules/.bin/electron-rebuild"
   },
-  "repository": "https://github.com/MiningMark48/tidal-time-track-electron/",
+  "repository": "MiningMark48/tidal-time-track-electron",
   "keywords": [
     "time",
     "tracker"
