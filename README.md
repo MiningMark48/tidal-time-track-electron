@@ -102,3 +102,5 @@ Please report and issues or suggestions to the [issue tracker](https://github.co
 Tidal Time Tracker is built on a version of Google Chrome using a library known as [Electron](https://electronjs.org/).
 
 Application data is saved under `AppData > Roaming (%AppData%) > tidal-time-track` on Windows. This directory contains the application logs.
+
+**All data** is stored client side only. Accounts are only used for restricting users during the beta testing phase.
