@@ -107,6 +107,12 @@ function createMenus() {
           ]
         },
         { type: 'separator' },
+        { role: 'close' }
+      ]
+    },
+    {
+      label: 'Edit',
+      submenu: [
         {
           label: "Import Theme...",
           click: () => importTheme()
@@ -120,8 +126,7 @@ function createMenus() {
           label: "Preferences",
           accelerator: "CmdOrCtrl+Shift+P",
           click: () => showPreferencesDialog()
-        },
-        { role: 'close' }
+        }
       ]
     },
     {
