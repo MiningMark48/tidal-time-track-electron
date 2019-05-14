@@ -18,7 +18,6 @@ function doReady() {
   setupLogging();
   createWindow();
   createMenus();
-  registerGlobalKeys();
 //  loadData();
 }
 
@@ -172,19 +171,6 @@ function showTrayApp(mainWin) {
 
   appIcon.setToolTip('Tidal Time Tracker');
   appIcon.setContextMenu(contextMenu);
-}
-
-function registerGlobalKeys() {
-  globalShortcut.register('CommandOrControl+Shift+S', () => {
-    dialog.showMessageBox({
-      type: 'info',
-      message: 'Thanos',
-      detail: 'The end is near.',
-      buttons: [ 'OK' ]
-    }, () => {
-      mainWindow.webContents.send('thanos-snap');
-    })
-  });
 }
 
 function saveData() {

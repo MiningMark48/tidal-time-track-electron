@@ -318,10 +318,6 @@ ipcRenderer.on('theme-export', (event) => {
   datahandler.exportData(data, 'custom_theme', 'json');
 });
 
-ipcRenderer.on('thanos-snap', (event) => {
-  csshandler.changeCSS('thanos');
-});
-
 //Table Sort Control
 document.querySelector("#tableColumn0").addEventListener('click', (event) => {
   tableSortDir = (tableSortDir === 'desc') ? 'asc' : 'desc';
