@@ -37,34 +37,8 @@ body {
 	text-align: center;
 }
 
-.itemStat {
-	color: var(--table-font-color);
-}
-
 .refreshButtonContainer {
 	padding-bottom: 15px;
-}
-
-.statsContainer {
-	padding-top: 10px;
-	text-align: center;
-}
-
-.statsContainer h4 {
-	padding-top: 20px;
-	font-size: 26px;
-}
-
-.statsContainer p {
-	font-size: 18px;
-}
-
-.statsContainer .row {
-	padding-top: 25px;
-}
-
-.statsContainerItem {
-	background-color: var(--table-body-background-color);
 }
 
 .table {
@@ -89,6 +63,33 @@ body {
 
 .timer-paused {
 	color: var(--paused-color);
+}
+
+/* Stats */
+.itemStat {
+	color: var(--table-font-color);
+}
+
+.statsContainer {
+	padding-top: 10px;
+	text-align: center;
+}
+
+.statsContainer h4 {
+	padding-top: 20px;
+	font-size: 26px;
+}
+
+.statsContainer p {
+	font-size: 18px;
+}
+
+.statsContainer .row {
+	padding-top: 25px;
+}
+
+.statsContainerItem {
+	background-color: var(--table-body-background-color);
 }
 
 /* Scrollbars */
