@@ -70,26 +70,39 @@ body {
 	color: var(--table-font-color);
 }
 
+.statsButtonContainer {
+	margin-bottom: 10px;
+}
+
 .statsContainer {
-	padding-top: 10px;
+	padding-top: 5px;
 	text-align: center;
 }
 
 .statsContainer h4 {
 	padding-top: 20px;
-	font-size: 26px;
+	font-size: 24px;
 }
 
 .statsContainer p {
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .statsContainer .row {
-	padding-top: 25px;
+	padding-top: 15px;
 }
 
 .statsContainerItem {
+	height: 15vh;
+	border: 1px solid;
 	background-color: var(--table-body-background-color);
+}
+
+.statsEntries {
+	overflow-y: scroll;
+	height: 65vh;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 /* Scrollbars */

@@ -6,16 +6,25 @@ const chart = require('electron-chartjs');
 const chartdefaults = require('./util/chartdefaults');
 const colorgenerator = require('./util/colorgenerator');
 const csshandler = require('./util/csshandler');
+const snackbarhandler = require('./util/snackbarhandler');
 const statshandler = require('./util/statshandler')
+const tablesorter = require('./util/tablesorter');
 const textformatter = require('./util/textformatter');
+
+const table = document.querySelector('#infoTable').querySelector('tbody');
 
 const controlButtons  = document.getElementsByClassName('controlButtons');
 const statsContainers  = document.getElementsByClassName('statsContainerItem');
 
 var preferences = ipcRenderer.sendSync('getPreferences');
 
+const naStr = "N/A";
+const snackbarTime = 3;
+
 var entries = [];
 var entryIDs = [];
+var tableSortDir = 'desc';
+var tableSortIndex = 2;
 
 function doLoad() {
   document.querySelector("#averageTime").textContent = textformatter.toHHMMSS(statshandler.getAverageTime(entries));
@@ -23,6 +32,9 @@ function doLoad() {
   document.querySelector("#mostUsedApp").textContent = mostUsed["title"].substring(0, 50) + " (" + textformatter.toHHMMSS(mostUsed["time"]) + ")";
   let leastUsed = statshandler.getLeastUsedApp(entries);
   document.querySelector("#leastUsedApp").textContent = leastUsed["title"].substring(0, 50) + " (" + textformatter.toHHMMSS(leastUsed["time"]) + ")";
+
+  updateTable();
+
 }
 
 function getEntries() {
@@ -43,13 +55,26 @@ function addEntry(id, title, owner, time) {
 }
 
 function getNewEntry(id, title, owner, time) {
-    let entry = {
-        appID: id,
-        appTitle: title,
-        appOwner: owner,
-        appTime: time
-    }
-    return entry;
+  let entry = {
+    appID: id,
+    appTitle: title,
+    appOwner: owner,
+    appTime: time
+  }
+  return entry;
+}
+
+function updateTable() {
+  table.innerHTML = "";
+  entries.forEach(function(entry) {
+    if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr id="' + entry.appID +'""><td>' + (entry.appTitle === "" ? naStr : entry.appTitle.substring(0, 100)) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');
+  });
+  tablesorter.sortTable(infoTable, tableSortIndex, tableSortDir);
+}
+
+function isValidEntry(entry) {
+  if (entry.appTitle === naStr && entry.appOwner === naStr && appTime === 0) return false;
+  return true;
 }
 
 function getPrefs() {
@@ -90,12 +115,26 @@ ipcRenderer.on('do-initial-load', (event) => {
 });
 
 ipcRenderer.on('preferencesUpdated', (event, preferences) => {
-    getPrefs();
-    console.log('Preferences were reloaded.');
-    updatePrefs();
+  getPrefs();
+  console.log('Preferences were reloaded.');
+  updatePrefs();
 });
 
 //Buttons
 document.querySelector("#backButton").addEventListener('click', (event) => {
   ipcRenderer.send('back-to-main');
+});
+
+document.querySelector("#mostUsedButton").addEventListener('click', (event) => {
+  tableSortDir = 'desc';
+  tableSortIndex = 2;
+  updateTable();
+  snackbarhandler.show("Sorting by most used", snackbarTime);
+});
+
+document.querySelector("#leastUsedButton").addEventListener('click', (event) => {
+  tableSortDir = 'asc';
+  tableSortIndex = 2;
+  updateTable();
+  snackbarhandler.show("Sorting by least used", snackbarTime);
 });

@@ -29,9 +29,9 @@ const table = document.querySelector('#infoTable').querySelector('tbody');
 const tableHead = document.querySelector("#infoTable").querySelector('thead');
 const timerClock = document.querySelector("#timerClock");
 
-var interval = 1; //seconds
-var naStr = "N/A";
-var snackbarTime = 3;
+const interval = 1; //seconds
+const naStr = "N/A";
+const snackbarTime = 3;
 
 var preferences = ipcRenderer.sendSync('getPreferences');
 var chartRefresh = false;

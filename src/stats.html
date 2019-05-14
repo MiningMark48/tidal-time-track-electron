@@ -13,48 +13,74 @@
 
   </head>
   <body>
-
-    <div class="container">
-      <div class="container heading">
-        <h1>Statistics</h1>
+    <div class="container heading">
+      <h1>Statistics</h1>
+      <div class="container col-lg-3">
+        <button id="backButton" class="controlButtons">Back</button>
       </div>
+    </div>
+    <div>
       <div class="row">
-        <div class="container col-lg-3">
-          <button id="backButton" class="controlButtons">Back</button>
-        </div>
-      </div>
-      <div class="container statsContainer">
-        <div class="row">
-          <div class="container statsContainerItem col-lg-5">
-            <div class="container">
-              <h4>Average Application Time</h4>
-            </div>
-            <div class="container itemStat">
-              <p id="averageTime"></p>
-            </div>
+        <div class="col-lg-9">
+          <div class="row statsEntries">
+            <table class="table table-bordered" id="infoTable">
+              <thead>
+                <tr>
+                  <th scope="col" id="tableColumn0">Application</th>
+                  <th scope="col" id="tableColumn1">Process</th>
+                  <th scope="col" id="tableColumn2">Time</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
           </div>
-          <div class="container col-lg-2"></div>
-          <div class="container statsContainerItem col-lg-5">
-            <div class="container">
-              <h4>Most Used Application</h4>
+          <div class="container statsContainer">
+            <div class="row">
+              <div class="container statsContainerItem col-lg-4">
+                <div class="container">
+                  <h4>Average Application Time</h4>
+                </div>
+                <div class="container itemStat">
+                  <p id="averageTime"></p>
+                </div>
+              </div>
+              <div class="container statsContainerItem col-lg-4">
+                <div class="container">
+                  <h4>Most Used Application</h4>
+                </div>
+                <div class="container itemStat">
+                  <p id="mostUsedApp"></p>
+                </div>
+              </div>
+              <div class="container statsContainerItem col-lg-4">
+                  <div class="container">
+                    <h4>Least Used Application</h4>
+                  </div>
+                  <div class="container itemStat">
+                    <p id="leastUsedApp"></p>
+                  </div>
+                </div>
             </div>
-            <div class="container itemStat">
-              <p id="mostUsedApp"></p>
-            </div>
-          </div>
+          </div>  
         </div>
-        <div class="row">
-          <div class="container statsContainerItem col-lg-5">
-            <div class="container">
-              <h4>Least Used Application</h4>
+        <div class="col-lg-3">
+          <div class="timer">
+            <h1>Sort by</h1>
+          </div>
+          <div class="container">
+            <div class="container statsButtonContainer">
+              <button id="mostUsedButton" class="controlButtons">Most Used</button>
             </div>
-            <div class="container itemStat">
-              <p id="leastUsedApp"></p>
+            <div class="container statsButtonContainer">
+              <button id="leastUsedButton" class="controlButtons">Least Used</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div id="snackbar"></div>
 
     <script>
       require('./statsrenderer.js')
