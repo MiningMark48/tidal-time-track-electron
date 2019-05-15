@@ -9,7 +9,6 @@ const jquery = require('jquery');
 const log = require('electron-log');
 const storage = require('electron-json-storage');
 
-
 const chartdefaults = require('./util/chartdefaults');
 const colorgenerator = require('./util/colorgenerator');
 const csshandler = require('./util/csshandler');
@@ -354,13 +353,13 @@ document.querySelector("#refreshButton").addEventListener('click', (event) => {
 pauseButton.addEventListener('click', (event) => {
   isPaused = !isPaused;
   if (isPaused) {
-    pauseButton.textContent = "Resume";
+    pauseButton.innerHTML = "<i class='fas fa-play'></i>";
     pauseButton.style = "";
     pauseButton.classList.add("controlButtons-paused");
     timerClock.classList.add("timer-paused");
     snackbarhandler.show("Paused", snackbarTime);
   } else {
-    pauseButton.textContent = "Pause";
+    pauseButton.innerHTML = "<i class='fas fa-pause'></i>";
     pauseButton.classList.remove("controlButtons-paused");
     timerClock.classList.remove("timer-paused");
     changeCSS();
