@@ -23,13 +23,13 @@
             <div class="form-group">
               <input type="text" placeholder="Email: " class="form-control signin-form" id="email">
               <input type="password" placeholder="Password: " class="form-control signin-form" id="password">
-              <div class="form-group signin-form">
-                <input type="checkbox"checked="checked" id="remember">  Remember Me</input>
-                <input type="checkbox" class="signin-form-showpw" onclick="showPassword()">  Show Password</input>
+              <div class="form-group signin-form"  unselectable="on" onselectstart="return false;" onmousedown="return false;">
+                <label><input type="checkbox"checked="checked" id="remember">  Remember Me</label>
+                <label><input type="checkbox" class="signin-form-showpw" onclick="showPassword()">  Show Password</label>
               </div>
-              <div class="form-group signin-form">
-                <button class="btn btn-success" id="btnSignIn" style="width: 125px;">Sign In</button>
-                <button class="btn btn-info" id="btnResetPW" style="width: 200px;">Reset Password</button>
+              <div class="form-group signin-form signin-buttons-cont">
+                <button class="btn btn-success signin-buttons col-lg-5" id="btnSignIn" style="width: 125px;">Sign In</button>
+                <button class="btn btn-info signin-buttons col-lg-5" id="btnResetPW" style="width: 200px;">Reset Password</button>
               </div>
             </div>
           </div>
@@ -44,12 +44,29 @@
       require('./signinrenderer.js')
     </script>
     <script>
+      // Get the input field
+      var password = document.getElementById("password");
+
+      // When the user presses any key on the keyboard, run the function
+      password.addEventListener("keyup", function(event) {
+
+        // If "caps lock" is pressed, display the warning text
+        if (event.getModifierState("CapsLock")) {
+          password.classList.add("password-capsLockWarning");
+          console.log("CAPS");
+        } else {
+          password.classList.remove("password-capsLockWarning");
+        }
+      });
+      
       function showPassword() {
         var x = document.getElementById("password");
         if (x.type === "password") {
           x.type = "text";
+          x.classList.add("password-textShow");
         } else {
           x.type = "password";
+          x.classList.remove("password-textShow");
         }
       }
   </script>

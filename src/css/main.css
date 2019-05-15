@@ -254,6 +254,43 @@ body {
 	margin-left: 10px;
 }
 
+input[type=text].signin-form, input[type=password].signin-form, input[type=text].signin-form::placeholder, input[type=password].signin-form::placeholder {
+  background-color: var(--table-body-background-color);;
+  color: var(--table-font-color);
+}
+
+input[type=text].signin-form:focus, input[type=password].signin-form:focus {
+	border: 2px solid var(--table-font-color);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px var(--table-font-color);
+  outline: 0 none;
+	background-color: var(--table-body-background-color);
+  /* color: var(--table-font-color); */
+}
+
+input[type=text].password-textShow {
+	font-style: italic;
+}
+
+input[type=password].password-capsLockWarning, input[type=text].password-capsLockWarning {
+	content: "!";
+	color: var(--paused-color);
+	font-style: bold;
+}
+
+input[type=checkbox].signin-form {
+	user-select: none;
+}
+
+.signin-buttons-cont {
+	display: flex;
+	justify-content: center;
+}
+
+.signin-buttons {
+	margin: 10px;
+}
+
+/* Animation Keyframes */
 @-webkit-keyframes fadein {
   from {bottom: 0; opacity: 0;}
   to {bottom: 30px; opacity: 1;}
