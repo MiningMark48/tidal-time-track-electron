@@ -352,18 +352,21 @@ document.querySelector("#refreshButton").addEventListener('click', (event) => {
 
 pauseButton.addEventListener('click', (event) => {
   isPaused = !isPaused;
+  let tooltip = document.querySelector("#pauseButtonTooltip");
   if (isPaused) {
     pauseButton.innerHTML = "<i class='fas fa-play'></i>";
+    tooltip.textContent = "Resume Tracking";
     pauseButton.style = "";
     pauseButton.classList.add("controlButtons-paused");
     timerClock.classList.add("timer-paused");
-    snackbarhandler.show("Paused", snackbarTime);
+    snackbarhandler.show("Paused Tracking", snackbarTime);
   } else {
     pauseButton.innerHTML = "<i class='fas fa-pause'></i>";
+    tooltip.textContent = "Pause Tracking";
     pauseButton.classList.remove("controlButtons-paused");
     timerClock.classList.remove("timer-paused");
     changeCSS();
-    snackbarhandler.show("Resumed", snackbarTime);
+    snackbarhandler.show("Resumed Tracking", snackbarTime);
   }
 });
 
