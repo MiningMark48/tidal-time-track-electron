@@ -154,9 +154,10 @@ const preferences = new ElectronPreferences({
                 'key': 'theme',
                 'type': 'dropdown',
                 'options': [
-                  { 'label': 'Dark', 'value': 'dark' },
-                  { 'label': 'Light', 'value': 'light' },
                   { 'label': 'Custom', 'value': 'custom' },
+                  { 'label': 'Dark', 'value': 'dark' },
+                  { 'label': 'Dark+', 'value': 'darkplus' },
+                  { 'label': 'Light', 'value': 'light' },
                   { 'label': 'Blackout', 'value': 'blackout' },
                   { 'label': 'Dracula', 'value': 'dracula' },
                   { 'label': 'Midnight', 'value': 'midnight' },
