@@ -213,13 +213,13 @@ const preferences = new ElectronPreferences({
                 'format': 'hex',
                 'help': 'Custom style'
               },
-              {
-                'label': 'Button Background Color',
-                'key': 'styles_color_buttonBackground',
-                'type': 'color',
-                'format': 'hex',
-                'help': 'Custom style'
-              },
+              // {
+              //   'label': 'Button Background Color',
+              //   'key': 'styles_color_buttonBackground',
+              //   'type': 'color',
+              //   'format': 'hex',
+              //   'help': 'Custom style'
+              // },
               {
                 'label': 'Button Font Color',
                 'key': 'styles_color_buttonFont',

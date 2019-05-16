@@ -231,7 +231,7 @@ function changeCSS() {
   csshandler.setCustomStyle('fc', table, prefStyles["styles_color_tbFont"], useCustom);
 
   Array.prototype.slice.call(controlButtons).forEach(function(button) {
-    csshandler.setCustomStyle('bg', button, prefStyles["styles_color_buttonBackground"], useCustom);
+    // csshandler.setCustomStyle('bg', button, prefStyles["styles_color_buttonBackground"], useCustom);
     csshandler.setCustomStyle('fc', button, prefStyles["styles_color_buttonFont"], useCustom);
   });
 }
@@ -288,7 +288,7 @@ ipcRenderer.on('theme-import', (event, arg) => {
   let data = JSON.parse(arg);
   let tempPrefs = preferences;
   tempPrefs['styles']['styles_color_background'] = data['styles_color_background'];
-  tempPrefs['styles']['styles_color_buttonBackground'] = data['styles_color_buttonBackground'];
+  // tempPrefs['styles']['styles_color_buttonBackground'] = data['styles_color_buttonBackground'];
   tempPrefs['styles']['styles_color_buttonFont'] = data['styles_color_buttonFont'];
   tempPrefs['styles']['styles_color_font'] = data['styles_color_font'];
   tempPrefs['styles']['styles_color_tbBackground'] = data['styles_color_tbBackground'];
@@ -306,7 +306,7 @@ ipcRenderer.on('theme-export', (event) => {
   let styles = preferences['styles'];
   let data = {
     styles_color_background: styles["styles_color_background"],
-    styles_color_buttonBackground: styles["styles_color_buttonBackground"],
+    // styles_color_buttonBackground: styles["styles_color_buttonBackground"],
     styles_color_buttonFont: styles["styles_color_buttonFont"],
     styles_color_font: styles["styles_color_font"],
     styles_color_tbBackground: styles["styles_color_tbBackground"],
