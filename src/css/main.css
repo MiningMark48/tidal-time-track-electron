@@ -21,6 +21,7 @@ body {
 	background-color: transparent;
 	border-color: transparent;
 	color: var(--table-font-color);
+	text-align: center;
 }
 
 .controlButtons:hover {
@@ -89,6 +90,19 @@ body {
 }
 
 /* Stats */
+.backButton {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	height: 40px;
+	width: 40px;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle;
+	background-color: var(--table-body-background-color);
+	color: var(--table-font-color);
+}
+
 .itemStat {
 	color: var(--table-font-color);
 }
@@ -195,7 +209,7 @@ body {
   background-color: var(--table-head-background-color);
 	color: var(--body-font-color);
 	border: 1px solid var(--body-font-color);
-  text-align: center;
+	text-align: center;
   border-radius: 6px;
   padding: 5px 0;
   position: absolute;
