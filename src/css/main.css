@@ -44,6 +44,15 @@ body {
 	overflow-y: scroll;
 	height: 85vh;
 	padding-right: 10px;
+	padding: 10px;
+}
+
+.table-paused {
+  background: linear-gradient(90deg, var(--paused-color) 50%, transparent 50%), linear-gradient(90deg, var(--paused-color) 50%, transparent 50%), linear-gradient(0deg, var(--paused-color) 50%, transparent 50%), linear-gradient(0deg, var(--paused-color) 50%, transparent 50%);
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  background-size: 15px 3px, 15px 3px, 3px 15px, 3px 15px;
+  padding: 10px;
+  animation: border-dance 10s infinite linear;
 }
 
 .heading {
@@ -309,4 +318,14 @@ input[type=checkbox].signin-form {
 @keyframes fadeout {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
+}
+
+@keyframes border-dance {
+  0% {
+    background-position: 0% 0%, 33% 100%, 0% 33%, 99% 0%;
+  }
+  100% {
+    background-position: 33% 0%, 0% 100%, 0% 0px, 99% 33%;
+	}
+	
 }
