@@ -47,6 +47,9 @@ body {
 	overflow-y: scroll;
 	height: 85vh;
 	padding-right: 10px;
+}
+
+.entriesCont {
 	padding: 10px;
 }
 
@@ -276,10 +279,10 @@ input[type=checkbox].signin-form {
 
 @keyframes border-dance {
   0% {
-    background-position: 0% 0%, 33% 100%, 0% 33%, 99% 0%;
+    background-position: 0% 0%, 33% 100%, 0% 33%, 100% 0%;
   }
   100% {
-    background-position: 33% 0%, 0% 100%, 0% 0px, 99% 33%;
+    background-position: 33% 0%, 0% 100%, 0% 0px, 100% 33%;
 	}	
 }
 
