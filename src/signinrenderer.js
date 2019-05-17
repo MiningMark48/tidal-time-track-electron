@@ -28,7 +28,7 @@ function doLoad() {
   keytar.findCredentials(keytarService).then((result) => {
     let keytarCreds = result.length;
     if (keytarCreds > 0) {
-      storage.get('sessionInfo', function(error, data) {
+      storage.get('sessionInfo', (error, data) => {
         if (error) throw error;
         emailField.value = JSON.parse(data)["email"];;
         keytar.getPassword(keytarService, emailField.value).then((result) => {
@@ -59,15 +59,15 @@ function changeCSS() {
 
 }
 
-signInButton.addEventListener('click', function() {
-  firebase.auth().signInWithEmailAndPassword(emailField.value, passwordField.value).then(function() {
+signInButton.addEventListener('click', () => {
+  firebase.auth().signInWithEmailAndPassword(emailField.value, passwordField.value).then(() => {
     if (rememberBox.checked) {
       if (emailField.value && passwordField.value) {
         keytar.setPassword(keytarService, emailField.value, passwordField.value);
         let session = {
           email: emailField.value
         }
-        storage.set('sessionInfo', JSON.stringify(session), function(error) {
+        storage.set('sessionInfo', JSON.stringify(session), (error) => {
           if (error) throw error;
         });
       }
@@ -80,7 +80,7 @@ signInButton.addEventListener('click', function() {
 
     // snackbarhandler.show("Success", snackbarTime);
     // log.info("Checkbox: " + rememberBox.checked);
-  }).catch(function(error) {
+  }).catch((error) => {
     if (error != null) {
       snackbarhandler.show("Invalid email/password", snackbarTime);
       log.error(error.message);
@@ -89,11 +89,11 @@ signInButton.addEventListener('click', function() {
   })
 });
 
-resetPasswordButton.addEventListener('click', function() {
-  firebase.auth().sendPasswordResetEmail(emailField.value).then(function() {
+resetPasswordButton.addEventListener('click', () => {
+  firebase.auth().sendPasswordResetEmail(emailField.value).then(() => {
     snackbarhandler.show("Password reset successfully sent to " + emailField.value, snackbarTime);
     log.info("%cPassword reset email sent.", 'color: blue');
-  }).catch(function(error) {
+  }).catch((error) => {
     if (error != null) {
       snackbarhandler.show("Invalid email", snackbarTime);
       log.error(error.message);
@@ -102,14 +102,14 @@ resetPasswordButton.addEventListener('click', function() {
   })
 });
 
-emailField.addEventListener('keyup', function(event) {
+emailField.addEventListener('keyup', (event) => {
   if (event.keyCode === 13) {
     event.preventDefault();
     signInButton.click();
   }
 });
 
-passwordField.addEventListener('keyup', function(event) {
+passwordField.addEventListener('keyup', (event) => {
   if (event.keyCode === 13) {
     event.preventDefault();
     signInButton.click();

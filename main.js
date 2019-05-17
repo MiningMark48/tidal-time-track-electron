@@ -52,11 +52,11 @@ function createWindow () {
 
   mainWindow.loadFile('./src/signin.html');
 
-  mainWindow.on('closed', function () {
+  mainWindow.on('closed', () => {
     mainWindow = null;
   });
 
-  mainWindow.on('minimize', function(event) {
+  mainWindow.on('minimize', (event) => {
     if (preferences.value("general.minimize_to_tray")) {
       event.preventDefault();
       showTrayApp(mainWindow);
@@ -169,7 +169,7 @@ function showTrayApp(mainWin) {
     }
   ]);
 
-  appIcon.on('click', function(event) {
+  appIcon.on('click', (event) => {
     mainWin.show();
     appIcon.destroy();
   });
@@ -248,7 +248,7 @@ function showAboutDialog() {
 
   aboutDialogWindow.loadFile('./src/about.html');
 
-  aboutDialogWindow.on('closed', function () {
+  aboutDialogWindow.on('closed', () => {
     aboutDialogWindow = null;
   })
 
@@ -261,11 +261,11 @@ function showAboutDialog() {
 app.on('ready', doReady);
 
 // Quit when all windows are closed.
-app.on('window-all-closed', function () {
+app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit()
 });
 
-app.on('activate', function () {
+app.on('activate', () => {
   if (mainWindow === null) createWindow()
 });
 

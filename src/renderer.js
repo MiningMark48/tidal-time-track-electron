@@ -49,7 +49,7 @@ var entryColors = [];
 var chartOneAct;
 var chartTwoAct;
 
-setInterval(function() {
+setInterval(() => {
 
   if (isPaused) return;
 
@@ -58,7 +58,7 @@ setInterval(function() {
   if (!hasLoaded) {
     updatePrefs();
 
-    storage.get('entries', function(error, data) {
+    storage.get('entries', (error, data) => {
       if (error) throw error;
       let parsedData = JSON.parse(data);
       for (i = 0; i < parsedData.length; i++) {
@@ -120,7 +120,7 @@ function isValidEntry(entry) {
 
 function updateTable() {
   table.innerHTML = "";
-  entries.forEach(function(entry) {
+  entries.forEach((entry) => {
     if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr id="' + entry.appID +'""><td>' + (entry.appTitle === "" ? naStr : entry.appTitle.substring(0, 100)) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');
   });
   tablesorter.sortTable(infoTable, tableSortIndex, tableSortDir);
@@ -230,7 +230,7 @@ function changeCSS() {
   csshandler.setCustomStyle('fc', tableHead, prefStyles["styles_color_thFont"], useCustom);
   csshandler.setCustomStyle('fc', table, prefStyles["styles_color_tbFont"], useCustom);
 
-  Array.prototype.slice.call(controlButtons).forEach(function(button) {
+  Array.prototype.slice.call(controlButtons).forEach((button) => {
     // csshandler.setCustomStyle('bg', button, prefStyles["styles_color_buttonBackground"], useCustom);
     csshandler.setCustomStyle('fc', button, prefStyles["styles_color_buttonFont"], useCustom);
   });

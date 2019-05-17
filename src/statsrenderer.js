@@ -38,7 +38,7 @@ function doLoad() {
 }
 
 function getEntries() {
-  storage.get('entries', function(error, data) {
+  storage.get('entries', (error, data) => {
     if (error) throw error;
     let parsedData = JSON.parse(data);
     for (i = 0; i < parsedData.length; i++) {
@@ -66,7 +66,7 @@ function getNewEntry(id, title, owner, time) {
 
 function updateTable() {
   table.innerHTML = "";
-  entries.forEach(function(entry) {
+  entries.forEach((entry) => {
     if (entry.appTitle != undefined && isValidEntry(entry)) table.innerHTML = table.innerHTML.concat('<tr id="' + entry.appID +'""><td>' + (entry.appTitle === "" ? naStr : entry.appTitle.substring(0, 100)) + '</td><td>' + (entry.appOwner === "" ? naStr : entry.appOwner) + '</td><td>' + textformatter.toHHMMSS(entry.appTime.toString()) + '</td></tr>');
   });
   tablesorter.sortTable(infoTable, tableSortIndex, tableSortDir);
@@ -96,12 +96,12 @@ function changeCSS() {
   csshandler.setCustomStyle('bg', document.body, prefStyles["styles_color_background"], useCustom);
   csshandler.setCustomStyle('fc', document.body, prefStyles["styles_color_font"], useCustom);
 
-  Array.prototype.slice.call(statsContainers).forEach(function(container) {
+  Array.prototype.slice.call(statsContainers).forEach((container) => {
     csshandler.setCustomStyle('bg', container, prefStyles["styles_color_buttonBackground"], useCustom);
     csshandler.setCustomStyle('fc', container, prefStyles["styles_color_buttonFont"], useCustom);
   });
 
-  Array.prototype.slice.call(controlButtons).forEach(function(button) {
+  Array.prototype.slice.call(controlButtons).forEach((button) => {
     csshandler.setCustomStyle('bg', button, prefStyles["styles_color_buttonBackground"], useCustom);
     csshandler.setCustomStyle('fc', button, prefStyles["styles_color_buttonFont"], useCustom);
   });
