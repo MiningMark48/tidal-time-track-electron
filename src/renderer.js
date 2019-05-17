@@ -85,7 +85,7 @@ setInterval(() => {
   if (preferences["general"]["show_timer"]) timerClock.textContent = textformatter.toHHMMSS(overallTime);
 
   let objectInfo = activeWin.sync();
-  appname.textContent = "Current Window: " + objectInfo["title"];
+  appname.textContent = objectInfo["title"].substring(0, 40) + " || " + objectInfo["id"];
 
   if (entries === undefined || entryIDs === undefined) {
     entries = [];
