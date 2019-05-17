@@ -45,6 +45,7 @@ var tableSortIndex = 2;
 var entries = [];
 var entryIDs = [];
 var entryColors = [];
+var entriesBlacklist = [];
 
 var chartOneAct;
 var chartTwoAct;
@@ -67,6 +68,17 @@ setInterval(() => {
       }
       log.info("%cExisting entries loaded.", 'color: green');
     });
+
+    storage.get('entryBlacklist', (error, data) => {
+      if (error) throw error;
+      let parsedData = JSON.parse(data);
+      for (i = 0; i < parsedData.length; i++) {
+        let key = parsedData[i];
+        blacklistEntry(key);
+      }
+      log.info("%cExisting blacklist loaded.", 'color: green');
+    });
+
     hasLoaded = true;
   }
 
@@ -81,13 +93,15 @@ setInterval(() => {
   }
 
   let testEntry = getNewEntry(objectInfo["id"], objectInfo["title"], objectInfo["owner"]["name"], 0);
-  if (!entryIDs.includes(testEntry.appID)) {
-    addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, 1);
-    entryColors.push(colorgenerator.getRandomColor());
-  } else {
-    let prevTime = entries[entryIDs.indexOf(testEntry.appID)].appTime;
-    removeEntry(testEntry.appID);
-    addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, (prevTime + 1));
+  if (!entriesBlacklist.includes(testEntry.appID.toString())) {
+    if (!entryIDs.includes(testEntry.appID)) {
+      addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, 1);
+      entryColors.push(colorgenerator.getRandomColor());
+    } else {
+      let prevTime = entries[entryIDs.indexOf(testEntry.appID)].appTime;
+      removeEntry(testEntry.appID);
+      addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, (prevTime + 1));
+    }
   }
 
   updateTable();
@@ -111,6 +125,14 @@ function removeEntry(testEntryID) {
       updateEntries();
     }
   }
+}
+
+function blacklistEntry(testEntryID) {
+  entriesBlacklist.push(testEntryID.toString());
+}
+
+function clearBlacklist() {
+  entriesBlacklist = [];
 }
 
 function isValidEntry(entry) {
@@ -144,7 +166,8 @@ function deleteAllEntries() {
 }
 
 function updateEntries() {
-  datahandler.saveData(entries, entryIDs);
+  datahandler.saveDataEntries(entries, entryIDs);
+  datahandler.saveDataBlacklist(entriesBlacklist);
 }
 
 function refreshCharts() {
@@ -252,6 +275,7 @@ ipcRenderer.on('data', (event, arg) => {
     case 'load':
       entries = datahandler.loadDataEntries();
       entryIDs = datahandler.loadDataEntryIDs();
+      entriesBlacklist = datahandler.loadDataBlacklist();
       break;
   }
 });
@@ -282,6 +306,18 @@ ipcRenderer.on('preferencesUpdated', (event, preferences) => {
 ipcRenderer.on('context-reply-delete', (event, arg) => {
   removeEntry(entryIDContextSelect);
   updateTable();
+});
+
+ipcRenderer.on('context-reply-blacklist', (event, arg) => {
+  removeEntry(entryIDContextSelect);
+  blacklistEntry(entryIDContextSelect);
+  updateTable();
+  snackbarhandler.show("Entry blacklisted", snackbarTime);
+});
+
+ipcRenderer.on('context-reply-blacklistClear', (event, arg) => {
+  clearBlacklist();
+  snackbarhandler.show("Entry blacklist cleared", snackbarTime);
 });
 
 ipcRenderer.on('theme-import', (event, arg) => {

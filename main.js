@@ -114,6 +114,11 @@ function createMenus() {
       label: 'Edit',
       submenu: [
         {
+          label: "Clear Blacklist",
+          click: () => mainWindow.webContents.send('context-reply-blacklistClear')
+        },
+        { type: 'separator' },
+        {
           label: "Import Theme...",
           click: () => importTheme()
         },
@@ -279,6 +284,19 @@ ipcMain.on('show-context-entry', (event) => {
       label: 'Delete Entry',
       click: () => {
         event.sender.send('context-reply-delete');
+      }
+    },
+    { type: 'separator' },
+    {
+      label: 'Blacklist Entry',
+      click: () => {
+        event.sender.send('context-reply-blacklist');
+      }
+    },
+    {
+      label: 'Clear Blacklist',
+      click: () => {
+        event.sender.send('context-reply-blacklistClear');
       }
     }
   ]);
