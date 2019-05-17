@@ -43,21 +43,17 @@
         <div class="col-lg-3">
           <div id="timerClock" class="timer"></div>
           <div class="row">
-            <div class="container col-lg-3 ctooltip ctooltip-bottom">
-              <button id="pauseButton" class="controlButtons"><i class="fas fa-pause"></i></button>
-              <span id="pauseButtonTooltip" class="ctooltiptext ctooltiptext-bottom">Pause Tracking</span>
+            <div class="container col-lg-3">
+              <button id="pauseButton" class="controlButtons" data-tippy-allowHTML=true data-tippy-content="<div id='pauseButtonTooltip'>Pause Tracking</div>"><i class="fas fa-pause"></i></button>
             </div>
-            <div class="container col-lg-3 ctooltip ctooltip-bottom">
-              <button id="refreshButton" class="controlButtons"><i class="fas fa-sync"></i></button>
-              <span class="ctooltiptext ctooltiptext-bottom">Refresh Charts</span>
+            <div class="container col-lg-3">
+              <button id="refreshButton" class="controlButtons" data-tippy-content="Refresh Charts"><i class="fas fa-sync"></i></button>
             </div>
-            <div class="container col-lg-3 ctooltip ctooltip-bottom">
-              <button id="deleteEntriesButton" class="controlButtons"><i class="fas fa-times"></i></button>
-              <span class="ctooltiptext ctooltiptext-bottom">Delete All<br>Entries</span>
+            <div class="container col-lg-3">
+              <button id="deleteEntriesButton" class="controlButtons" data-tippy-content="Delete All Entries"><i class="fas fa-times"></i></button>
             </div>
-            <div class="container col-lg-3 ctooltip ctooltip-left">
-              <button id="statsButton" class="controlButtons"><i class="fas fa-chart-line"></i></button>
-              <span class="ctooltiptext ctooltiptext-left">Statistics</span>
+            <div class="container col-lg-3">
+              <button id="statsButton" class="controlButtons" data-tippy-content="Statistics"><i class="fas fa-chart-line"></i></button>
             </div>
           </div>
           <div class="row">
@@ -77,6 +73,22 @@
     </div>
 
     <div id="snackbar"></div>
+
+    <!-- Tooltips -->
+    <script src="../libs/popper.min.js"></script>
+    <script src="../libs/tippy.min.js"></script>
+    <!-- <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@4"></script> -->
+    <script>
+      tippy.setDefaults({
+        animation: 'fade',
+        duration: 125,
+        arrow: true,
+        placement: 'bottom'
+      }); 
+      tippy('[data-tippy-content]', {});
+    </script>
+    <!-- End Tooltips -->
 
     <script>
       require('./renderer.js')

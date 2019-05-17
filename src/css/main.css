@@ -196,69 +196,6 @@ body {
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
-/* Tooltips */
-	/* Tooltip Defaults */
-.ctooltip {
-	position: relative;
-	display: inline-block;
-}
-
-.ctooltip .ctooltiptext {
-	visibility: hidden;
-	width: 120px;
-  background-color: var(--table-head-background-color);
-	color: var(--body-font-color);
-	border: 1px solid var(--body-font-color);
-	text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-	z-index: 1;
-	box-shadow: 0 0 10px black;
-}
-
-.ctooltip .ctooltiptext::after {
-  content: " ";
-  position: absolute;
-  border-width: 5px;
-	border-style: solid;
-}
-
-.ctooltip:hover .ctooltiptext {
-  visibility: visible;
-}
-
-	/* Tooltip Bottom */
-.ctooltip-bottom .ctooltiptext-bottom {
-  top: 115%;
-  left: 50%;
-  margin-left: -60px;
-}
-
-.ctooltip-bottom .ctooltiptext-bottom::after {
-  bottom: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-color: transparent transparent var(--body-font-color) transparent;
-}
-
-.ctooltip:hover .ctooltiptext {
-  visibility: visible;
-}
-
-	/* Tooltip - Left */
-.ctooltip-left .ctooltiptext-left {
-  top: 5px;
-  right: 95%;
-}
-
-.ctooltip-left .ctooltiptext-left::after {
-  top: 50%;
-  left: 100%;
-  margin-top: -5px;
-  border-color: transparent transparent transparent var(--body-font-color);
-}
-
 /* Signin Menu */
 .signin-container {
 	margin: 0;
@@ -340,6 +277,28 @@ input[type=checkbox].signin-form {
   }
   100% {
     background-position: 33% 0%, 0% 100%, 0% 0px, 99% 33%;
+	}	
+}
+
+/* From Libraries */
+	/* Tippy Tooltips */
+	.tippy-tooltip {
+		background-color: var(--table-body-background-color);
+		color: var(--table-font-color);
 	}
 	
-}
+	.tippy-tooltip[x-placement^='top'] .tippy-arrow {
+		border-top-color: var(--table-body-background-color);;
+	}
+	
+	.tippy-tooltip[x-placement^='bottom'] .tippy-arrow {
+		border-bottom-color: var(--table-body-background-color);;
+	}
+	
+	.tippy-tooltip[x-placement^='left'] .tippy-arrow {
+		border-left-color: var(--table-body-background-color);;
+	}
+	
+	.tippy-tooltip[x-placement^='right'] .tippy-arrow {
+		border-right-color: var(--table-body-background-color);;
+	}

@@ -17,7 +17,7 @@
   </head>
   <body>
     <div>
-      <button id="backButton" class="backButton"><i class="fas fa-arrow-left"></i></button>
+      <button id="backButton" class="backButton" data-tippy-content="Back" data-tippy-placement="right"><i class="fas fa-arrow-left"></i></button>
     </div>
     <!-- <button id="backButton" class="backButton"><i class="fas fa-arrow-left"></i></button> -->
     <div class="container heading">
@@ -89,13 +89,23 @@
 
     <div id="snackbar"></div>
 
+
+    <!-- Tooltips -->
+    <script src="../libs/popper.min.js"></script>
+    <script src="../libs/tippy.min.js"></script>
+    <script>
+      tippy.setDefaults({
+        animation: 'fade',
+        duration: 125,
+        arrow: true,
+        placement: 'bottom'
+      }); 
+      tippy('[data-tippy-content]', {});
+    </script>
+    <!-- End Tooltips -->
+
     <script>
       require('./statsrenderer.js')
-    </script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip(); 
-      });
     </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
   </body>
