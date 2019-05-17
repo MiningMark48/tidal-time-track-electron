@@ -129,12 +129,12 @@ document.querySelector("#mostUsedButton").addEventListener('click', (event) => {
   tableSortDir = 'desc';
   tableSortIndex = 2;
   updateTable();
-  snackbarhandler.show("Sorting by most used", snackbarTime);
+  snackbarhandler.show("Sorting by most time spent", snackbarTime);
 });
 
 document.querySelector("#leastUsedButton").addEventListener('click', (event) => {
   tableSortDir = 'asc';
   tableSortIndex = 2;
   updateTable();
-  snackbarhandler.show("Sorting by least used", snackbarTime);
+  snackbarhandler.show("Sorting by least time spent", snackbarTime);
 });

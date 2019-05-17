@@ -149,7 +149,7 @@ body {
 
 .statsEntries {
 	overflow-y: scroll;
-	height: 65vh;
+	height: 70vh;
 	padding-right: 10px;
 	padding-left: 10px;
 }
