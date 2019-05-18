@@ -3,7 +3,7 @@ name: Theme request
 about: Suggest a custom theme to be added
 title: ''
 labels: custom theme
-assignees: ''
+assignees: MiningMark48
 
 ---
 
