@@ -1,5 +1,3 @@
 @echo off
-
-npm run buildwin
-
-npm run buildmac
+npm run pack
+npm run dist
