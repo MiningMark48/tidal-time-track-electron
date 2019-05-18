@@ -13,6 +13,9 @@ libs
 *.sublime-workspace
 process-palette.json
 
-# Specific Files
+# Specific Project Files
 preferences.json
 firebaseconfig.js
+
+#Misc
+*.bat
