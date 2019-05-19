@@ -233,6 +233,18 @@ function exportTheme() {
 
 function showPreferencesDialog() {
   preferences.show();
+  console.log(preferences);
+  let prefWin = BrowserWindow.getFocusedWindow();
+
+  prefWin.webContents.executeJavaScript(`
+
+    let head = document.getElementsByTagName('body')[0]; 
+    let script = document.createElement('script'); 
+    script.innerHTML = "require('../../../src/util/prefcontroller.js')";
+    head.appendChild(script);
+
+  `);
+
 }
 
 function showAboutDialog() {

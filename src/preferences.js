@@ -40,7 +40,7 @@ const preferences = new ElectronPreferences({
     }
   },
   'onLoad': (data) => {
-    // console.log('data', data);
+    // console.log('data', data);  
     return data;
   },
   'afterLoad': ({ preferences }) => {

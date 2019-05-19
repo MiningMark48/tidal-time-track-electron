@@ -1,0 +1,37 @@
+.main {
+  background: var(--body-background-color);
+  color: var(--body-font-color)
+}
+
+.sidebar {
+  background: var(--table-head-background-color);
+  color: var(--table-font-color);
+}
+
+select {
+  background: var(--table-body-background-color);
+  color: var(--table-font-color);
+}
+
+/* Scrollbars */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--table-head-background-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+	  background: var(--table-body-background-color);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  border-radius: 50px;
+	  background: var(--table-body-background-color);
+}
