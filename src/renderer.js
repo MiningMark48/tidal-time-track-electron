@@ -261,7 +261,7 @@ function changeCSS() {
 
 // IPC Messages
 ipcRenderer.on('do-initial-load', (event) => {
-  changeCSS();
+  updatePrefs();
 });
 
 ipcRenderer.on('data', (event, arg) => {
