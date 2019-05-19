@@ -3,7 +3,7 @@ name: Feature request
 about: Suggest an idea for TTT
 title: ''
 labels: enhancement
-assignees: ''
+assignees: MiningMark48
 
 ---
 
