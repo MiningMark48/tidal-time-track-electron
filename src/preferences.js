@@ -8,7 +8,8 @@ const chartOptions =
   [
     { 'label': 'Pie', 'value': 'pie' },
     { 'label': 'Doughnut', 'value': 'doughnut' },
-    { 'label': 'Bar', 'value': 'bar' }
+    { 'label': 'Bar', 'value': 'bar' },
+    { 'label': 'Line', 'value': 'line' }
   ];
 
 const preferences = new ElectronPreferences({

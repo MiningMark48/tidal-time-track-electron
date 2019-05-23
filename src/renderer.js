@@ -219,6 +219,9 @@ function getChart(chartNum, chartType) {
     case 'bar':
       return chartdefaults.bar(ctx, data, labels, colors, chartAnimationDuration);
       break;
+    case 'line':
+      return chartdefaults.line(ctx, data, labels, colors, colors[0], chartAnimationDuration);
+      break;
   }
 
 }
