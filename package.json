@@ -5,6 +5,7 @@
   "main": "main.js",
   "build": {
     "appId": "miningmark48.tidal-time-track",
+    "artifactName": "tidal-time-track-v${version}.${ext}",
     "mac": {
       "category": "miningmark48.tidal-time-track.utilty"
     }
