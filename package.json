@@ -1,6 +1,6 @@
 {
   "name": "tidal-time-track",
-  "version": "0.0.5",
+  "version": "0.0.5-test",
   "description": "An application to track all your program usage.",
   "main": "main.js",
   "build": {
@@ -8,6 +8,10 @@
     "artifactName": "tidal-time-track-v${version}.${ext}",
     "mac": {
       "category": "miningmark48.tidal-time-track.utilty"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     }
   },
   "scripts": {
