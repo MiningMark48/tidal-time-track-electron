@@ -82,17 +82,17 @@ setInterval(() => {
     hasLoaded = true;
   }
 
-  if (preferences["general"]["show_timer"]) timerClock.textContent = textformatter.toHHMMSS(overallTime);
+  if (preferences.general.show_timer) timerClock.textContent = textformatter.toHHMMSS(overallTime);
 
   let objectInfo = activeWin.sync();
-  appname.textContent = objectInfo["title"].substring(0, 40) + " || " + objectInfo["id"];
+  appname.textContent = objectInfo.title.substring(0, 40) + " || " + objectInfo.id;
 
   if (entries === undefined || entryIDs === undefined) {
     entries = [];
     entryIDs = [];
   }
 
-  let testEntry = getNewEntry(objectInfo["id"], objectInfo["title"], objectInfo["owner"]["name"], 0);
+  let testEntry = getNewEntry(objectInfo.id, objectInfo.title, objectInfo.owner.name, 0);
   if (!entriesBlacklist.includes(testEntry.appID.toString())) {
     if (!entryIDs.includes(testEntry.appID)) {
       addEntry(testEntry.appID, testEntry.appTitle, testEntry.appOwner, 1);
@@ -177,13 +177,13 @@ function refreshCharts() {
 
 function renderChartOne() {
   if (chartOneAct != undefined) chartOneAct.destroy();
-  let chartType = preferences["charts"]["chart_type_one"];
+  let chartType = preferences.chartschart_type_one;
   if (canRenderChart(chartType)) chartOneAct = getChart(chartOne, chartType);
 }
 
 function renderChartTwo() {
   if (chartTwoAct != undefined) chartTwoAct.destroy();
-  let chartType = preferences["charts"]["chart_type_two"];
+  let chartType = preferences.charts.chart_type_two;
   if (canRenderChart(chartType)) chartTwoAct = getChart(chartTwo, chartType);
 }
 
@@ -194,19 +194,19 @@ function getChart(chartNum, chartType) {
   let labels = [];
   let colors = [];
 
-  if (!preferences["charts"]["chart_colors"]) colors = entryColors;
+  if (!preferences.charts.chart_colors) colors = entryColors;
 
   for (i = 0; i < entries.length; i++) {
-    let time = entries[i]["appTime"];
-    data.push(entries[i]["appTime"]);
-    labels.push(entries[i]["appTitle"].substring(0, 15) + " - " + textformatter.toHHMMSS(entries[i]["appTime"]));
+    let time = entries[i].appTime;
+    data.push(time);
+    labels.push(entries[i].appTitle.substring(0, 15) + " - " + textformatter.toHHMMSS(entries[i].appTime));
 
     for (j = 0; j < (entries.length - colors.length); j++) {
       colors.push(colorgenerator.getRandomColor());
     }
   }
 
-  let chartAnimationDuration = preferences["charts"]["chart_animationLength"];
+  let chartAnimationDuration = preferences.charts.chart_animationLength;
 
   switch (chartType) {
     default:
@@ -237,28 +237,28 @@ function getPrefs() {
 function updatePrefs() {
   changeCSS();
   refreshCharts();
-  if (!preferences['general']['show_timer']) timerClock.textContent = "";
-  chartRefresh = preferences['charts']['chart_refresh'];
+  if (!preferences.general.show_timer) timerClock.textContent = "";
+  chartRefresh = preferences.charts.chart_refresh;
 
   log.info("%cPreferences were updated.", 'color: green');
 }
 
 function changeCSS() {
-  let prefStyles = preferences["styles"];
-  let useCustom = (prefStyles["theme"] === 'custom');
+  let prefStyles = preferences.styles;
+  let useCustom = (prefStyles.theme === 'custom');
 
-  if(!useCustom) csshandler.changeCSS(prefStyles["theme"]);
+  if(!useCustom) csshandler.changeCSS(prefStyles.theme);
 
-  csshandler.setCustomStyle('bg', document.body, prefStyles["styles_color_background"], useCustom);
-  csshandler.setCustomStyle('bg', tableHead, prefStyles["styles_color_thBackground"], useCustom);
-  csshandler.setCustomStyle('bg', table, prefStyles["styles_color_tbBackground"], useCustom);
-  csshandler.setCustomStyle('fc', document.body, prefStyles["styles_color_font"], useCustom);
-  csshandler.setCustomStyle('fc', tableHead, prefStyles["styles_color_thFont"], useCustom);
-  csshandler.setCustomStyle('fc', table, prefStyles["styles_color_tbFont"], useCustom);
+  csshandler.setCustomStyle('bg', document.body, prefStyles.styles_color_background, useCustom);
+  csshandler.setCustomStyle('bg', tableHead, prefStyles.styles_color_thBackground, useCustom);
+  csshandler.setCustomStyle('bg', table, prefStyles.styles_color_tbBackground, useCustom);
+  csshandler.setCustomStyle('fc', document.body, prefStyles.styles_color_font, useCustom);
+  csshandler.setCustomStyle('fc', tableHead, prefStyles.styles_color_thFont, useCustom);
+  csshandler.setCustomStyle('fc', table, prefStyles.styles_color_tbFont, useCustom);
 
   Array.prototype.slice.call(controlButtons).forEach((button) => {
     // csshandler.setCustomStyle('bg', button, prefStyles["styles_color_buttonBackground"], useCustom);
-    csshandler.setCustomStyle('fc', button, prefStyles["styles_color_buttonFont"], useCustom);
+    csshandler.setCustomStyle('fc', button, prefStyles.styles_color_buttonFont, useCustom);
   });
 }
 
@@ -288,7 +288,7 @@ ipcRenderer.on('import-data', (event, arg) => {
   let parsedData = JSON.parse(arg);
   for (i = 0; i < parsedData.length; i++) {
     let key = parsedData[i];
-    addEntry(key["appID"], key["appTitle"], key["appOwner"], key["appTime"]);
+    addEntry(key.appID, key.appTitle, key.appOwner, key.appTime);
   }
   snackbarhandler.show("Imported entry data", snackbarTime);
   log.info("%cImported entry data.", 'color: green');
@@ -326,14 +326,14 @@ ipcRenderer.on('context-reply-blacklistClear', (event, arg) => {
 ipcRenderer.on('theme-import', (event, arg) => {
   let data = JSON.parse(arg);
   let tempPrefs = preferences;
-  tempPrefs['styles']['styles_color_background'] = data['styles_color_background'];
-  // tempPrefs['styles']['styles_color_buttonBackground'] = data['styles_color_buttonBackground'];
-  tempPrefs['styles']['styles_color_buttonFont'] = data['styles_color_buttonFont'];
-  tempPrefs['styles']['styles_color_font'] = data['styles_color_font'];
-  tempPrefs['styles']['styles_color_tbBackground'] = data['styles_color_tbBackground'];
-  tempPrefs['styles']['styles_color_tbFont'] = data['styles_color_tbFont'];
-  tempPrefs['styles']['styles_color_thBackground'] = data['styles_color_thBackground'];
-  tempPrefs['styles']['styles_color_thFont'] = data['styles_color_thFont'];
+  tempPrefs.styles.styles_color_background = data.styles_color_background;
+  // tempPrefs['styles.styles_color_buttonBackground'] = data.styles_color_buttonBackground'];
+  tempPrefs.styles.styles_color_buttonFont = data.styles_color_buttonFont;
+  tempPrefs.styles.styles_color_font = data.styles_color_font;
+  tempPrefs.styles.styles_color_tbBackground = data.styles_color_tbBackground;
+  tempPrefs.styles.styles_color_tbFont = data.styles_color_tbFont;
+  tempPrefs.styles.styles_color_thBackground = data.styles_color_thBackground;
+  tempPrefs.styles.styles_color_thFont = data.styles_color_thFont;
 
   ipcRenderer.sendSync('setPreferences', tempPrefs);
   changeCSS();
@@ -342,16 +342,16 @@ ipcRenderer.on('theme-import', (event, arg) => {
 });
 
 ipcRenderer.on('theme-export', (event) => {
-  let styles = preferences['styles'];
+  let styles = preferences.styles;
   let data = {
-    styles_color_background: styles["styles_color_background"],
-    // styles_color_buttonBackground: styles["styles_color_buttonBackground"],
-    styles_color_buttonFont: styles["styles_color_buttonFont"],
-    styles_color_font: styles["styles_color_font"],
-    styles_color_tbBackground: styles["styles_color_tbBackground"],
-    styles_color_tbFont: styles["styles_color_tbFont"],
-    styles_color_thBackground: styles["styles_color_thBackground"],
-    styles_color_thFont: styles["styles_color_thFont"]
+    styles_color_background: styles.styles_color_background,
+    // styles_color_buttonBackground: styles.styles_color_buttonBackground,
+    styles_color_buttonFont: styles.styles_color_buttonFont,
+    styles_color_font: styles.styles_color_font,
+    styles_color_tbBackground: styles.styles_color_tbBackground,
+    styles_color_tbFont: styles.styles_color_tbFont,
+    styles_color_thBackground: styles.styles_color_thBackground,
+    styles_color_thFont: styles.styles_color_thFont
   };
   datahandler.exportData(data, 'custom_theme', 'json');
 });
