@@ -356,6 +356,11 @@ ipcRenderer.on('theme-export', (event) => {
   datahandler.exportData(data, 'custom_theme', 'json');
 });
 
+  //AutoUpdate Messages
+ipcRenderer.on('auto-update', (event, message) => {
+  snackbarhandler.show(message, snackbarTime);
+});
+
 //Table Sort Control
 document.querySelector("#tableColumn0").addEventListener('click', (event) => {
   tableSortDir = (tableSortDir === 'desc') ? 'asc' : 'desc';

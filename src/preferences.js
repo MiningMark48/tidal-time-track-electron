@@ -17,7 +17,8 @@ const preferences = new ElectronPreferences({
   'defaults': {
     'general': {
       'show_timer': true,
-      'minimize_to_tray': true
+      'minimize_to_tray': true,
+      'auto_update': true
     },
     'charts': {
       'chart_refresh': false,
@@ -79,6 +80,16 @@ const preferences = new ElectronPreferences({
                   { 'label': 'No', 'value': false }
                 ],
                 'help': 'When enabled, the application will minimize to system try.'
+              },
+              {
+                'label': 'Auto Update',
+                'key': 'auto_update',
+                'type': 'radio',
+                'options': [
+                  { 'label': 'Yes', 'value': true },
+                  { 'label': 'No', 'value': false }
+                ],
+                'help': 'When enabled, if an update is detected, it will automatically be downloaded and installed on application exit.'
               }
             ]
           }

@@ -20,15 +20,24 @@ function doReady() {
   createWindow();
   createMenus();
 //  loadData();
-
-  autoUpdater.logger = log;
-  autoUpdater.logger.transports.file.level = "info";
-  autoUpdater.checkForUpdatesAndNotify();
+  setupAutoUpdating();  
+  checkForUpdates();
 }
 
 function setupLogging() {
   log.transports.console.format = '{h}:{i}:{s} > {text}';
   log.transports.file.fileName = './logs/log.log';
+}
+
+function setupAutoUpdating() {
+  autoUpdater.logger = log;
+  autoUpdater.logger.transports.file.level = "info";
+}
+
+function checkForUpdates() {
+  if (preferences.value("general.auto_update")) {
+    autoUpdater.checkForUpdatesAndNotify();
+  }
 }
 
 function createWindow () {
@@ -112,11 +121,6 @@ function createMenus() {
           ]
         },
         { type: 'separator' },
-        {
-          label: "Check For Updates",
-          click: () => autoUpdater.checkForUpdatesAndNotify()
-        },
-        { type: 'separator' },
         { role: 'close' }
       ]
     },
@@ -150,7 +154,12 @@ function createMenus() {
         {
           label: "About",
           click: () => showAboutDialog()
-        }
+        },
+        { type: 'separator' },
+        {
+          label: "Check For Updates",
+          click: () => checkForUpdates()
+        }        
       ]
     }
   ]
@@ -368,6 +377,35 @@ ipcMain.on('show-statistics', (event, args) => {
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 
+});
+
+//AutoUpdater
+function sendAutoUpdateMessage(message) {
+  mainWindow.webContents.send('auto-update', message);
+}
+autoUpdater.on('checking-for-update', () => {
+  sendAutoUpdateMessage("Checking for updates...");
+});
+
+autoUpdater.on('update-available', (info) => {
+  sendAutoUpdateMessage("Update available");
+});
+
+autoUpdater.on('update-not-available', (info) => {
+  sendAutoUpdateMessage("You're up-to-date!");
+});
+
+autoUpdater.on('error', (error) => {
+  sendAutoUpdateMessage("An error occured while checking for update");
+  log.error(error.toString());
+});
+
+autoUpdater.on('download-progress', (progress) => {
+  sendAutoUpdateMessage("Download speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.percent}% (${progressObj.transferred} + '/' + ${progressObj.total} + )");
+});
+
+autoUpdater.on('update-downloaded', () => {
+  sendAutoUpdateMessage("Updated has finished downloading and will install on application exit.");
 });
 
 //From Stats

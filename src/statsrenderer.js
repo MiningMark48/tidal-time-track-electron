@@ -120,6 +120,11 @@ ipcRenderer.on('preferencesUpdated', (event, preferences) => {
   updatePrefs();
 });
 
+  //AutoUpdate Messages
+ipcRenderer.on('auto-update', (event, message) => {
+  snackbarhandler.show(message, snackbarTime);
+});
+
 //Buttons
 document.querySelector("#backButton").addEventListener('click', (event) => {
   ipcRenderer.send('back-to-main');
