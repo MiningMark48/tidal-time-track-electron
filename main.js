@@ -1,4 +1,5 @@
 const {app, dialog, BrowserWindow, globalShortcut, ipcMain, Menu, MenuItem, remote, Tray} = require('electron');
+const { autoUpdater } = require('electron-updater');
 const fs = require('fs');
 const path = require('path');
 const windowStateKeeper = require('electron-window-state');
@@ -19,6 +20,10 @@ function doReady() {
   createWindow();
   createMenus();
 //  loadData();
+
+  autoUpdater.logger = log;
+  autoUpdater.logger.transports.file.level = "info";
+  autoUpdater.checkForUpdatesAndNotify();
 }
 
 function setupLogging() {
@@ -105,6 +110,11 @@ function createMenus() {
               click: () => exportData('xls')
             }
           ]
+        },
+        { type: 'separator' },
+        {
+          label: "Check For Updates",
+          click: () => autoUpdater.checkForUpdatesAndNotify()
         },
         { type: 'separator' },
         { role: 'close' }
