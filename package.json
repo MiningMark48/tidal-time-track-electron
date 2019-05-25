@@ -26,7 +26,7 @@
     "time",
     "tracker"
   ],
-  "author": "MiningMark48",
+  "author": "MiningMark48 <miningmark48@gmail.com> (https://miningmark48.github.io)",
   "license": "Apache 2.0",
   "devDependencies": {
     "asar": "^1.0.0",
