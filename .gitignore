@@ -7,7 +7,7 @@ libs
 
 # Editor Directories
 .vscode
-.code-workspace
+*.code-workspace
 
 # Editor Files
 *.sublime-project
