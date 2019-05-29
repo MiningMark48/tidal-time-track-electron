@@ -177,7 +177,7 @@ function refreshCharts() {
 
 function renderChartOne() {
   if (chartOneAct != undefined) chartOneAct.destroy();
-  let chartType = preferences.chartschart_type_one;
+  let chartType = preferences.charts.chart_type_one;
   if (canRenderChart(chartType)) chartOneAct = getChart(chartOne, chartType);
 }
 
