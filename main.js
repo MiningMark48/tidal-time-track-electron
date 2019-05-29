@@ -35,9 +35,39 @@ function setupAutoUpdating() {
 }
 
 function checkForUpdates() {
-  if (preferences.value("general.auto_update")) {
-    autoUpdater.checkForUpdatesAndNotify();
-  }
+  autoUpdater.autoDownload = preferences.value("general.auto_update");
+
+  autoUpdater.checkForUpdatesAndNotify().then(() => {
+    let updateAvailable = false;
+    autoUpdater.on('update-available', (info) => {
+      updateAvailable = true;
+    });
+
+    if (!preferences.value("general.auto_update") && updateAvailable) {
+      const options = {
+        type: 'info',
+        title: 'Update Available',
+        message: 'An update is available, would you like to download and install it now?',
+        buttons: [ 'Yes', 'No' ]
+      }
+      dialog.showMessageBox(options, (index) => {
+        // event.sender.send('update-dialog-response', index);
+        switch (index) {
+          case 0:
+            autoUpdater.downloadUpdate();
+            autoUpdater.quitAndInstall();
+            break;
+          default:
+          case 1: 
+            sendAutoUpdateMessage("Update canceled");
+            break;
+        }
+      });
+    }
+        
+  }).catch((error) => {
+    log.error(error);
+  });
 }
 
 function createWindow () {
