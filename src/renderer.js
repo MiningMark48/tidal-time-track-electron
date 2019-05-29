@@ -208,20 +208,17 @@ function getChart(chartNum, chartType) {
 
   let chartAnimationDuration = preferences.charts.chart_animationLength;
 
+  let charts = chartdefaults.EnumCharts;
   switch (chartType) {
     default:
-    case 'pie':
-      return chartdefaults.pie_doughnut(ctx, 'pie', data, labels, colors, chartAnimationDuration);
-      break;
-    case 'doughnut':
-      return chartdefaults.pie_doughnut(ctx, 'doughnut', data, labels, colors, chartAnimationDuration);
-      break;
-    case 'bar':
+    case charts.PIE:
+      return chartdefaults.pie_doughnut(ctx, chartType, data, labels, colors, chartAnimationDuration);
+    case charts.DOUGHNUT:
+      return chartdefaults.pie_doughnut(ctx, chartType, data, labels, colors, chartAnimationDuration);
+    case charts.BAR:
       return chartdefaults.bar(ctx, data, labels, colors, chartAnimationDuration);
-      break;
-    case 'line':
+    case charts.LINE:
       return chartdefaults.line(ctx, data, labels, colors, colors[0], chartAnimationDuration);
-      break;
   }
 
 }

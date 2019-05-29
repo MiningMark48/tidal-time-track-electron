@@ -1,12 +1,22 @@
 const chart = require('electron-chartjs');
 
+const timeSpent = "Time Spent";
+
+//Value is name in preferences
+module.exports.EnumCharts = { 
+  PIE: "pie",
+  DOUGHNUT: "doughnut",
+  BAR: "bar",
+  LINE: "line"
+}
+
 module.exports.pie_doughnut = function(ctx, chartType, data, labels, colors, chartAnimationDuration) {
 	return new Chart(ctx, {
     type: chartType,
     data: {
       labels: labels,
       datasets: [{
-        label: "Time Spent",
+        label: timeSpent,
         backgroundColor: colors,
         data: data
       }]
@@ -17,7 +27,7 @@ module.exports.pie_doughnut = function(ctx, chartType, data, labels, colors, cha
       },
       title: {
         display: false,
-        text: 'Time Spent'
+        text: timeSpent
       },
       animation: {
         duration: chartAnimationDuration
@@ -32,7 +42,7 @@ module.exports.bar = function(ctx, data, labels, colors, chartAnimationDuration)
     data: {
       labels: labels,
       datasets: [{
-        label: "Time Spent",
+        label: timeSpent,
         backgroundColor: colors,
         data: data
       }]
@@ -43,7 +53,7 @@ module.exports.bar = function(ctx, data, labels, colors, chartAnimationDuration)
       },
       title: {
         display: false,
-        text: 'Time Spent'
+        text: timeSpent
       },
       animation: {
         duration: chartAnimationDuration
@@ -65,7 +75,7 @@ module.exports.line = function(ctx, data, labels, colors, lineColor, chartAnimat
     data: {
       labels: labels,
       datasets: [{
-        label: "Time Spent",
+        label: timeSpent,
         backgroundColor: colors,
         borderColor: lineColor,
         fill: false,
@@ -78,7 +88,7 @@ module.exports.line = function(ctx, data, labels, colors, lineColor, chartAnimat
       },
       title: {
         display: false,
-        text: 'Time Spent'
+        text: timeSpent
       },
       animation: {
         duration: chartAnimationDuration
