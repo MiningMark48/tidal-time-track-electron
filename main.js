@@ -112,6 +112,48 @@ function createWindow () {
     mainWindow.webContents.send('do-initial-load');
   });
 
+  mainWindow.webContents.on('crashed', () => {
+    const options = {
+      type: 'info',
+      title: 'Application Crashed',
+      message: 'The application has crashed.',
+      buttons: [ 'Reload', 'Close' ]
+    }
+
+    dialog.showMessageBox(options, (index) => {
+      switch (index) {
+        default:
+        case 0:
+          mainWindow.reload();
+          break;
+        case 1:
+          mainWindow.close();
+          break;
+      }
+    });
+  });
+
+  mainWindow.webContents.on('unresponsive', () => {
+    const options = {
+      type: 'info',
+      title: 'Application Unrepsonsive',
+      message: 'The application is unresponsive.',
+      buttons: [ 'Reload', 'Close' ]
+    }
+
+    dialog.showMessageBox(options, (index) => {
+      switch (index) {
+        default:
+        case 0:
+          mainWindow.reload();
+          break;
+        case 1:
+          mainWindow.close();
+          break;
+      }
+    });
+  });
+
 }
 
 function createMenus() {
