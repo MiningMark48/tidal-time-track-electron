@@ -1,4 +1,4 @@
-# Tidal Time Tracker
+![Tidal Time Tracker](TTT_banner.png)
 
 Tidal Time Tracker, TTT, is a program built on [Electron](https://electronjs.org/) that is used for monitoring time spent on applications on your system.
 
